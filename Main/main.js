@@ -114,7 +114,6 @@ function init() {
 
     if (bool === true) {
       const returnList = checkPos(x, y);
-      console.log(returnList);
 
       if (!returnList[0]) {
         return;
@@ -408,7 +407,6 @@ window.addEventListener('DOMContentLoaded', init);
 const testBoxList = document.querySelectorAll('.test');
 
 const fourPoint = JSON.parse(localStorage.getItem('point')) || [];
-console.log(fourPoint);
 
 testBoxList.forEach(item => {
   const rect = item.getBoundingClientRect();
@@ -467,10 +465,13 @@ function checkPos(cur_x, cur_y) {
     }
   }
 
-  // FIXME:
-
   return [isPosInDestination, en_name, ko_name];
 }
+
+const kim_task = localStorage.getItem('kim_task') || [];
+const park_task = localStorage.getItem('park_task') || [];
+const yoon_task = localStorage.getItem('yoon_task') || [];
+const lee_task = localStorage.getItem('lee_task') || [];
 
 // 마우스 클릭 시, 해당 위치에 변경
 function clickEffect(e) {
@@ -496,18 +497,22 @@ function openModal(en_name, ko_Name) {
   modal.style.display = 'block';
 
   const modal_charactor = document.getElementById('modal_charactor');
-  console.log(modal_charactor);
+
   modal_charactor.setAttribute('src', `../image/main/${en_name}_char.png`);
   const modal_charactor_name = document.getElementById('modal_charactor_name');
-  console.log(modal_charactor_name);
+
   modal_charactor_name.setAttribute('src', `../image/main/${en_name}.png`);
 
   const showName = document.querySelector('.modal_bottom_text');
   showName.textContent = `${ko_Name}님의 소개를 보시겠습니까?`;
 
+  const yesBtn = document.querySelector('.modal_bottom_btn_yes');
+  yesBtn.addEventListener('click', () => {
+    goToOxQuizWithParameter(en_name);
+  });
+
   document.querySelector('.modal_bottom_img_area').appendChild(modal_charactor);
   document.querySelector('.modal_bottom_img_area').appendChild(modal_charactor_name);
-  //   document.querySelector('.why_modal_bottom').appendChild(showName);
 }
 
 function closeModal() {
@@ -526,6 +531,13 @@ window.onclick = function (event) {
 
 function goToAnotherPage(folder, filename) {
   window.location.href = `../${folder}/${filename}.html`;
+}
+
+function goToOxQuizWithParameter(en_name) {
+  const queryString = `en_name=${encodeURIComponent(en_name)}`;
+  const oxUrl = `../OX_quiz/index.html?${queryString}`;
+  window.location.href = oxUrl;
+  localStorage.setItem('en_name', JSON.stringify(en_name));
 }
 
 function goBack() {

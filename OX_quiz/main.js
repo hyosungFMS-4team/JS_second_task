@@ -1,4 +1,11 @@
-let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+let currentuser = JSON.parse(localStorage.getItem('en_name'));
+let tasks = JSON.parse(localStorage.getItem(`${currentuser}_task`)) === null ? [] : JSON.parse(localStorage.getItem(`${currentuser}_task`));
+
+// let tasks = JSON.parse(localStorage.getItem(`${currentuser}`)) || [];
+// let kim_tasks = JSON.parse(localStorage.getItem('kim_tasks')) || [];
+// let park_tasks = JSON.parse(localStorage.getItem('park_tasks')) || [];
+// let yoon_tasks = JSON.parse(localStorage.getItem('yoon_tasks')) || [];
+// let lee_tasks = JSON.parse(localStorage.getItem('lee_tasks')) || [];
 
 // ================================================================================================
 
@@ -16,7 +23,60 @@ const OXItems = [
   { id: '10', text: 'Click at me', backgroundColor: '#009688', answer: 'x' },
 ];
 
+const AllOXItems = {
+  yoon: [
+    { id: '1', text: '제 이름은 윤동훈입니다.', answer: 'o' },
+    { id: '2', text: '저는 1996년생입니다', backgroundColor: '#d83434', answer: 'o' },
+    { id: '3', text: '저는 현재 강북구에 살고있습니다', backgroundColor: '#38667f', answer: 'o' },
+    { id: '4', text: '저는 현재 강북구에 살고있습니다', backgroundColor: '#38667f', answer: 'o' },
+    { id: '5', text: '저는 현재 강북구에 살고있습니다', backgroundColor: '#38667f', answer: 'o' },
+    { id: '6', text: 'Click at me', backgroundColor: '#9f7db1', answer: 'x' },
+    { id: '7', text: 'Click at me', backgroundColor: '#ff5722', answer: 'x' },
+    { id: '8', text: 'Click at me', backgroundColor: '#009688', answer: 'x' },
+    { id: '9', text: 'Click at me', backgroundColor: '#009688', answer: 'x' },
+    { id: '10', text: 'Click at me', backgroundColor: '#009688', answer: 'x' },
+  ],
+  kim: [
+    { id: '1', text: '제 이름은 김기정입니다.', answer: 'o' },
+    { id: '2', text: '저는 1998년생입니다', backgroundColor: '#d83434', answer: 'o' },
+    { id: '3', text: '저는 현재 강북구에 살고있습니다', backgroundColor: '#38667f', answer: 'o' },
+    { id: '4', text: '저는 현재 강북구에 살고있습니다', backgroundColor: '#38667f', answer: 'o' },
+    { id: '5', text: '저는 현재 강북구에 살고있습니다', backgroundColor: '#38667f', answer: 'o' },
+    { id: '6', text: 'Click at me', backgroundColor: '#9f7db1', answer: 'x' },
+    { id: '7', text: 'Click at me', backgroundColor: '#ff5722', answer: 'x' },
+    { id: '8', text: 'Click at me', backgroundColor: '#009688', answer: 'x' },
+    { id: '9', text: 'Click at me', backgroundColor: '#009688', answer: 'x' },
+    { id: '10', text: 'Click at me', backgroundColor: '#009688', answer: 'x' },
+  ],
+  park: [
+    { id: '1', text: '제 이름은 박민석입니다.', answer: 'o' },
+    { id: '2', text: '저는 1998년생입니다', backgroundColor: '#d83434', answer: 'o' },
+    { id: '3', text: '저는 현재 강북구에 살고있습니다', backgroundColor: '#38667f', answer: 'o' },
+    { id: '4', text: '저는 현재 강북구에 살고있습니다', backgroundColor: '#38667f', answer: 'o' },
+    { id: '5', text: '저는 현재 강북구에 살고있습니다', backgroundColor: '#38667f', answer: 'o' },
+    { id: '6', text: 'Click at me', backgroundColor: '#9f7db1', answer: 'x' },
+    { id: '7', text: 'Click at me', backgroundColor: '#ff5722', answer: 'x' },
+    { id: '8', text: 'Click at me', backgroundColor: '#009688', answer: 'x' },
+    { id: '9', text: 'Click at me', backgroundColor: '#009688', answer: 'x' },
+    { id: '10', text: 'Click at me', backgroundColor: '#009688', answer: 'x' },
+  ],
+  lee: [
+    { id: '1', text: '제 이름은 이재아입니다.', answer: 'o' },
+    { id: '2', text: '저는 1999년생입니다', backgroundColor: '#d83434', answer: 'o' },
+    { id: '3', text: '저는 현재 강북구에 살고있습니다', backgroundColor: '#38667f', answer: 'o' },
+    { id: '4', text: '저는 현재 강북구에 살고있습니다', backgroundColor: '#38667f', answer: 'o' },
+    { id: '5', text: '저는 현재 강북구에 살고있습니다', backgroundColor: '#38667f', answer: 'o' },
+    { id: '6', text: 'Click at me', backgroundColor: '#9f7db1', answer: 'x' },
+    { id: '7', text: 'Click at me', backgroundColor: '#ff5722', answer: 'x' },
+    { id: '8', text: 'Click at me', backgroundColor: '#009688', answer: 'x' },
+    { id: '9', text: 'Click at me', backgroundColor: '#009688', answer: 'x' },
+    { id: '10', text: 'Click at me', backgroundColor: '#009688', answer: 'x' },
+  ],
+};
+
 // ================================================================================================
+
+let current_user = JSON.parse(localStorage.getItem('en_name'));
 
 document.addEventListener('DOMContentLoaded', () => {
   renderTasks();
@@ -24,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function renderTasks() {
   if (!tasks.length) {
-    OXItems.forEach(item => {
+    AllOXItems[current_user].forEach(item => {
       const newTask = {
         id: item.id,
         content: item.text,
@@ -34,6 +94,18 @@ function renderTasks() {
       };
       tasks.push(newTask);
     });
+    // if (!tasks.length) {
+    //   console.log(AllOXItems[current_user]);
+    //   AllOXItems[current_user].forEach(item => {
+    //     const newTask = {
+    //       id: item.id,
+    //       content: item.text,
+    //       backgroundColor: item.backgroundColor,
+    //       status: 'quiz_items',
+    //       answer: item.answer,
+    //     };
+    //     tasks.push(newTask);
+    //   });
   }
 
   const columns = ['quiz_items', 'o_section', 'x_section'];
@@ -130,6 +202,7 @@ function updateTaskStatus(taskId, newStatus) {
 
 function updateLocalStorage() {
   localStorage.setItem('tasks', JSON.stringify(tasks));
+  localStorage.setItem(`${current_user}_task`, JSON.stringify(tasks));
 }
 
 function createTaskElement(content, id, backgroundColor) {
@@ -229,6 +302,9 @@ window.onclick = function (event) {
 
 // 페이지 이동
 
-function goToTestPage() {
-  window.location.href = '../test.html';
+function goToOxAnswerPage() {}
+
+function goBack() {
+  window.location.href = '../Main/index.html';
+  localStorage.setItem('tasks', JSON.stringify([]));
 }
