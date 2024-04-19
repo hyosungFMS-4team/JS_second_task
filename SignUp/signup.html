@@ -6,12 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>sign-up</title>
     <link rel="stylesheet" href="signup.css" />
+    <script defer>
+      // 뒤로가기
+      function goBack() {
+        window.history.back();
+      }
+    </script>
   </head>
   <body>
     <!-- background -->
     <div class="bg-video">
       <video class="bg-video__content" autoplay muted loop>
-        <source src="../image/signup6-background.mov" type="video/mp4" />
+        <source src="../image/signup/signup6-background.mov" type="video/mp4" />
       </video>
     </div>
 
@@ -69,8 +75,8 @@
           </div>
           <div class="modal_social">
             <div class="modal_social_btn_section">
-              <img class="social_btn" src="../image/kakao.png" alt="kakao" />
-              <img class="social_btn" src="../image/naver.png" alt="naver" />
+              <img class="social_btn" src="../image/signup/kakao.png" alt="kakao" />
+              <img class="social_btn" src="../image/signup/naver.png" alt="naver" />
             </div>
           </div>
         </div>
@@ -79,6 +85,6 @@
     </div>
 
     <!-- 뒤로가기 -->
-    <img class="back_pointer" src="../image/pointer_white.png" alt="" onclick="goToTestPage()" />
+    <img class="back_pointer" src="../image/signup/pointer_white.png" alt="" onclick="goBack()" />
   </body>
 </html>

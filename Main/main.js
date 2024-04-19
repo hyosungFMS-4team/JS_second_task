@@ -497,10 +497,10 @@ function openModal(en_name, ko_Name) {
 
   const modal_charactor = document.getElementById('modal_charactor');
   console.log(modal_charactor);
-  modal_charactor.setAttribute('src', `./image/${en_name}_char.png`);
+  modal_charactor.setAttribute('src', `../image/main/${en_name}_char.png`);
   const modal_charactor_name = document.getElementById('modal_charactor_name');
   console.log(modal_charactor_name);
-  modal_charactor_name.setAttribute('src', `./image/${en_name}.png`);
+  modal_charactor_name.setAttribute('src', `../image/main/${en_name}.png`);
 
   const showName = document.querySelector('.modal_bottom_text');
   showName.textContent = `${ko_Name}님의 소개를 보시겠습니까?`;
@@ -521,3 +521,13 @@ window.onclick = function (event) {
     modal.style.display = 'none';
   }
 };
+
+// 이동 link
+
+function goToAnotherPage(folder, filename) {
+  window.location.href = `../${folder}/${filename}.html`;
+}
+
+function goBack() {
+  window.history.back();
+}

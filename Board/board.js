@@ -53,7 +53,7 @@ function createBoardItem(data) {
 
   const imgElement = document.createElement('img');
   imgElement.classList.add('post_description_img');
-  imgElement.setAttribute('src', '../image/text_file.png');
+  imgElement.setAttribute('src', '../image/board/text_file.png');
 
   const titleElement = document.createElement('div');
   titleElement.classList.add('post_description_title');
@@ -107,12 +107,12 @@ menuItems.forEach(item => {
     menuItems.forEach(menuItem => {
       if (menuItem.querySelector('.menu_folder').classList.contains('selected_folder')) {
         menuItem.querySelector('.menu_folder').classList.remove('selected_folder');
-        menuItem.querySelector('.menu_folder').setAttribute('src', '../image/window_not_open_folder.png');
+        menuItem.querySelector('.menu_folder').setAttribute('src', '../image/board/window_not_open_folder.png');
       }
     });
 
     item.querySelector('.menu_folder').classList.add('selected_folder');
-    item.querySelector('.menu_folder').setAttribute('src', '../image/Windows_Folder_1995_open.png');
+    item.querySelector('.menu_folder').setAttribute('src', '../image/board/Windows_Folder_1995_open.png');
 
     localStorage.setItem('selectedBoard', JSON.stringify(selectedCategory));
 
@@ -158,7 +158,7 @@ function CreateModal(title, content, writer, date) {
   boardTopTitleLeftDiv.classList.add('board_top_title_left');
 
   const imgElement = document.createElement('img');
-  imgElement.src = '../image/text_file.png';
+  imgElement.src = '../image/board/text_file.png';
   imgElement.classList.add('title');
   imgElement.style.width = '25px';
   imgElement.style.height = '25px';
@@ -274,3 +274,8 @@ function drag_over(event) {
 
 document.body.addEventListener('dragover', drag_over, false);
 document.body.addEventListener('drop', drop, false);
+
+// 뒤로가기
+function goBack() {
+  window.history.back();
+}
