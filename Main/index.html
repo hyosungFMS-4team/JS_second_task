@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Introducing our team</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.1/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="main.js"></script>
+  </head>
+  <body onclick="checkPos()">
+    <!-- background image -->
+    <div class="background-video">
+      <img class="background-video__content" src="image/Snow-pixel-move.gif" alt="" />
+    </div>
+
+    <div class="container">
+      <section class="header">
+        <h1 class="title">
+          <!-- 네비게이션 바 코드 여기에 넣기 -->
+          <div class="navbar">
+            <div class="nav-left">
+              <div class="neon" style="display: block">
+                <div><span class="flicker-slow">F</span>O<span class="flicker-fast">U</span>R</div>
+              </div>
+            </div>
+            <div class="nav-right">
+              <div class="nav_item" style="color: #fcfcfcca">MEMBERS</div>
+              <div class="nav_item" style="color: #fcfcfcca">BOARD</div>
+              <div class="nav_item" style="color: #fcfcfcca">SIGNUP</div>
+            </div>
+          </div>
+        </h1>
+      </section>
+
+      <!-- introduce -->
+      <div class="introduce">
+        <div class="wrapper">
+          <div class="test_area wrapper">
+            <div id="kim" class="test test1">
+              <img class="charactor" src="image/kim_char.png" alt="" />
+              <img class="charactor_name" src="image/kim.png" alt="kim" />
+            </div>
+            <div id="park" class="test test2">
+              <img class="charactor" src="image/park_char.png" alt="" />
+              <img class="charactor_name" src="image/park.png" alt="park" />
+            </div>
+            <div id="yoon" class="test test3">
+              <img class="charactor" src="image/yoon_char.png" alt="" />
+              <img class="charactor_name" src="image/yoon.png" alt="yoon" />
+            </div>
+            <div id="lee" class="test test4">
+              <img class="charactor" src="image/lee_char.png" alt="" />
+              <img class="charactor_name" src="image/lee.png" alt="이재아" />
+            </div>
+          </div>
+        </div>
+
+        <div class="indicator"></div>
+      </div>
+    </div>
+
+    <!-- 도움말  -->
+    <div class="help_tooltip">
+      <span class="help_text help_1">?</span>
+      <span class="help_text help_2"
+        >To watch introduce of member, <br />
+        Use <span style="color: #ff0000"><b>Click</b></span> and <span style="color: #ff0000"><b>Send</b></span> Penguin to
+        <span style="color: #ff0000">Charactor</span></span
+      >
+    </div>
+
+    <div id="myModal" class="why_modal">
+      <div class="why_modal-content">
+        <div class="why_modal_top">
+          <div class="why_modal_title">MEMBER</div>
+        </div>
+        <div class="why_modal_bottom">
+          <div class="modal_bottom_img_area">
+            <img id="modal_charactor" class="charactor" src="" alt="" />
+            <img id="modal_charactor_name" class="charactor_name" src="" alt="kim" />
+          </div>
+          <div class="modal_bottom_text"></div>
+          <div class="modal_bottom_btn_area">
+            <button class="modal_bottom_btn_yes">yes</button>
+            <button class="modal_bottom_btn_no" onclick="closeModal()">no</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
