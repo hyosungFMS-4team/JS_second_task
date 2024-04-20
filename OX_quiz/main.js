@@ -1,12 +1,6 @@
 let currentuser = JSON.parse(localStorage.getItem('en_name'));
 let tasks = JSON.parse(localStorage.getItem(`${currentuser}_task`)) === null ? [] : JSON.parse(localStorage.getItem(`${currentuser}_task`));
 
-// let tasks = JSON.parse(localStorage.getItem(`${currentuser}`)) || [];
-// let kim_tasks = JSON.parse(localStorage.getItem('kim_tasks')) || [];
-// let park_tasks = JSON.parse(localStorage.getItem('park_tasks')) || [];
-// let yoon_tasks = JSON.parse(localStorage.getItem('yoon_tasks')) || [];
-// let lee_tasks = JSON.parse(localStorage.getItem('lee_tasks')) || [];
-
 // ================================================================================================
 
 //dummy
@@ -76,15 +70,13 @@ const AllOXItems = {
 
 // ================================================================================================
 
-let current_user = JSON.parse(localStorage.getItem('en_name'));
-
 document.addEventListener('DOMContentLoaded', () => {
   renderTasks();
 });
 
 function renderTasks() {
   if (!tasks.length) {
-    AllOXItems[current_user].forEach(item => {
+    AllOXItems[currentuser].forEach(item => {
       const newTask = {
         id: item.id,
         content: item.text,
@@ -94,18 +86,6 @@ function renderTasks() {
       };
       tasks.push(newTask);
     });
-    // if (!tasks.length) {
-    //   console.log(AllOXItems[current_user]);
-    //   AllOXItems[current_user].forEach(item => {
-    //     const newTask = {
-    //       id: item.id,
-    //       content: item.text,
-    //       backgroundColor: item.backgroundColor,
-    //       status: 'quiz_items',
-    //       answer: item.answer,
-    //     };
-    //     tasks.push(newTask);
-    //   });
   }
 
   const columns = ['quiz_items', 'o_section', 'x_section'];
@@ -202,7 +182,7 @@ function updateTaskStatus(taskId, newStatus) {
 
 function updateLocalStorage() {
   localStorage.setItem('tasks', JSON.stringify(tasks));
-  localStorage.setItem(`${current_user}_task`, JSON.stringify(tasks));
+  localStorage.setItem(`${currentuser}_task`, JSON.stringify(tasks));
 }
 
 function createTaskElement(content, id, backgroundColor) {
@@ -249,8 +229,8 @@ function submitAnswer() {
     answerSheet.push(newAnswer);
   });
 
-  localStorage.setItem('score', score);
-  localStorage.setItem('answerSheet', JSON.stringify(answerSheet));
+  localStorage.setItem(`${currentuser}_score`, score);
+  localStorage.setItem(`${currentuser}_answerSheet`, JSON.stringify(answerSheet));
 }
 
 function isAllItemDrop() {
@@ -302,7 +282,11 @@ window.onclick = function (event) {
 
 // 페이지 이동
 
-function goToOxAnswerPage() {}
+function goToOxAnswerPage() {
+  const queryString = `en_name=${encodeURIComponent(currentuser)}`;
+  const oxUrl = `../OX_answer/index.html?${queryString}`;
+  window.location.href = oxUrl;
+}
 
 function goBack() {
   window.location.href = '../Main/index.html';

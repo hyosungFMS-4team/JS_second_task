@@ -225,6 +225,13 @@ body {
 
 .test {
   display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* align-items: first baseline; */
+}
+
+.img_area {
+  display: flex;
   justify-content: center;
   align-items: first baseline;
 }
@@ -235,6 +242,34 @@ body {
 
 .charactor_name {
   height: 90px;
+}
+
+.ox_score {
+  margin-top: 5%;
+  padding: 3% 0%;
+  background: #2e2e2ece;
+  box-shadow: 0px 5px black, 0px -5px black, 5px 0px black, -5px 0px black, 0px 10px #00000038, 5px 5px #00000038, -5px 5px #00000038, inset 0px 5px #ffffff1f,
+    inset 0px -5px #00000030;
+  letter-spacing: 3px;
+  font-size: large;
+}
+
+.ox_quiz_score_complete {
+  color: #00ff00;
+  text-shadow: 1px 0px 1px #00ff00, 1px 0px 1px #00ff00, 1px 0px 1px #00ff00, 1px 0px 1px #00cc00, 1px 1px 1px #00cc00, 1px 0px 1px, 1px 0px 1px,
+    1px 0vw 1px #00cc00, 1px 0vw 1px #00cc00;
+}
+
+.ox_quiz_score_ing {
+  color: #ffff00;
+  text-shadow: 1px 0px 1px #ffff00, 1px 0px 1px #ffff00, 1px 0px 1px #ffff00, 1px 0px 1px #cccc00, 1px 1px 1px #cccc00, 1px 0px 1px, 1px 0px 1px,
+    1px 0vw 1px #cccc00, 1px 0vw 1px #cccc00;
+}
+
+.ox_quiz_score_not_start {
+  color: #ff0000;
+  text-shadow: 1px 0px 1px #ff0000, 1px 0px 1px #ff0000, 1px 0px 1px #ff0000, 1px 0px 1px #cc0000, 1px 1px 1px #cc0000, 1px 0px 1px, 1px 0px 1px,
+    1px 0vw 1px #cc0000, 1px 0vw 1px #cc0000;
 }
 
 .help_tooltip {

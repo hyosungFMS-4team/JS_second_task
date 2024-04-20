@@ -114,6 +114,7 @@ function init() {
 
     if (bool === true) {
       const returnList = checkPos(x, y);
+      console.log(returnList);
 
       if (!returnList[0]) {
         return;
@@ -468,10 +469,10 @@ function checkPos(cur_x, cur_y) {
   return [isPosInDestination, en_name, ko_name];
 }
 
-const kim_task = localStorage.getItem('kim_task') || [];
-const park_task = localStorage.getItem('park_task') || [];
-const yoon_task = localStorage.getItem('yoon_task') || [];
-const lee_task = localStorage.getItem('lee_task') || [];
+const kim_task = JSON.parse(localStorage.getItem('kim_task')) || [];
+const park_task = JSON.parse(localStorage.getItem('park_task')) || [];
+const yoon_task = JSON.parse(localStorage.getItem('yoon_task')) || [];
+const lee_task = JSON.parse(localStorage.getItem('lee_task')) || [];
 
 // 마우스 클릭 시, 해당 위치에 변경
 function clickEffect(e) {
@@ -497,10 +498,9 @@ function openModal(en_name, ko_Name) {
   modal.style.display = 'block';
 
   const modal_charactor = document.getElementById('modal_charactor');
-
   modal_charactor.setAttribute('src', `../image/main/${en_name}_char.png`);
-  const modal_charactor_name = document.getElementById('modal_charactor_name');
 
+  const modal_charactor_name = document.getElementById('modal_charactor_name');
   modal_charactor_name.setAttribute('src', `../image/main/${en_name}.png`);
 
   const showName = document.querySelector('.modal_bottom_text');
@@ -542,4 +542,61 @@ function goToOxQuizWithParameter(en_name) {
 
 function goBack() {
   window.history.back();
+}
+
+// 문제 풀이 여부에 따라 3가지로 변경
+
+// 다 푼거 ox_quiz_score_complete
+// 풀이 증 ox_quiz_score_ing
+// 시작 전 ox_quiz_score_not_start
+
+const scoreList = document.querySelectorAll('.ox_score');
+const taskList = [{ ...kim_task }, { ...park_task }, { ...yoon_task }, { ...lee_task }];
+
+scoreList.forEach((item, idx) => {
+  let user;
+  switch (idx) {
+    case 0:
+      user = 'kim';
+      break;
+    case 1:
+      user = 'park';
+      break;
+    case 2:
+      user = 'yoon';
+      break;
+    case 3:
+      user = 'lee';
+      break;
+
+    default:
+      break;
+  }
+
+  const taskLength = Object.keys(taskList[idx]).length;
+  const doneCnt = statusCheck(taskList[idx]);
+
+  if (taskLength === 0 || taskLength - doneCnt === taskLength) {
+    item.textContent = 'Play it !';
+    item.classList.add('ox_quiz_score_not_start');
+  } else {
+    if (JSON.parse(localStorage.getItem(`${user}_score`)) !== null) {
+      item.textContent = 'Complete';
+      item.classList.add('ox_quiz_score_complete');
+    } else {
+      item.textContent = `${doneCnt} / ${taskLength}`;
+      item.classList.add('ox_quiz_score_ing');
+    }
+  }
+});
+
+function statusCheck(taskObj) {
+  let cnt = 0;
+  for (let key in taskObj) {
+    if (taskObj[key]['status'] === 'quiz_items') {
+      cnt++;
+    }
+  }
+
+  return Object.keys(taskObj).length - cnt;
 }
