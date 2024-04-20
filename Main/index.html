@@ -67,6 +67,11 @@
               <div class="ox_score"></div>
             </div>
           </div>
+          <!-- Board & Signup -->
+
+          <div id="board" class="board test">
+            <img class="board_img" src="../image/main/boardwithpaper.png" alt="" />
+          </div>
         </div>
 
         <div class="indicator"></div>
@@ -83,6 +88,7 @@
       >
     </div>
 
+    <!-- 멤버 입장 모달 -->
     <div id="myModal" class="why_modal">
       <div class="why_modal-content">
         <div class="why_modal_top">
@@ -97,6 +103,26 @@
           <div class="modal_bottom_btn_area">
             <button class="modal_bottom_btn_yes">yes</button>
             <button class="modal_bottom_btn_no" onclick="closeModal()">no</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 게시판 입장 모달 -->
+    <div id="myBoardModal" class="why_modal">
+      <div class="why_modal-content">
+        <div class="why_modal_top">
+          <div class="why_modal_title">FOUR</div>
+        </div>
+        <div class="why_modal_bottom">
+          <div class="modal_bottom_btn_area">
+            <button class="modal_bottom_btn_board" onclick="goToAnotherPage('Board','board')">Board</button>
+            <div class="modal_divider">
+              <div class="modal_divider_line"></div>
+              <div>OR</div>
+              <div class="modal_divider_line"></div>
+            </div>
+            <button class="modal_bottom_btn_signup" onclick="goToAnotherPage('SignUp','signup')">Signup</button>
           </div>
         </div>
       </div>

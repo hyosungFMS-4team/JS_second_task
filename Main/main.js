@@ -121,6 +121,7 @@ function init() {
       }
 
       penguinData.isDestination = true;
+
       openModal(returnList[1], returnList[2]);
     }
   };
@@ -448,7 +449,7 @@ function updateLocalStoragePoint() {
 // 각 요소의 좌측 상단과 우측 하단 좌표를 가져와서 로컬스토리지에 저장
 
 function checkPos(cur_x, cur_y) {
-  const fourBoxPoints = [...fourPoint.slice(-4)];
+  const fourBoxPoints = [...fourPoint.slice(-5)];
   let isPosInDestination = false;
   let ko_name = null;
   let en_name = null;
@@ -493,26 +494,31 @@ document.addEventListener('click', clickEffect);
 // 압장 확인 모달
 
 const modal = document.getElementById('myModal');
+const boardModal = document.getElementById('myBoardModal');
 
 function openModal(en_name, ko_Name) {
-  modal.style.display = 'block';
+  if (en_name !== 'board') {
+    modal.style.display = 'block';
 
-  const modal_charactor = document.getElementById('modal_charactor');
-  modal_charactor.setAttribute('src', `../image/main/${en_name}_char.png`);
+    const modal_charactor = document.getElementById('modal_charactor');
+    modal_charactor.setAttribute('src', `../image/main/${en_name}_char.png`);
 
-  const modal_charactor_name = document.getElementById('modal_charactor_name');
-  modal_charactor_name.setAttribute('src', `../image/main/${en_name}.png`);
+    const modal_charactor_name = document.getElementById('modal_charactor_name');
+    modal_charactor_name.setAttribute('src', `../image/main/${en_name}.png`);
 
-  const showName = document.querySelector('.modal_bottom_text');
-  showName.textContent = `${ko_Name}님의 소개를 보시겠습니까?`;
+    const showName = document.querySelector('.modal_bottom_text');
+    showName.textContent = `${ko_Name}님의 소개를 보시겠습니까?`;
 
-  const yesBtn = document.querySelector('.modal_bottom_btn_yes');
-  yesBtn.addEventListener('click', () => {
-    goToOxQuizWithParameter(en_name);
-  });
+    const yesBtn = document.querySelector('.modal_bottom_btn_yes');
+    yesBtn.addEventListener('click', () => {
+      goToOxQuizWithParameter(en_name);
+    });
 
-  document.querySelector('.modal_bottom_img_area').appendChild(modal_charactor);
-  document.querySelector('.modal_bottom_img_area').appendChild(modal_charactor_name);
+    document.querySelector('.modal_bottom_img_area').appendChild(modal_charactor);
+    document.querySelector('.modal_bottom_img_area').appendChild(modal_charactor_name);
+  } else {
+    boardModal.style.display = 'block';
+  }
 }
 
 function closeModal() {
@@ -521,9 +527,15 @@ function closeModal() {
 
 // 모달 외부를 클릭하면 닫는 코드
 window.onclick = function (event) {
-  var modal = document.getElementById('myModal');
+  let modal = document.getElementById('myModal');
+  let boardModal = document.getElementById('myBoardModal');
+
   if (event.target == modal) {
     modal.style.display = 'none';
+  }
+
+  if (event.target == boardModal) {
+    boardModal.style.display = 'none';
   }
 };
 
