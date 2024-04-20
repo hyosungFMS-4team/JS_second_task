@@ -81,10 +81,10 @@ function addAudioPlayerToBody() {
             <label class="swap swap-rotate">
                 <input id="audio_player_controller_play" type="checkbox" />
                 <img src="../image/audio/btn_play.png" class="swap-on"/>
-                <img src="..image/audio/btn_pause.png" class="swap-off"/>
+                <img src="../image/audio/btn_pause.png" class="swap-off"/>
             </label>
             <button id="audio_player_controller_next">
-                <img src="..image/audio/btn_next.png"/>
+                <img src="../image/audio/btn_next.png"/>
             </button>
         </div>
     </div> `;

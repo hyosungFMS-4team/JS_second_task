@@ -6,37 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
 
-    <script
-      defer
-      src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.2.0/glide.js"
-      integrity="sha512-vZGsugWaSqQZuW8N5Z3ild7Tk8NqiZjKffeIQGpnnIs6g7HVZaFZjlLKPIw1qDsrQ5KAxAGfBinglQWu6i/8DA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.2.0/css/glide.theme.css"
-      integrity="sha512-Cn5/xnOLSKjVpNCsJZCtgQhxp00FcFnlRwgbSG7WGFq1BVvyG+LoOarjXAq//8Vstyu0Na9wvEKLWR67/wAy3w=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
+      type="text/css"
     />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.2.0/css/glide.core.css"
-      integrity="sha512-ShLuspGzRsTiMlQ2Rg0e+atjy/gVQr3oYKnKmQkHQ6sxcnDAEOtOaPz2rRmeygV2CtnwUawDyHkGgH4zUbP3Hw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
+      type="text/css"
     />
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.1/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
+    
 
     <!-- main -->
-    <link rel="stylesheet" href="style.css" />
     <script defer src="main.js"></script>
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- map -->
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8ac7e2077f27a4c6f9b51ee256d5dd18"></script>
+    <link rel="stylesheet" href="kakao-map.css">
 
     <!-- audio -->
     <script defer src="../Audio/rigth-top-audio.js"></script>
-    <link rel="stylesheet" href="../Audio/right-top-audio.css" />
+    <link rel="stylesheet" href="../Audio/right-top-audio.css">
   </head>
 
   <body>
@@ -45,7 +40,6 @@
         <source src="../image/pixel-snow-art.mp4" type="video/mp4" />
       </video>
     </div>
-
     <div id="wrap">
       <header>
         <h1>
@@ -62,7 +56,6 @@
         </div>
       </div>
     </div>
-    <script></script>
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8ac7e2077f27a4c6f9b51ee256d5dd18&autoload=false"></script>
+
   </body>
 </html>
