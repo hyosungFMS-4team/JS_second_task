@@ -54,7 +54,6 @@ const mapContainer = document.getElementById('map');
     // 시작 -> 종료 경로
     const carDirection = await getCarDirection(curCoord, destCoord);
     const pathPositions = directionToPath(carDirection);
-    console.log(pathPositions);
 
     // 이동 애니메이션 
     setMovingAnimation(map, pathPositions, carDirection);

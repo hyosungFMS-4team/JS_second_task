@@ -1,6 +1,14 @@
-
-
-
+// TODO: localstorage 확인
+// 개인별 음악, 사진 목록 위치 지정
+const musicsSrcs = [
+    '../Audio/first.mp3',
+    '../Audio/second.mp3',
+    '../Audio/thirdlonglonglong.mp3'
+];
+const musicImgSrcs = [
+    '../image/audio/first.jpg',
+    '../image/audio/second.png'
+]
 
 function loadMusic() {
     console.log('load music ', musicIndex);
@@ -92,18 +100,6 @@ function addAudioPlayerToBody() {
 
 //main
 addAudioPlayerToBody();
-
-// TODO: localstorage 확인
-// 개인별 음악, 사진 목록 위치 지정
-const musicsSrcs = [
-    'audio/first.mp3',
-    'audio/second.mp3',
-    'audio/thirdlonglonglong.mp3'
-];
-const musicImgSrcs = [
-    'image/first.jpg',
-    'image/second.png'
-]
 let musicIndex = 0;
 
 const audio = document.querySelector('audio');
