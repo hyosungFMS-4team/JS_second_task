@@ -1,5 +1,5 @@
 const mapHtml = `
-<div id="map" style="width: 100%; height: 100%"></div>
+<div id="map"></div>
   <details class="dropdown dropdown-bottom dropdown-end" id="dropdown">
     <summary class="m-1 btn" id="mapSummary">정보 보기</summary>
     <ul class="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52" id="mapUl">
@@ -122,8 +122,10 @@ window.addEventListener('load', function () {
 
   flipCards();
   handleGlideDrag();
+  const kakaoMapScript = document.createElement('script');
+  kakaoMapScript.src = 'kakao-map.js';
+  document.body.appendChild(kakaoMapScript);
 });
-
 
 tasks.forEach((task, idx) => {
   appendCarouselItem(idx, {
@@ -139,9 +141,7 @@ tasks.forEach((task, idx) => {
   })
 });
 
-const kakaoMapScript = document.createElement('script');
-kakaoMapScript.src = 'kakao-map.js';
-document.body.appendChild(kakaoMapScript);
+
 /* ******************************************** */
 
 function appendCarouselItem(idx, data) {
@@ -168,22 +168,33 @@ function appendCarouselItem(idx, data) {
   glideSlides.appendChild(item);
 }
 
-function flipCards() {  
-    glideSlides.addEventListener('click', e => {
-      console.log('clicked');
-      for (const slide of e.currentTarget.children) {
-        if (slide.classList.contains('glide__slide--active')) {
-          if (e.target.parentElement.parentElement.classList.contains('glide__slide--active')) {
-            let card = slide.children.item(0);
-            if (card.classList.contains('flipped')) {
-              card.classList.remove('flipped');
-            } else {
-              card.classList.add('flipped');
-            }
-          }
+function flipCards() {
+  const flip = document.querySelectorAll('.flip');
+  console.log(flip);
+  const delta = 6;
+  //드래그와 클릭 구분
+  let startX;
+  let startY;
+
+  //드래그와 클릭 구분
+  flip.forEach(card => {
+    card.addEventListener('mousedown', function (event) {
+      startX = event.pageX;
+      startY = event.pageY;
+    });
+
+    card.addEventListener('click', event => {
+      const diffX = Math.abs(event.pageX - startX);
+      const diffY = Math.abs(event.pageY - startY);
+      if (diffX < delta && diffY < delta) {
+        if (card.classList.contains('flipped')) {
+          card.classList.remove('flipped');
+        } else {
+          card.classList.add('flipped');
         }
       }
     });
+  });
 }
 
 function handleGlideDrag() {
@@ -201,13 +212,13 @@ function handleGlideDrag() {
     const glideArrows = document.querySelectorAll('.glide__arrows button');
     const mapElements = ['map', 'mapSummary', 'mapUl', 'mapInfo'];
     const allElements = document.querySelectorAll('*');
-  
+
     glideArrows.forEach(arrow => {
       arrow.addEventListener('click', function (event) {
         event.stopPropagation(); // 이벤트 전파 중지
       });
     });
-  
+
     mapElements.forEach(x => {
       const element = document.getElementById(x);
       if (element) {
@@ -215,24 +226,24 @@ function handleGlideDrag() {
         element.addEventListener('mousedown', handleMapMouseDown);
       }
     });
-  
+
     document.getElementById('dropdown').addEventListener('click', function (event) {
       event.stopPropagation();
     });
-  
+
     function handleMapClick(event) {
       event.stopPropagation();
       glide.disable();
     }
-  
+
     function handleMapMouseDown(event) {
       glide.disable();
     }
-  
+
     document.getElementById('dropdown').addEventListener('click', function (event) {
       event.stopPropagation();
     });
-  
+
     // map과 dropdown 요소 제외한 모든 요소에 대해 이벤트 리스너 추가
     allElements.forEach(element => {
       let id = element.id;
@@ -247,5 +258,6 @@ function handleGlideDrag() {
         // });
       }
     }
-  )
-})};
+    )
+  })
+};
