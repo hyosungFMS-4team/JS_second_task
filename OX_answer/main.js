@@ -87,6 +87,48 @@ const memberDetails = {
       title: 'title10',
       content: 'content10',
     },
+  ],
+  yoon: [
+    {
+      title: 'YOON',
+      content: mapHtml,
+    },
+    {
+      title: 'YOON',
+      content: 'content2',
+    },
+    {
+      title: 'title3',
+      content: 'content3',
+    },
+    {
+      title: 'title4',
+      content: 'content4',
+    },
+    {
+      title: 'title5',
+      content: 'content5',
+    },
+    {
+      title: 'title6',
+      content: 'content6',
+    },
+    {
+      title: 'title7',
+      content: 'content7',
+    },
+    {
+      title: 'title8',
+      content: 'content8',
+    },
+    {
+      title: 'title9',
+      content: 'content9',
+    },
+    {
+      title: 'title10',
+      content: 'content10',
+    },
   ]
 }
 /* ************************************************** */
@@ -99,6 +141,7 @@ const length = tasks.length;
 /* ******************************************** */
 
 /* ***************메인****************** */
+document.querySelector('#header-name').innerHTML = `QUIZ ${enname}`;
 let glideSlides = document.querySelector('.glide__slides');
 let glide;
 window.addEventListener('load', function () {
