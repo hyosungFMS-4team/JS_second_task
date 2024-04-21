@@ -184,7 +184,7 @@ function setMovingAnimation(map, pathPositions) {
             footPrintIndex = 0;
 
             // 발자국 지우기
-            footMarkers.forEach((item) => item.setVisible(false));
+            // footMarkers.forEach((item) => item.setVisible(false));
 
             if (firstEnd) {
                 clearInterval(moveAnimation);
