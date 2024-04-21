@@ -17,7 +17,7 @@ function loadMusic() {
 }
 
 function onMusicLoaded() {
-    const title = musicsSrcs[musicIndex].split('/')[1].split('.')[0];
+    const title = musicsSrcs[musicIndex].split('/')[2].split('.')[0];
 
     audioTitle.innerText = title;
     audioImage.src = musicImgSrcs[musicIndex];
@@ -74,7 +74,7 @@ function addAudioPlayerToBody() {
         <div class="audio_player_image_and_title">
             <div class="audio_player_lp">
                 <div class="audio_player_image circle spin">
-                    <img id="audio_player_image" class="" src="../image/audio/first.jpg"/>
+                    <img id="audio_player_image" class="" src=""/>
                     <div id="audio_player_image_center" class="circle"></div>
                 </div>
                 <img id="audio_player_image_needle" class=" " src="../image/audio/lpneedle.png"/>
