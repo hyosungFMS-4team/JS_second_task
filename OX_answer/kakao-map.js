@@ -9,8 +9,13 @@ let destCoord = {
 let characterImgSrc = '../image/map/rabbit.gif';
 let characterFootprintImgSrc = '../image/map/footprint.png';
 
+
+// TODO: distance에 따라 자동 설정
 // 3. 캐릭터 이동속도 (ms)
-let moveInterval = 50;
+let moveSpeed = 50;
+
+// 4. 발자국 간격
+let moveInterval = 0.03;
 /*========================================================== */
 
 /* ====== localstorage ======*/
@@ -23,6 +28,8 @@ switch (player) {
     case 'kim':
         destCoord = {latitude: 37.2526, longtitude: 127.0723};
         characterImgSrc = '../image/map/bear.gif';
+        moveInterval = 0;
+        moveSpeed = 1000;
         break;
     case 'yoon':
         destCoord = {latitude: 37.2526, longtitude: 127.0723};
@@ -56,7 +63,8 @@ const mapContainer = document.getElementById('map');
     const pathPositions = directionToPath(carDirection);
 
     // 이동 애니메이션 
-    setMovingAnimation(map, pathPositions, carDirection);
+    setSpeedAndInterval(carDirection);
+    setMovingAnimation(map, pathPositions);
 })();
 /* =======================================*/
 
@@ -133,7 +141,18 @@ function directionToPath(direction) {
     return linePath;
 }
 
-function setMovingAnimation(map, pathPositions, carDirection) {
+function setSpeedAndInterval(direction) {
+    const directionInfo = direction.routes[0].summary;
+    const duration = directionInfo.duration;
+    const distance = directionInfo.distance;
+
+    moveSpeed = duration / 5;
+    moveInterval = duration / 100000;
+
+    console.log('speed: ', moveSpeed, ' interval: ', moveInterval);
+}
+
+function setMovingAnimation(map, pathPositions) {
     const content = document.createElement('div');
     content.classList.add('map-animation-marker');
     content.style.backgroundImage = `url("${characterImgSrc}")`
@@ -176,8 +195,8 @@ function setMovingAnimation(map, pathPositions, carDirection) {
         }
         // console.log((Math.abs(prevPosition.La - pathPositions[index].La) + Math.abs(prevPosition.Ma - pathPositions[index].Ma)));
 
-        // 발자국 표시 (표시 주기: 10회마다 한 번)
-        if (prevPosition == null || (Math.abs(prevPosition.La - pathPositions[index].La) + Math.abs(prevPosition.Ma - pathPositions[index].Ma)) >= 0.03) {
+        // 발자국 표시
+        if (prevPosition == null || (Math.abs(prevPosition.La - pathPositions[index].La) + Math.abs(prevPosition.Ma - pathPositions[index].Ma)) >= moveInterval) {
             const marker = new kakao.maps.Marker({ position: pathPositions[index], image: markerImage });
             marker.setZIndex(-1);
             marker.setMap(map);
@@ -186,8 +205,10 @@ function setMovingAnimation(map, pathPositions, carDirection) {
         }
 
         customOverlay.setPosition(pathPositions[index]);
-    }, moveInterval);
+    }, moveSpeed);
 }
+
+
 
 // function showDirectionInfo(container, direction) {
 //     console.log(direction);

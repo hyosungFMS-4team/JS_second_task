@@ -1,12 +1,6 @@
 const mapHtml = `
-<div id="map"></div>
-  <details class="dropdown dropdown-bottom dropdown-end" id="dropdown">
-    <summary class="m-1 btn" id="mapSummary">정보 보기</summary>
-    <ul class="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52" id="mapUl">
-      <li id="mapInfo"></li>
-    </ul>
-  </details>
-  <button id="flipBtn">flip</button>`;
+  <div id="map"></div>
+  <button id="flipBtn">FLIP</button>`;
 
 /* ***************후면 설명 데이터****************** */
 const memberDetails = {
@@ -227,9 +221,6 @@ function handleGlideDrag() {
       }
     });
 
-    document.getElementById('dropdown').addEventListener('click', function (event) {
-      event.stopPropagation();
-    });
 
     function handleMapClick(event) {
       event.stopPropagation();
@@ -239,10 +230,6 @@ function handleGlideDrag() {
     function handleMapMouseDown(event) {
       glide.disable();
     }
-
-    document.getElementById('dropdown').addEventListener('click', function (event) {
-      event.stopPropagation();
-    });
 
     // map과 dropdown 요소 제외한 모든 요소에 대해 이벤트 리스너 추가
     allElements.forEach(element => {
