@@ -129,6 +129,48 @@ const memberDetails = {
       title: 'title10',
       content: 'content10',
     },
+  ],
+  lee: [
+    {
+      title: 'YOON',
+      content: mapHtml,
+    },
+    {
+      title: 'YOON',
+      content: 'content2',
+    },
+    {
+      title: 'title3',
+      content: 'content3',
+    },
+    {
+      title: 'title4',
+      content: 'content4',
+    },
+    {
+      title: 'title5',
+      content: 'content5',
+    },
+    {
+      title: 'title6',
+      content: 'content6',
+    },
+    {
+      title: 'title7',
+      content: 'content7',
+    },
+    {
+      title: 'title8',
+      content: 'content8',
+    },
+    {
+      title: 'title9',
+      content: 'content9',
+    },
+    {
+      title: 'title10',
+      content: 'content10',
+    },
   ]
 }
 /* ************************************************** */
@@ -236,7 +278,7 @@ function flipCards() {
 
 function handleGlideDrag() {
   const glideArrows = document.querySelectorAll('.glide__arrows button');
-  const mapElements = ['map', 'mapSummary', 'mapUl', 'mapInfo'];
+  const mapElements = ['map', 'mapSummary', 'mapUl', 'mapInfo', 'map-detail-info-div'];
   const allElements = document.querySelectorAll('*');
 
   glideArrows.forEach(arrow => {
@@ -277,7 +319,7 @@ function handleGlideDrag() {
     // map과 dropdown 요소 제외한 모든 요소에 대해 이벤트 리스너 추가
     allElements.forEach(element => {
       let id = element.id;
-      if (id !== 'map' && id !== 'dropdown' && id !== 'mapSummary' && id !== 'mapUl' && id !== 'mapInfo') {
+      if (id !== 'map' && id !== 'dropdown' && id !== 'mapSummary' && id !== 'mapUl' && id !== 'map-detail-info-div') {
         // 마우스가 요소 위에 있을 때 glide.enable() 실행
         element.addEventListener('mouseenter', function () {
           glide.enable();

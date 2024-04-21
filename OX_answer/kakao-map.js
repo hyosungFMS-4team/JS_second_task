@@ -64,7 +64,7 @@ const mapContainer = document.getElementById('map');
 
     // 이동 애니메이션 
     setSpeedAndInterval(carDirection);
-    setMovingAnimation(map, pathPositions);
+    setMovingAnimation(map, pathPositions, carDirection);
 })();
 /* =======================================*/
 
@@ -147,12 +147,12 @@ function setSpeedAndInterval(direction) {
     const distance = directionInfo.distance;
 
     moveSpeed = duration / 5;
-    moveInterval = duration / 100000;
+    moveInterval = duration / 500000;
 
     console.log('speed: ', moveSpeed, ' interval: ', moveInterval);
 }
 
-function setMovingAnimation(map, pathPositions) {
+function setMovingAnimation(map, pathPositions, carDirection) {
     const content = document.createElement('div');
     content.classList.add('map-animation-marker');
     content.style.backgroundImage = `url("${characterImgSrc}")`
@@ -188,7 +188,7 @@ function setMovingAnimation(map, pathPositions) {
 
             if (firstEnd) {
                 clearInterval(moveAnimation);
-                // showDirectionInfo(mapWrap, carDirection);
+                showDirectionInfo(mapContainer.parentElement, carDirection);
                 firstEnd = false;
                 prevPosition = null;
             }
@@ -208,27 +208,27 @@ function setMovingAnimation(map, pathPositions) {
     }, moveSpeed);
 }
 
+function showDirectionInfo(container, direction) {
+    console.log(direction);
+    const directionInfo = direction.routes[0].summary;
+    const infoDiv = document.createElement('div');
+    infoDiv.id = 'map-detail-info-div';
+    infoDiv.classList.add('map-detail');
+    infoDiv.innerHTML = `
+        <button class="btn" id="mapSummary">close</button>
+        <div>
+            <div>DIST: ${directionInfo.distance}</div>
+            <div>DURATION: ${directionInfo.duration}</div>
+            <div>FARE= TAXI: ${directionInfo.fare.taxi}, TOLL: ${directionInfo.fare.toll}</div>
+        </div>
+    `;
 
+    container.appendChild(infoDiv);
+    document.getElementById('mapSummary').onclick = onDetailCloseClicked;
+}
 
-// function showDirectionInfo(container, direction) {
-//     console.log(direction);
-//     const directionInfo = direction.routes[0].summary;
-//     const infoDiv = document.createElement('div');
-//     infoDiv.id = 'map-detail-info-div';
-//     infoDiv.classList.add('map-detail');
-//     infoDiv.innerHTML = `
-//         <button onclick="onDetailCloseClicked()">close</button>
-//         <div>
-//             <div>DIST: ${directionInfo.distance}</div>
-//             <div>DURATION: ${directionInfo.duration}</div>
-//             <div>FARE= TAXI: ${directionInfo.fare.taxi}, TOLL: ${directionInfo.fare.toll}</div>
-//         </div>
-//     `;
-
-//     container.appendChild(infoDiv);
-// }
-
-function onDetailCloseClicked() {
+function onDetailCloseClicked(event) {
     const infoDiv = document.getElementById('map-detail-info-div');
-    mapWrap.removeChild(infoDiv);
+    infoDiv.parentElement.removeChild(infoDiv);
+    event.stopPropagation();
 }
