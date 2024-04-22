@@ -4,18 +4,6 @@ let tasks = JSON.parse(localStorage.getItem(`${currentuser}_task`)) === null ? [
 // ================================================================================================
 
 //dummy
-const OXItems = [
-  { id: '1', text: '제 이름은 윤동훈입니다.', answer: 'o' },
-  { id: '2', text: '저는 1996년생입니다', backgroundColor: '#d83434', answer: 'o' },
-  { id: '3', text: '저는 현재 강북구에 살고있습니다', backgroundColor: '#38667f', answer: 'o' },
-  { id: '4', text: '저는 현재 강북구에 살고있습니다', backgroundColor: '#38667f', answer: 'o' },
-  { id: '5', text: '저는 현재 강북구에 살고있습니다', backgroundColor: '#38667f', answer: 'o' },
-  { id: '6', text: 'Click at me', backgroundColor: '#9f7db1', answer: 'x' },
-  { id: '7', text: 'Click at me', backgroundColor: '#ff5722', answer: 'x' },
-  { id: '8', text: 'Click at me', backgroundColor: '#009688', answer: 'x' },
-  { id: '9', text: 'Click at me', backgroundColor: '#009688', answer: 'x' },
-  { id: '10', text: 'Click at me', backgroundColor: '#009688', answer: 'x' },
-];
 
 const AllOXItems = {
   yoon: [
@@ -104,6 +92,46 @@ function renderTasks() {
   });
 }
 
+// 누구 퀴즈인지 알수 있도록
+
+let koreanFullName;
+
+switch (currentuser) {
+  case 'kim':
+    koreanFullName = '김기정';
+    break;
+  case 'park':
+    koreanFullName = '박민석';
+    break;
+  case 'yoon':
+    koreanFullName = '윤동훈';
+    break;
+  case 'lee':
+    koreanFullName = '이재아';
+    break;
+  default:
+    break;
+}
+
+const ox_title = document.querySelector('.title');
+
+const o_span = document.createElement('span');
+o_span.classList.add('title_o');
+o_span.style.color = '#1d4ed8';
+o_span.textContent = 'O ';
+
+const x_span = document.createElement('span');
+x_span.classList.add('title_x');
+x_span.style.color = '#ff0000';
+x_span.textContent = 'X ';
+
+const title_text = document.createElement('span');
+title_text.textContent = `Quiz of ${koreanFullName}`;
+
+ox_title.appendChild(o_span);
+ox_title.appendChild(x_span);
+ox_title.appendChild(title_text);
+
 // item_btn 이라는 클래스를 가지는 요소를 전부 가져와서
 const itemBtnList = document.querySelectorAll('.item_btn');
 
@@ -131,7 +159,7 @@ function allowDrop(event) {
 }
 
 function handleDragLeave(event) {
-  // 해당 영역의 스타일을 초기화합니다.
+  // 해당 영역의 스타일을 초기화
   if (event.target.tagName === 'BUTTON') {
     return;
   }
@@ -141,7 +169,7 @@ function handleDragLeave(event) {
 function drop(event, columnId) {
   event.preventDefault();
 
-  // 드롭된 섹션의 스타일을 되돌립니다.
+  // 드롭된 섹션의 스타일을 되돌림
   if (event.target.tagName === 'BUTTON') {
   } else {
     event.target.style.backgroundColor = '';

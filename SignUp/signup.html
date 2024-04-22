@@ -12,16 +12,25 @@
         window.history.back();
       }
     </script>
+
+    <script defer src="pure-snow.js"></script>
   </head>
   <body>
+    <div id="snow" data-count="200"></div>
+
     <!-- background -->
     <div class="bg-video">
-      <video class="bg-video__content" autoplay muted loop>
+      <!-- <video class="bg-video__content" autoplay muted loop>
         <source src="../image/signup/signup6-background.mov" type="video/mp4" />
-      </video>
+      </video> -->
+    </div>
+
+    <div class="bg-photo">
+      <img class="bg-photo__content" src="../image/signup/signup-background2.png" alt="" />
     </div>
 
     <!-- 회원가입 -->
+
     <div class="signup_main">
       <!-- left -->
       <div class="signup_left">
@@ -81,7 +90,14 @@
           </div>
         </div>
       </div>
-      <div class="signup_right"></div>
+      <div class="signup_right">
+        <div class="signup_right_charactors">
+          <img class="signup_charactor" src="../image/main/kim_jump.gif" alt="" />
+          <img class="signup_charactor" src="../image/main/park_jump.gif" alt="" />
+          <img class="signup_charactor" src="../image/main/yoon_jump.gif" alt="" />
+          <img class="signup_charactor" src="../image/main/lee_jump.gif" alt="" />
+        </div>
+      </div>
     </div>
 
     <!-- 뒤로가기 -->

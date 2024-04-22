@@ -176,7 +176,11 @@ const memberDetails = {
 /* ************************************************** */
 
 /* ***************로컬 스토리지****************** */
-const enname = localStorage.getItem('en_name').replaceAll('"', '');
+// const enname = localStorage.getItem('en_name').replaceAll('"', '');
+
+let urlParams = new URLSearchParams(window.location.search);
+let enname = urlParams.get('en_name');
+
 const taskDetails = memberDetails[enname];
 const tasks = JSON.parse(localStorage.getItem(`${enname}_answerSheet`));
 const length = tasks.length;
