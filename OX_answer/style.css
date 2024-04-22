@@ -61,12 +61,15 @@ header > h1 {
   font-family: 'PIXEL';
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   flex-wrap: wrap;
 
   user-select: none;
 
   height: 100dvh;
+
+  overflow: hidden;
+  flex-direction: column;
 }
 
 .glide {

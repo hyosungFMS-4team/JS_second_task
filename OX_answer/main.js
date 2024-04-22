@@ -201,28 +201,18 @@ const length = tasks.length;
 /* ******************************************** */
 
 /* ***************메인****************** */
-document.querySelector('#header-name').innerHTML = `QUIZ ${koname}`;
-let glideSlides = document.querySelector('.glide__slides');
-let glide;
-window.addEventListener('load', function () {
-  glide = new Glide('.glide', {
-    type: 'carousel',
-    focusAt: 'center',
-    perView: 2,
-    gap: 40,
-    keyboard: true,
-    peek: {
-      before: 30,
-      after: 30,
-    },
-  }).mount();
-
-  flipCards();
-  handleGlideDrag();
-
-  loadMap();
-  addModal();
+// document.querySelector('#header-name').innerHTML = `QUIZ ${koname}`;
+// test();
+const splideList = document.querySelector('.splide__list');
+const splide = new Splide('.splide', {
+  type: 'slide',
+  // perPage: 2,
+  padding: '5rem',
+  gap: '100px',
+  start: 1,
 });
+
+splide.mount();
 
 tasks.forEach((task, idx) => {
   appendCarouselItem(idx, {
@@ -281,19 +271,57 @@ function loadMap() {
 }
 
 function appendCarouselItem(idx, data) {
-  let item = document.createElement('li');
-  item.setAttribute('class', 'glide_slide');
-  item.innerHTML = `
-        <div class="flip">
-          <div id="${idx}" class="card-body front">
-          
-          </div>
-          <div id="${idx}" class="card-body back">
-
-          </div> 
+  const li = document.createElement('li');
+  li.classList.add('splide__slide');
+  const mHtml = `
+  <div class="card_box">
+  <div class="card_box_top">
+    <div class="card_box_top_main">
+      <div class="card_box_top_main_title">NEW FOUR TIMES</div>
+    </div>
+  </div>
+  <div class="card_box_main">
+    <div class="card_box_main_left">
+      <div class="card_box_main_left_area">
+        <div class="card_box_main_left_img">
+          <div class="black_wrapper"></div>
+          <!-- TODO 1 -->
+          <div class="news_text_o">맞았습니다!</div>
+          <img class="news_img" src="../image/main/lee_jump.gif" alt="" />
         </div>
-      `;
-  glideSlides.appendChild(item);
+        <div class="card_box_main_left_divider"></div>
+        <div class="card_box_main_left_text">▲ 자신에 대한 OX 문제를 맞춘 것에 매우 기뻐 뛰고 있는 모습이다.</div>
+      </div>
+    </div>
+    <div class="card_box_main_divider"></div>
+    <div class="card_box_main_right">
+      <div class="card_box_main_right_area">
+        <div class="card_box_main_right_answer">
+          <div class="answer_index">문제 )</div>
+          <!-- TODO 2 -->
+          <div class="answer_title">"제 이름은 윤동훈입니다"</div>
+          <!-- TODO 3 -->
+          <div class="user_select_answer">당신이 선택한 답 : <span style="color: #1d4ed8">O</span></div>
+        </div>
+        <div class="card_box_main_right_divider">
+          <div class="divider_line"></div>
+        </div>
+        <div class="card_box_main_right_dummy">
+          <div class="dummy_title"><b>Opinion: This album brings ‘Taylor math’ to a whole new level</b></div>
+          <div class="dummy_text">
+            Friday’s midnight release of “The Tortured Poets Department,” Taylor Swift’s 11th album, means that yet another era has begun and a
+            record-breaking one at that. Swifties, who are now more than familiar with football jargon (at least when it comes to Kansas City
+            Chiefs’ tight end Travis Kelce, Taylor’s beau) can finally put away the grill and the drinks, lock the car, and leave the parking lot
+            for the stadium. The tailgate is over: it’s game on for Taylor Nation.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <img class="card_deco" src="../image/ox_answer/card_deco1.png" alt="" />
+</div>`;
+  li.innerHTML = mHtml;
+  splide.add(li);
 }
 
 let drag = false;

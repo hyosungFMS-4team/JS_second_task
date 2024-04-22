@@ -7,11 +7,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Document</title>
 
-  <script defer src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.2.0/css/glide.theme.css"
-    type="text/css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.2.0/css/glide.core.css"
-    type="text/css" />
+  <!-- splide -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" />
+    <script defer src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <link rel="stylesheet" href="carousel.css">
+  
+  <!-- daisy -->
   <link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.1/dist/full.min.css" rel="stylesheet" type="text/css" />
   <script defer src="https://cdn.tailwindcss.com"></script>
 
@@ -27,8 +28,8 @@
   <!-- audio -->
   <script defer src="../Audio/rigth-top-audio.js"></script>
   <link rel="stylesheet" href="../Audio/right-top-audio.css" />
+  
 </head>
-
 <body>
   <div class="bg-video">
     <video class="bg-video__content" autoplay muted loop>
@@ -44,12 +45,14 @@
       </h1>
     </header>
 
-    <div class="glide">
-      <div class="glide__track" data-glide-el="track">
-        <ul class="glide__slides"></ul>
+    <!-- slide -->
+    <div class="slide-intro">
+      <div id="image-carousel" class="splide" aria-label="Beautiful Images">
+        <div class="splide__track">
+          <ul class="splide__list"></ul>
+        </div>
       </div>
     </div>
-  </div>
 
   <!-- 점수창 모달 -->
   <div id="myModal" class="why_modal">
@@ -72,4 +75,5 @@
     <!-- 눈 -->
     <div id="snow" data-count="200"></div>
   </body>
+
 </html>
