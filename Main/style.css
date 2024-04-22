@@ -237,7 +237,7 @@ body {
 }
 
 .charactor {
-  height: 110px;
+  height: 120px;
 }
 
 .charactor_name {
@@ -726,5 +726,69 @@ div.clickEffect {
     height: 5em;
     margin: -2.5em;
     border-width: 0.03em;
+  }
+}
+
+/* 반응형 */
+@media (max-width: 1024px) {
+  .nav_item {
+    font-size: x-large;
+  }
+
+  .board {
+    left: 75%;
+  }
+}
+
+@media (max-width: 768px) {
+  .neon {
+    font-size: xx-large;
+  }
+
+  .nav_item {
+    font-size: large;
+  }
+
+  .charactor {
+    height: 100px;
+  }
+  .board {
+    left: 46%;
+  }
+}
+
+@media (max-width: 600px) {
+  .neon {
+    font-size: xx-large;
+  }
+
+  .nav_item {
+    font-size: medium;
+  }
+
+  .charactor {
+    height: 90px;
+  }
+}
+
+@media (max-width: 550px) {
+  .neon {
+    font-size: x-large;
+  }
+
+  .nav_item {
+    font-size: small;
+  }
+
+  .charactor {
+    height: 75px;
+  }
+
+  .charactor_name {
+    height: 60px;
+  }
+
+  .ox_score {
+    font-size: small;
   }
 }
