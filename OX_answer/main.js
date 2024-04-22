@@ -210,10 +210,12 @@ const splide = new Splide('.splide', {
   padding: '5rem',
   gap: '100px',
   start: 1,
+  wheel: true,
+  pagination: false,
 });
 
 splide.mount();
-
+flipCards();
 tasks.forEach((task, idx) => {
   appendCarouselItem(idx, {
     front: {
@@ -274,7 +276,8 @@ function appendCarouselItem(idx, data) {
   const li = document.createElement('li');
   li.classList.add('splide__slide');
   const mHtml = `
-  <div class="card_box">
+  <div class="flip">
+  <div class="card_box front">
   <div class="card_box_top">
     <div class="card_box_top_main">
       <div class="card_box_top_main_title">NEW FOUR TIMES</div>
@@ -306,48 +309,111 @@ function appendCarouselItem(idx, data) {
         <div class="card_box_main_right_divider">
           <div class="divider_line"></div>
         </div>
-        <div class="card_box_main_right_dummy">
-          <div class="dummy_title"><b>Opinion: This album brings ‘Taylor math’ to a whole new level</b></div>
-          <div class="dummy_text">
-            Friday’s midnight release of “The Tortured Poets Department,” Taylor Swift’s 11th album, means that yet another era has begun and a
-            record-breaking one at that. Swifties, who are now more than familiar with football jargon (at least when it comes to Kansas City
-            Chiefs’ tight end Travis Kelce, Taylor’s beau) can finally put away the grill and the drinks, lock the car, and leave the parking lot
-            for the stadium. The tailgate is over: it’s game on for Taylor Nation.
+          <div class="card_box_main_right_dummy">
+            <div class="dummy_title"><b>Opinion: This album brings ‘Taylor math’ to a whole new level</b></div>
+              <div class="dummy_text">
+                Friday’s midnight release of “The Tortured Poets Department,” Taylor Swift’s 11th album, means that yet another era has begun and a
+                record-breaking one at that. Swifties, who are now more than familiar with football jargon (at least when it comes to Kansas City
+                Chiefs’ tight end Travis Kelce, Taylor’s beau) can finally put away the grill and the drinks, lock the car, and leave the parking lot
+                for the stadium. The tailgate is over: it’s game on for Taylor Nation.
+              </div>
+            </div>
           </div>
         </div>
       </div>
+      <img class="card_deco" src="../image/ox_answer/card_deco1.png" alt="" />
+    </div>  
+    <div class="card_box back">
+    <div class="card_box_top">
+      <div class="card_box_top_main">
+        <div class="card_box_top_main_title">NEW FOUR TIMES</div>
+      </div>
     </div>
-  </div>
-  <img class="card_deco" src="../image/ox_answer/card_deco1.png" alt="" />
-</div>`;
+    <div class="card_box_main">
+      <div class="card_box_main_left">
+        <div class="card_box_main_left_area">
+          <div class="card_box_main_left_img">
+            <div class="black_wrapper"></div>
+            <!-- TODO 1 -->
+            <div class="news_text_o">틀렸습니다!</div>
+            <img class="news_img" src="../image/main/lee_jump.gif" alt="" />
+          </div>
+          <div class="card_box_main_left_divider"></div>
+          <div class="card_box_main_left_text">▲ 자신에 대한 OX 문제를 맞춘 것에 매우 기뻐 뛰고 있는 모습이다.</div>
+        </div>
+      </div>
+      <div class="card_box_main_divider"></div>
+      <div class="card_box_main_right">
+        <div class="card_box_main_right_area">
+          <div class="card_box_main_right_answer">
+            <div class="answer_index">문제 )</div>
+            <!-- TODO 2 -->
+            <div class="answer_title">"제 이름은 윤동훈입니다"</div>
+            <!-- TODO 3 -->
+            <div class="user_select_answer">당신이 선택한 답 : <span style="color: #1d4ed8">O</span></div>
+          </div>
+          <div class="card_box_main_right_divider">
+            <div class="divider_line"></div>
+          </div>
+            <div class="card_box_main_right_dummy">
+              <div class="dummy_title"><b>Opinion: This album brings ‘Taylor math’ to a whole new level</b></div>
+                <div class="dummy_text">
+                  Friday’s midnight release of “The Tortured Poets Department,” Taylor Swift’s 11th album, means that yet another era has begun and a
+                  record-breaking one at that. Swifties, who are now more than familiar with football jargon (at least when it comes to Kansas City
+                  Chiefs’ tight end Travis Kelce, Taylor’s beau) can finally put away the grill and the drinks, lock the car, and leave the parking lot
+                  for the stadium. The tailgate is over: it’s game on for Taylor Nation.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <img class="card_deco" src="../image/ox_answer/card_deco1.png" alt="" />
+      </div>  
+  
+</div>
+`;
   li.innerHTML = mHtml;
   splide.add(li);
 }
 
-let drag = false;
+function hasParentWithClass(element, className) {
+  // 부모 노드가 없을 때까지 && li가 아닐때까지 반복
+  while (element.parentElement && element.tagName !== 'LI') {
+    element = element.parentElement;
+    console.log(element.tagName);
+    // 부모 요소의 클래스에 className이 포함되어 있는지 확인
+    if (element.classList.contains(className)) {
+      return true; // 클래스가 포함되어 있다면 true 반환
+    }
+  }
+  return false; // 부모 요소 중에 해당 클래스가 없으면 false 반환
+}
+
 function flipCards() {
-  let glideSlides = document.querySelector('.glide__slides');
+  //drag & click 구분 이벤트
+  let isDragging = false;
+  splideList.addEventListener('mousedown', () => {
+    isDragging = false;
+  });
 
-  const flip = document.querySelectorAll('.flip');
+  splideList.addEventListener('mousemove', () => {
+    isDragging = true;
+  });
 
-  glideSlides.addEventListener('mousedown', () => (drag = false));
-  glideSlides.addEventListener('mousemove', () => (drag = true));
-
-  flip.forEach(card => {
-    card.addEventListener(
-      'mouseup',
-      event => {
-        if (!card.parentElement.classList.contains('glide__slide--active') || drag) {
-          return;
+  splideList.addEventListener('mouseup', e => {
+    let isactive = hasParentWithClass(e.target, 'is-active');
+    if (!isDragging) {
+      for (const slide of e.currentTarget.children) {
+        if (slide.classList.contains('is-active') && isactive) {
+          let card = slide.children.item(0);
+          if (card.classList.contains('flipped')) {
+            card.classList.remove('flipped');
+          } else {
+            card.classList.add('flipped');
+          }
         }
-        if (card.classList.contains('flipped')) {
-          card.classList.remove('flipped');
-        } else {
-          card.classList.add('flipped');
-        }
-      },
-      false
-    );
+      }
+    }
   });
 }
 

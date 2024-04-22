@@ -99,16 +99,6 @@ header > h1 {
   color: silver;
 }
 
-.card-body.back {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.card-body.front {
-  position: absolute;
-}
 .card-title {
   font-size: 3vw;
   line-height: 1;
@@ -143,7 +133,15 @@ header > h1 {
 .flip.flipped {
   transform: rotateX(180deg);
 }
-
+.card_box.front {
+  position: absolute;
+}
+.card_box.back {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
 .custom-overlay {
   background: #2e2e2e;
   padding: 11px;
@@ -187,7 +185,7 @@ header > h1 {
   z-index: 5;
 }
 
-.glide_slide {
+.splide__slide {
   width: 100%;
   filter: blur(3px);
   -webkit-filter: blur(3px);
@@ -195,7 +193,7 @@ header > h1 {
   margin-bottom: 20px;
 }
 
-.glide__slide--active {
+.splide__slide.is-active {
   width: 100%;
   filter: blur(0);
   -webkit-filter: blur(0);
