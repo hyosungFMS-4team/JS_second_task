@@ -1,77 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OX_QUIZ</title>
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="main.js"></script>
+    <script defer src="pure-snow.js"></script>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OX_QUIZ</title>
-  <link rel="stylesheet" href="style.css" />
-  <script defer src="main.js"></script>
-  <script defer src="pure-snow.js"></script>
+    <!-- daisy -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.1/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script defer src="https://cdn.tailwindcss.com"></script>
 
-  <!-- daisy -->
-  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.1/dist/full.min.css" rel="stylesheet" type="text/css" />
-  <script defer src="https://cdn.tailwindcss.com"></script>
+    <!-- audio -->
+    <script defer src="../Audio/rigth-top-audio.js"></script>
+    <link rel="stylesheet" href="../Audio/right-top-audio.css" />
+  </head>
 
-  <!-- audio -->
-  <script defer src="../Audio/rigth-top-audio.js"></script>
-  <link rel="stylesheet" href="../Audio/right-top-audio.css" />
-</head>
+  <body>
+    <div id="snow" data-count="200"></div>
 
-<body>
-  <div id="snow" data-count="200"></div>
+    <div class="bg-video">
+      <video class="bg-video__content" autoplay muted loop>
+        <source src="../image/ox_quiz/OX_background.mp4" type="video/mp4" />
+      </video>
+    </div>
 
-  <div class="bg-video">
-    <video class="bg-video__content" autoplay muted loop>
-      <source src="../image/ox_quiz/OX_background.mp4" type="video/mp4" />
-    </video>
-  </div>
+    <div class="container">
+      <section class="header">
+        <h1 class="title"></h1>
+      </section>
 
-  <div class="container">
-    <section class="header">
-      <h1 class="title"></h1>
-    </section>
-
-    <!-- OX 퀴즈 항목 -->
-    <section id="quiz_items" class="quiz_items" ondrop="drop(event, 'quiz_items')" ondragover="allowDrop(event)">
-    </section>
-    <!-- OX 드랍 섹션 -->
-    <section class="ox_section">
-      <div class="drop_section o_drop">
-        <div class="o_drop_title">O</div>
-        <div id="o_section" class="o_drop_main o_section" ondrop="drop(event, 'o_section')"
-          ondragover="allowDrop(event)"></div>
-      </div>
-      <div class="area"></div>
-      <div class="drop_section x-drop">
-        <div class="x_drop_title">X</div>
-        <div id="x_section" class="x_drop_main x_section" ondrop="drop(event, 'x_section')"
-          ondragover="allowDrop(event)"></div>
-      </div>
-    </section>
-
-    <!-- footer -->
-    <section class="quiz_footer">
-      <button class="submit_btn" onclick="goToOxAnswerPage()">제출하기</button>
-    </section>
-
-    <!-- 뒤로가기 -->
-    <img class="back_pointer" src="../image/ox_quiz/pointer.png" alt="" onclick="goBack()" />
-
-    <!-- 모달 -->
-    <div id="myModal" class="modal">
-      <div class="modal-content">
-        <div class="modal_top">
-          <span class="close" onclick="closeModal()">&times;</span>
+      <!-- OX 퀴즈 항목 -->
+      <section id="quiz_items" class="quiz_items" ondrop="drop(event, 'quiz_items')" ondragover="allowDrop(event)"></section>
+      <!-- OX 드랍 섹션 -->
+      <section class="ox_section">
+        <div class="drop_section o_drop">
+          <div class="o_drop_title">O</div>
+          <div id="o_section" class="o_drop_main o_section" ondrop="drop(event, 'o_section')" ondragover="allowDrop(event)"></div>
         </div>
-        <div class="modal_bottom">
-          <p>모든 문제를 다 풀어야 제출할 수 있습니다.</p>
-          <div></div>
+        <div class="area"></div>
+        <div class="drop_section x-drop">
+          <div class="x_drop_title">X</div>
+          <div id="x_section" class="x_drop_main x_section" ondrop="drop(event, 'x_section')" ondragover="allowDrop(event)"></div>
+        </div>
+      </section>
+
+      <!-- footer -->
+      <section class="quiz_footer">
+        <!-- <button class="submit_btn" onclick="goToOxAnswerPage()">제출하기</button> -->
+        <button class="submit_btn" onclick="submitAnswer()">제출하기</button>
+      </section>
+
+      <!-- 뒤로가기 -->
+      <img class="back_pointer" src="../image/ox_quiz/pointer.png" alt="" onclick="goBack()" />
+
+      <!-- 모달 -->
+      <div id="myModal" class="modal">
+        <div class="modal-content">
+          <div class="modal_top">
+            <span class="close" onclick="closeModal()">&times;</span>
+          </div>
+          <div class="modal_bottom">
+            <p>모든 문제를 다 풀어야 제출할 수 있습니다.</p>
+            <div></div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</body>
-
+  </body>
 </html>

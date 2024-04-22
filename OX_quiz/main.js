@@ -259,6 +259,8 @@ function submitAnswer() {
 
   localStorage.setItem(`${currentuser}_score`, score);
   localStorage.setItem(`${currentuser}_answerSheet`, JSON.stringify(answerSheet));
+
+  goToOxAnswerPage();
 }
 
 function isAllItemDrop() {

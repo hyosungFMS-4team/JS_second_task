@@ -1,139 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Introducing our team</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.1/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="main.js"></script>
+    <script defer src="pure-snow.js"></script>
+    <!-- audio -->
+    <!-- <script defer src="../Audio/rigth-top-audio.js"></script> -->
+    <!-- <link rel="stylesheet" href="../Audio/right-top-audio-small.css" /> -->
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Introducing our team</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.1/dist/full.min.css" rel="stylesheet" type="text/css" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script defer src="main.js"></script>
-  <script defer src="pure-snow.js"></script>
-  <!-- audio -->
-  <script defer src="../Audio/rigth-top-audio.js"></script>
-  <link rel="stylesheet" href="../Audio/right-top-audio-small.css" />
-</head>
+  <body onclick="checkPos()">
+    <div id="snow" data-count="200"></div>
 
-<body onclick="checkPos()">
-  <div id="snow" data-count="200"></div>
-
-  <!-- background image -->
-  <div class="background-video">
-    <img class="background-video__content" src="../image/main/Snow-pixel-move.gif" alt="" />
-  </div>
-
-  <div class="container">
-    <section class="header">
-      <h1 class="title">
-        <!-- 네비게이션 바 코드 여기에 넣기 -->
-        <div class="navbar">
-          <div class="nav-left">
-            <div class="neon" style="display: block">
-              <div><span class="flicker-slow">F</span>O<span class="flicker-fast">U</span>R</div>
-            </div>
-          </div>
-          <div class="nav-right">
-            <div class="nav_item" style="color: #fcfcfcca">MEMBERS</div>
-            <div class="nav_item" style="color: #fcfcfcca" onclick="goToAnotherPage('Board','board')">BOARD</div>
-            <div class="nav_item" style="color: #fcfcfcca" onclick="goToAnotherPage('SignUp','signup')">SIGNUP</div>
-          </div>
-        </div>
-      </h1>
-    </section>
-
-    <!-- introduce -->
-    <div class="introduce">
-      <div class="wrapper">
-        <div class="test_area wrapper">
-          <div id="kim" class="test test1">
-            <div class="img_area">
-              <img class="charactor" src="../image/main/kim_jump.gif" alt="" />
-              <img class="charactor_name" src="../image/main/kim.png" alt="kim" />
-            </div>
-            <div class="ox_score"></div>
-          </div>
-          <div id="park" class="test test2">
-            <div class="img_area">
-              <img class="charactor" src="../image/main/park_jump.gif" alt="" />
-              <img class="charactor_name" src="../image/main/park.png" alt="park" />
-            </div>
-            <div class="ox_score"></div>
-          </div>
-          <div id="yoon" class="test test3">
-            <div class="img_area">
-              <img class="charactor" src="../image/main/yoon_jump.gif" alt="" />
-              <img class="charactor_name" src="../image/main/yoon.png" alt="yoon" />
-            </div>
-            <div class="ox_score"></div>
-          </div>
-          <div id="lee" class="test test4">
-            <div class="img_area">
-              <img class="charactor" src="../image/main/lee_jump.gif" alt="" />
-              <img class="charactor_name" src="../image/main/lee.png" alt="이재아" />
-            </div>
-            <div class="ox_score"></div>
-          </div>
-        </div>
-        <!-- Board & Signup -->
-
-        <div id="board" class="board test">
-          <img class="board_img" src="../image/main/boardwithpaper.png" alt="" />
-        </div>
-      </div>
-
-      <div class="indicator"></div>
+    <!-- background image -->
+    <div class="background-video">
+      <img class="background-video__content" src="../image/main/Snow-pixel-move.gif" alt="" />
     </div>
-  </div>
 
-  <!-- 도움말  -->
-  <div class="help_tooltip">
-    <span class="help_text help_1">?</span>
-    <span class="help_text help_2">To watch introduce of member, <br />
-      Use <span style="color: #ff0000"><b>Click</b></span> and <span style="color: #ff0000"><b>Send</b></span> Penguin
-      to
-      <span style="color: #ff0000">Charactor</span></span>
-  </div>
+    <div class="container">
+      <section class="header">
+        <h1 class="title">
+          <!-- 네비게이션 바 코드 여기에 넣기 -->
+          <div class="navbar">
+            <div class="nav-left">
+              <div class="neon" style="display: block">
+                <div><span class="flicker-slow">F</span>O<span class="flicker-fast">U</span>R</div>
+              </div>
+            </div>
+            <div class="nav-right">
+              <div class="nav_item" style="color: #fcfcfcca">MEMBERS</div>
+              <div class="nav_item" style="color: #fcfcfcca" onclick="goToAnotherPage('Board','board')">BOARD</div>
+              <div class="nav_item" style="color: #fcfcfcca" onclick="goToAnotherPage('SignUp','signup')">SIGNUP</div>
+            </div>
+          </div>
+        </h1>
+      </section>
 
-  <!-- 멤버 입장 모달 -->
-  <div id="myModal" class="why_modal">
-    <div class="why_modal-content">
-      <div class="why_modal_top">
-        <div class="why_modal_title">MEMBER</div>
-      </div>
-      <div class="why_modal_bottom">
-        <div class="modal_bottom_img_area">
-          <img id="modal_charactor" class="charactor" src="" alt="" />
-          <img id="modal_charactor_name" class="charactor_name" src="" alt="kim" />
+      <!-- introduce -->
+      <div class="introduce">
+        <div class="wrapper">
+          <div class="test_area wrapper">
+            <div id="kim" class="test test1">
+              <div class="img_area">
+                <img class="charactor" src="../image/main/kim_jump.gif" alt="" />
+                <img class="charactor_name" src="../image/main/kim.png" alt="kim" />
+              </div>
+              <div class="ox_score"></div>
+            </div>
+            <div id="park" class="test test2">
+              <div class="img_area">
+                <img class="charactor" src="../image/main/park_jump.gif" alt="" />
+                <img class="charactor_name" src="../image/main/park.png" alt="park" />
+              </div>
+              <div class="ox_score"></div>
+            </div>
+            <div id="yoon" class="test test3">
+              <div class="img_area">
+                <img class="charactor" src="../image/main/yoon_jump.gif" alt="" />
+                <img class="charactor_name" src="../image/main/yoon.png" alt="yoon" />
+              </div>
+              <div class="ox_score"></div>
+            </div>
+            <div id="lee" class="test test4">
+              <div class="img_area">
+                <img class="charactor" src="../image/main/lee_jump.gif" alt="" />
+                <img class="charactor_name" src="../image/main/lee.png" alt="이재아" />
+              </div>
+              <div class="ox_score"></div>
+            </div>
+          </div>
+          <!-- Board & Signup -->
+
+          <div id="board" class="board test">
+            <img class="board_img" src="../image/main/boardwithpaper.png" alt="" />
+          </div>
         </div>
-        <div class="modal_bottom_text"></div>
-        <div class="modal_bottom_btn_area">
-          <button class="modal_bottom_btn_yes">yes</button>
-          <button class="modal_bottom_btn_no" onclick="closeModal()">no</button>
-        </div>
+
+        <div class="indicator"></div>
       </div>
     </div>
-  </div>
 
-  <!-- 게시판 입장 모달 -->
-  <div id="myBoardModal" class="why_modal">
-    <div class="why_modal-content">
-      <div class="why_modal_top">
-        <div class="why_modal_title">FOUR</div>
-      </div>
-      <div class="why_modal_bottom">
-        <div class="modal_bottom_btn_area">
-          <button class="modal_bottom_btn_board" onclick="goToAnotherPage('Board','board')">Board</button>
-          <div class="modal_divider">
-            <div class="modal_divider_line"></div>
-            <div>OR</div>
-            <div class="modal_divider_line"></div>
+    <!-- 도움말  -->
+    <div class="help_tooltip">
+      <span class="help_text help_1">?</span>
+      <span class="help_text help_2"
+        >To watch introduce of member, <br />
+        Use <span style="color: #ff0000"><b>Click</b></span> and <span style="color: #ff0000"><b>Send</b></span> Penguin to
+        <span style="color: #ff0000">Charactor</span></span
+      >
+    </div>
+
+    <!-- 멤버 입장 모달 -->
+    <div id="myModal" class="why_modal">
+      <div class="why_modal-content">
+        <div class="why_modal_top">
+          <div class="why_modal_title">MEMBER</div>
+        </div>
+        <div class="why_modal_bottom">
+          <div class="modal_bottom_img_area">
+            <img id="modal_charactor" class="charactor" src="" alt="" />
+            <img id="modal_charactor_name" class="charactor_name" src="" alt="kim" />
           </div>
-          <button class="modal_bottom_btn_signup" onclick="goToAnotherPage('SignUp','signup')">Signup</button>
+          <div class="modal_bottom_text"></div>
+          <div class="modal_bottom_btn_area">
+            <button class="modal_bottom_btn_yes">yes</button>
+            <button class="modal_bottom_btn_no" onclick="closeModal()">no</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</body>
 
+    <!-- 게시판 입장 모달 -->
+    <div id="myBoardModal" class="why_modal">
+      <div class="why_modal-content">
+        <div class="why_modal_top">
+          <div class="why_modal_title">FOUR</div>
+        </div>
+        <div class="why_modal_bottom">
+          <div class="modal_bottom_btn_area">
+            <button class="modal_bottom_btn_board" onclick="goToAnotherPage('Board','board')">Board</button>
+            <div class="modal_divider">
+              <div class="modal_divider_line"></div>
+              <div>OR</div>
+              <div class="modal_divider_line"></div>
+            </div>
+            <button class="modal_bottom_btn_signup" onclick="goToAnotherPage('SignUp','signup')">Signup</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
