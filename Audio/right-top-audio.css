@@ -50,8 +50,10 @@
 .audio_player_lp {
   position: relative;
   margin: 1rem;
-  border: 1px solid black;
-  background-color: red;
+  border: 2px solid black;
+  /* background-color: red; */
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 12px;
 }
 
 .audio_player_image {
@@ -61,7 +63,7 @@
   width: 4rem;
   height: 4rem;
 
-  border: 1px solid black;
+  border: 2px solid black;
 
   margin: 0.3rem;
   overflow: hidden;
@@ -89,6 +91,10 @@
   width: 4rem;
   height: 4.1rem;
   top: -3%;
+  left: 30%;
+}
+
+.audio_player:hover .audio_player_image_needle {
   left: 49%;
 }
 
