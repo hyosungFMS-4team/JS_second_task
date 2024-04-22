@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      @font-face {
+        font-family: 'PIXEL';
+        src: url('../font/NeoDunggeunmoPro-Regular.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      .card_box {
+        font-family: 'PIXEL';
+        width: 750px;
+        height: 600px;
+        background-color: darkgray;
+        box-shadow: 0px 5px black, 0px -5px black, 5px 0px black, -5px 0px black, 0px 10px #00000038, 5px 5px #00000038, -5px 5px #00000038,
+          inset 0px 5px #ffffff1f, inset 0px -5px #00000030;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .card_box_top {
+        flex: 2;
+
+        display: flex;
+        justify-content: center;
+      }
+
+      .card_box_top_main {
+        width: 95%;
+        height: 100%;
+        border-bottom: 5px solid black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .card_box_top_main_title {
+        width: 100%;
+        text-align: center;
+        height: 90%;
+        border-bottom: 4px solid black;
+        font-size: 55px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .card_box_main {
+        flex: 8;
+        display: flex;
+      }
+
+      .card_box_main_left {
+        flex: 4;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+      }
+
+      .card_box_main_left_area {
+        display: flex;
+        flex-direction: column;
+        width: 93%;
+        height: 90%;
+        justify-content: flex-end;
+      }
+
+      .card_box_main_left_img {
+        flex: 8;
+        box-shadow: 0px 5px black, 0px -5px black, 5px 0px black, -5px 0px black, 0px 10px #00000038, 5px 5px #00000038, -5px 5px #00000038,
+          inset 0px 5px #ffffff1f, inset 0px -5px #00000030;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5%;
+        position: relative;
+      }
+
+      .black_wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.265);
+        z-index: 3;
+      }
+
+      .news_text_o {
+        font-size: xx-large;
+        color: #1d4ed8;
+        z-index: 5;
+      }
+
+      .news_text_x {
+        font-size: xx-large;
+        color: #ff0000;
+        z-index: 5;
+      }
+
+      .news_img {
+        height: 200px;
+      }
+
+      .card_box_main_left_text {
+        flex: 1.5;
+        letter-spacing: 2px;
+      }
+
+      .card_box_main_left_divider {
+        flex: 0.5;
+      }
+
+      .card_box_main_right {
+        flex: 5.6;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+      }
+
+      .card_box_main_right_area {
+        width: 95%;
+        height: 90%;
+        /* background-color: aqua; */
+        display: flex;
+        flex-direction: column;
+      }
+
+      .card_box_main_right_answer {
+        flex: 5;
+        /* background-color: coral; */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .answer_index {
+        font-size: xx-large;
+        letter-spacing: 2px;
+      }
+
+      .answer_title {
+        font-size: xx-large;
+        letter-spacing: 2px;
+      }
+
+      .user_select_answer {
+        font-size: xx-large;
+        letter-spacing: 2px;
+      }
+
+      .card_box_main_right_dummy {
+        flex: 4.5;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .dummy_title {
+        font-size: large;
+      }
+
+      .dummy_text {
+      }
+
+      .card_box_main_right_divider {
+        flex: 0.5;
+        display: flex;
+        align-items: center;
+      }
+
+      .divider_line {
+        width: 100%;
+        height: 2px;
+        background-color: black;
+      }
+
+      .card_box_main_divider {
+        flex: 0.4;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card_box">
+      <div class="card_box_top">
+        <div class="card_box_top_main">
+          <div class="card_box_top_main_title">NEW FOUR TIMES</div>
+        </div>
+      </div>
+      <div class="card_box_main">
+        <div class="card_box_main_left">
+          <div class="card_box_main_left_area">
+            <div class="card_box_main_left_img">
+              <div class="black_wrapper"></div>
+              <div class="news_text_o">맞았습니다!</div>
+              <img class="news_img" src="../image/main/lee_jump.gif" alt="" />
+            </div>
+            <div class="card_box_main_left_divider"></div>
+            <div class="card_box_main_left_text">▲ 자신에 대한 OX 문제를 맞춘 것에 매우 기뻐 뛰고 있는 모습이다.</div>
+          </div>
+        </div>
+        <div class="card_box_main_divider"></div>
+        <div class="card_box_main_right">
+          <div class="card_box_main_right_area">
+            <div class="card_box_main_right_answer">
+              <div class="answer_index">문제 )</div>
+              <div class="answer_title">"제 이름은 윤동훈입니다"</div>
+              <div class="user_select_answer">당신이 선택한 답 : <span style="color: #1d4ed8">O</span></div>
+            </div>
+            <div class="card_box_main_right_divider">
+              <div class="divider_line"></div>
+            </div>
+            <div class="card_box_main_right_dummy">
+              <div class="dummy_title"><b>Opinion: This album brings ‘Taylor math’ to a whole new level</b></div>
+              <div class="dummy_text">
+                Friday’s midnight release of “The Tortured Poets Department,” Taylor Swift’s 11th album, means that yet another era has begun and a
+                record-breaking one at that. Swifties, who are now more than familiar with football jargon (at least when it comes to Kansas City Chiefs’ tight
+                end Travis Kelce, Taylor’s beau) can finally put away the grill and the drinks, lock the car, and leave the parking lot for the stadium. The
+                tailgate is over: it’s game on for Taylor Nation.
+              </div>
+            </div>
+            <div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr />
+
+    <div class="card_box">
+      <div class="card_box_top">
+        <div class="card_box_top_main">
+          <div class="card_box_top_main_title">NEW FOUR TIMES</div>
+        </div>
+      </div>
+      <div class="card_box_main">
+        <div class="card_box_main_left">
+          <div class="card_box_main_left_area">
+            <div class="card_box_main_left_img">
+              <div class="black_wrapper"></div>
+              <div class="news_text_x">틀렸습니다!</div>
+              <img class="news_img" src="../image/ox_answer/lee_x.png" alt="" />
+            </div>
+            <div class="card_box_main_left_divider"></div>
+            <div class="card_box_main_left_text">▲ 자신에 대한 OX 문제를 틀린 것에 매우 슬퍼 울고 있는 모습이다.</div>
+          </div>
+        </div>
+        <div class="card_box_main_divider"></div>
+        <div class="card_box_main_right">
+          <div class="card_box_main_right_area">
+            <div class="card_box_main_right_answer">
+              <div class="answer_index">문제 )</div>
+              <div class="answer_title">"제 이름은 윤동훈입니다"</div>
+              <div class="user_select_answer">당신이 선택한 답 : <span style="color: #ff0000">X</span></div>
+            </div>
+            <div class="card_box_main_right_divider">
+              <div class="divider_line"></div>
+            </div>
+            <div class="card_box_main_right_dummy">
+              <div class="dummy_title"><b>Opinion: This album brings ‘Taylor math’ to a whole new level</b></div>
+              <div class="dummy_text">
+                Friday’s midnight release of “The Tortured Poets Department,” Taylor Swift’s 11th album, means that yet another era has begun and a
+                record-breaking one at that. Swifties, who are now more than familiar with football jargon (at least when it comes to Kansas City Chiefs’ tight
+                end Travis Kelce, Taylor’s beau) can finally put away the grill and the drinks, lock the car, and leave the parking lot for the stadium. The
+                tailgate is over: it’s game on for Taylor Nation.
+              </div>
+            </div>
+            <div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
