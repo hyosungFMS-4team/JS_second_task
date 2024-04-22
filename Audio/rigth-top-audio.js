@@ -11,6 +11,7 @@ const musicImgSrcs = [
 ]
 
 function loadMusic() {
+    console.log('load music ', musicIndex);
     audioSrc.src = musicsSrcs[musicIndex];
     audio.load();
 }
@@ -20,15 +21,18 @@ function onMusicLoaded() {
 
     audioTitle.innerText = title;
     audioImage.src = musicImgSrcs[musicIndex];
+    console.log('music loaded ', title);
     playMusic();
 }
 
 function playMusic() {
+    console.log('music played');
     isPlaying = true;
     audioImageContainer.classList.add('spin');
     audio.play();
 }
 function pauseMusic() {
+    console.log('music paused');
     isPlaying = false;
     audioImageContainer.classList.remove('spin');
     audio.pause();
@@ -60,43 +64,101 @@ function addEventListeners() {
     audioBtnNext.addEventListener('click', () => onNextButtonClicked());
 }
 
-function addAudioPlayerToBody() {
-    document.body.innerHTML += `
-    <div class="audio_player pixel_border">
-        <audio>
-            <source id="audio_src" src="" type="audio/mpeg">
-        </audio>
+function createAudioPlayer() {
+    const audioPlayer = document.createElement('div');
+    audioPlayer.classList.add('audio_player', 'pixel_border');
 
-        <div class="audio_player_image_and_title">
-            <div class="audio_player_lp">
-                <div class="audio_player_image circle spin">
-                    <img id="audio_player_image" class="" src=""/>
-                    <div id="audio_player_image_center" class="circle"></div>
-                </div>
-                <img id="audio_player_image_needle" class=" " src="../image/audio/lpneedle.png"/>
-            </div>
-            <div class="audio_player_title">TITLE</div>
-        </div>
+    const audio = document.createElement('audio');
+    const audioSource = document.createElement('source');
+    audioSource.id = 'audio_src';
+    audioSource.type = 'audio/mpeg';  // Adjust type based on your audio format
+    audio.appendChild(audioSource);
 
-        <div class="audio_player_controller">
-            <button id="audio_player_controller_prev">
-                <img src="../image/audio/btn_prev.png"/>
-            </button>
-            <label class="swap swap-rotate">
-                <input id="audio_player_controller_play" type="checkbox" />
-                <img src="../image/audio/btn_play.png" class="swap-on"/>
-                <img src="../image/audio/btn_pause.png" class="swap-off"/>
-            </label>
-            <button id="audio_player_controller_next">
-                <img src="../image/audio/btn_next.png"/>
-            </button>
-        </div>
-    </div> `;
+    const audioPlayerImageAndTitle = document.createElement('div');
+    audioPlayerImageAndTitle.classList.add('audio_player_image_and_title');
+
+    const audioPlayerLp = document.createElement('div');
+    audioPlayerLp.classList.add('audio_player_lp');
+
+    const audioPlayerImage = document.createElement('div');
+    audioPlayerImage.classList.add('audio_player_image', 'circle', 'spin');
+
+    const audioPlayerImageImg = document.createElement('img');
+    audioPlayerImageImg.id = 'audio_player_image';
+    audioPlayerImage.appendChild(audioPlayerImageImg);
+
+    const audioPlayerImageCenter = document.createElement('div');
+    audioPlayerImageCenter.id = 'audio_player_image_center';
+    audioPlayerImageCenter.classList.add('circle');
+    audioPlayerImage.appendChild(audioPlayerImageCenter);
+
+    const audioPlayerImageNeedle = document.createElement('img');
+    audioPlayerImageNeedle.id = 'audio_player_image_needle';
+    audioPlayerImageNeedle.src = '../image/audio/lpneedle.png';  // Adjust path if needed
+    audioPlayerLp.appendChild(audioPlayerImageNeedle);
+
+    audioPlayerLp.appendChild(audioPlayerImage);
+
+    const audioPlayerTitle = document.createElement('div');
+    audioPlayerTitle.classList.add('audio_player_title');
+    audioPlayerTitle.textContent = 'TITLE';  // Replace with your default title
+    audioPlayerImageAndTitle.appendChild(audioPlayerLp);
+    audioPlayerImageAndTitle.appendChild(audioPlayerTitle);
+
+    const audioPlayerController = document.createElement('div');
+    audioPlayerController.classList.add('audio_player_controller');
+
+    const audioPlayerControllerPrev = document.createElement('button');
+    audioPlayerControllerPrev.id = 'audio_player_controller_prev';
+    const prevImg = document.createElement('img');
+    prevImg.src = '../image/audio/btn_prev.png';  // Adjust path if needed
+    audioPlayerControllerPrev.appendChild(prevImg);
+    audioPlayerController.appendChild(audioPlayerControllerPrev);
+
+    const audioPlayerControllerPlay = document.createElement('label');
+    audioPlayerControllerPlay.classList.add('swap', 'swap-rotate');
+
+    const audioPlayerControllerPlayInput = document.createElement('input');
+    audioPlayerControllerPlayInput.id = 'audio_player_controller_play';
+    audioPlayerControllerPlayInput.type = 'checkbox';
+    audioPlayerControllerPlay.appendChild(audioPlayerControllerPlayInput);
+
+    const playOnImg = document.createElement('img');
+    playOnImg.src = '../image/audio/btn_play.png';  // Adjust path if needed
+    playOnImg.classList.add('swap-on');
+    audioPlayerControllerPlay.appendChild(playOnImg);
+
+    const playOffImg = document.createElement('img');
+    playOffImg.src = '../image/audio/btn_pause.png';  // Adjust path if needed
+    playOffImg.classList.add('swap-off');
+    audioPlayerControllerPlay.appendChild(playOffImg);
+    audioPlayerController.appendChild(audioPlayerControllerPlay);
+
+    const audioPlayerControllerNext = document.createElement('button');
+    audioPlayerControllerNext.id = 'audio_player_controller_next';
+    const nextImg = document.createElement('img');
+    nextImg.src = '../image/audio/btn_next.png';  // Adjust paths if needed
+    audioPlayerControllerNext.appendChild(nextImg);
+    audioPlayerController.appendChild(audioPlayerControllerNext);
+
+    audioPlayer.appendChild(audio);
+    audioPlayer.appendChild(audioPlayerImageAndTitle);
+    audioPlayer.appendChild(audioPlayerController);
+
+    return audioPlayer;
 }
 
-//main
-addAudioPlayerToBody();
 
+//main
+// Get the body element
+const body = document.body;
+
+// Create the audio player element
+const audioPlayer = createAudioPlayer();
+
+// Append the audio player to the body
+body.appendChild(audioPlayer);
+// addAudioPlayerToBody();
 let musicIndex = 0;
 
 const audio = document.querySelector('audio');
@@ -111,9 +173,5 @@ const audioImageContainer = document.querySelector('.audio_player_image');
 const audioImage = document.getElementById('audio_player_image');
 const audioTitle = document.querySelector('.audio_player_title');
 
-try {
-    addEventListeners();
-    loadMusic(musicIndex);
-} catch (error) {
-    console.warn(error);
-}
+addEventListeners();    
+loadMusic(musicIndex);
