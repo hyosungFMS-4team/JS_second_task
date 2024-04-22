@@ -18,7 +18,8 @@ let moveInterval = 0.03;
 /*========================================================== */
 
 /* ====== localstorage ======*/
-let player = window.localStorage.getItem('en_name').replaceAll('\"', '');
+let mapUrlParams = new URLSearchParams(window.location.search);
+let player = urlParams.get('en_name');
 characterImgSrc = `../image/main/${player}_char.png`
 switch (player) {
     case 'park':
@@ -44,7 +45,6 @@ let animationStarted = false;
 (async () => {
     // 시작(현재), 종료 좌표
     const curCoord = await getCurCoord();
-    const coords = [curCoord, destCoord];
 
     // 카카오맵
     const map = new kakao.maps.Map(mapContainer, {
@@ -52,8 +52,12 @@ let animationStarted = false;
         level: 3
     });
 
-    setInterval(() => {
-        if (!mapContainer.parentElement.parentElement.classList.contains('flipped') || animationStarted) {
+    const animations = setInterval(() => {
+        if (animationStarted) {
+            clearInterval(animations);
+            return;
+        }
+        if (!mapContainer.parentElement.parentElement.classList.contains('flipped')) {
             return;
         }
         startAnimations(map, curCoord, destCoord);
@@ -136,15 +140,15 @@ function directionToPath(direction) {
 }
 
 async function startAnimations(map, startPos, destPos) {
-    // 시작 -> 종료 경로
-    const carDirection = await getCarDirection(startPos, destPos);
-    const pathPositions = directionToPath(carDirection);
-
     // 출발지 목표지 애니메이션
     await setShowLocAnimation(map, startPos, destPos);
 
     // 시작, 종료 마커
     setMarkersOnMap(map, [startPos, destPos]);
+
+    // 시작 -> 종료 경로
+    const carDirection = await getCarDirection(startPos, destPos);
+    const pathPositions = directionToPath(carDirection);
 
     // 이동 애니메이션 
     setSpeedAndInterval(carDirection);
@@ -158,8 +162,6 @@ async function setShowLocAnimation(map, startPos, destPos) {
     const geocoder = new kakao.maps.services.Geocoder();
     geocoder.coord2Address(startPos.longtitude, startPos.latitude, (result, status) => {
         if (status != kakao.maps.services.Status.OK) return;
-
-        console.log('res', result);
 
         const pos = new kakao.maps.LatLng(startPos.latitude, startPos.longtitude);
         map.panTo(pos);

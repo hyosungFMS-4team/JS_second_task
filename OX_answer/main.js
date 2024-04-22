@@ -222,8 +222,9 @@ window.addEventListener('load', function () {
   `;
   modal.showModal();
 
-  this.setInterval(() => {
+  const modalClose = this.setInterval(() => {
     modal.close();
+    this.clearInterval(modalClose);
   }, 2000);
 });
 
