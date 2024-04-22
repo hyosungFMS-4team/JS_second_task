@@ -507,12 +507,22 @@ function openModal(en_name, ko_Name) {
     modal_charactor_name.setAttribute('src', `../image/main/${en_name}.png`);
 
     const showName = document.querySelector('.modal_bottom_text');
-    showName.textContent = `${ko_Name}님의 소개를 보시겠습니까?`;
 
-    const yesBtn = document.querySelector('.modal_bottom_btn_yes');
-    yesBtn.addEventListener('click', () => {
-      goToOxQuizWithParameter(en_name);
-    });
+    if (JSON.parse(localStorage.getItem(`${en_name}_score`)) !== null) {
+      showName.textContent = `${ko_Name}님의 소개를 보시겠습니까?`;
+
+      const yesBtn = document.querySelector('.modal_bottom_btn_yes');
+      yesBtn.addEventListener('click', () => {
+        goToOxAnswerWithParameter(en_name);
+      });
+    } else {
+      showName.textContent = `${ko_Name}님의 퀴즈를 푸시겠습니까?`;
+
+      const yesBtn = document.querySelector('.modal_bottom_btn_yes');
+      yesBtn.addEventListener('click', () => {
+        goToOxQuizWithParameter(en_name);
+      });
+    }
 
     document.querySelector('.modal_bottom_img_area').appendChild(modal_charactor);
     document.querySelector('.modal_bottom_img_area').appendChild(modal_charactor_name);
@@ -550,6 +560,12 @@ function goToOxQuizWithParameter(en_name) {
   const oxUrl = `../OX_quiz/index.html?${queryString}`;
   window.location.href = oxUrl;
   localStorage.setItem('en_name', JSON.stringify(en_name));
+}
+
+function goToOxAnswerWithParameter(en_name) {
+  const queryString = `en_name=${encodeURIComponent(en_name)}`;
+  const oxUrl = `../OX_answer/index.html?${queryString}`;
+  window.location.href = oxUrl;
 }
 
 function goBack() {

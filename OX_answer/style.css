@@ -1,110 +1,110 @@
 @font-face {
-    font-family: 'PIXEL';
-    src: url('../font/NeoDunggeunmoPro-Regular.ttf') format('truetype');
-  }
-  
-  /* header */
-  
-  header {
-    height: 15%;
-    margin-bottom: 10px;
-    margin-top: 20px;
-  }
-  
-  header > h1 {
-    background: #2e2e2e;
-    padding: 3vh;
-    color: #fff;
-    letter-spacing: 0.5vh;
-    font-size: 4vh;
-    box-shadow: 0px 5px black, 0px -5px black, 5px 0px black, -5px 0px black, 0px 10px #00000038, 5px 5px #00000038, -5px 5px #00000038, inset 0px 5px #ffffff1f,
-      inset 0px -5px #00000030;
-  }
-  
-  /* colors */
-  .bg-blue {
-    background: #1d4fd870;
-  }
-  
-  .bg-red {
-    background: #ff000070;
-  }
-  
-  .bg-green {
-    background: #3af39c70;
-  }
-  
-  /* body */
-  .bg-video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    z-index: -1;
-    opacity: 0.68;
-  }
-  
-  .bg-video__content {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-  }
-  #wrap {
-    font-family: 'PIXEL';
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-  
-    user-select: none;
-  
-    height: 100dvh;
-    width: 100dvw;
-  }
-  
-  .glide {
-    height: 80%;
-    overflow-y: hidden;
-  }
-  
-  .carousel-item {
-    margin: 1rem;
-  }
-  
-  .card-body {
-    width: 100%;
-    height: 70vh;
-    word-wrap: break-word;
-    border: 0;
-    box-shadow: 0px 5px black, 0px -5px black, 5px 0px black, -5px 0px black, 0px 10px #00000038, 5px 5px #00000038, -5px 5px #00000038, inset 0px 5px #ffffff1f,
-      inset 0px -5px #00000030;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .card-body a {
-    font-size: 5vw;
-    color: silver;
-  }
-  
-  .card-body.back {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .card-body.front {
-    position: absolute;
-  }
-  .card-title {
-    font-size: 3vw;
-    line-height: 1;
-  }
-  /* .carousel-arrow {
+  font-family: 'PIXEL';
+  src: url('../font/NeoDunggeunmoPro-Regular.ttf') format('truetype');
+}
+
+/* header */
+
+header {
+  height: 15%;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+header > h1 {
+  background: #2e2e2e;
+  padding: 3vh;
+  color: #fff;
+  letter-spacing: 0.5vh;
+  font-size: 4vh;
+  box-shadow: 0px 5px black, 0px -5px black, 5px 0px black, -5px 0px black, 0px 10px #00000038, 5px 5px #00000038, -5px 5px #00000038, inset 0px 5px #ffffff1f,
+    inset 0px -5px #00000030;
+}
+
+/* colors */
+.bg-blue {
+  background: #1d4fd870;
+}
+
+.bg-red {
+  background: #ff000070;
+}
+
+.bg-green {
+  background: #3af39c70;
+}
+
+/* body */
+.bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  opacity: 0.68;
+}
+
+.bg-video__content {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+#wrap {
+  font-family: 'PIXEL';
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  user-select: none;
+
+  height: 100dvh;
+  width: 100dvw;
+}
+
+.glide {
+  height: 80%;
+  overflow-y: hidden;
+}
+
+.carousel-item {
+  margin: 1rem;
+}
+
+.card-body {
+  width: 100%;
+  height: 70vh;
+  word-wrap: break-word;
+  border: 0;
+  box-shadow: 0px 5px black, 0px -5px black, 5px 0px black, -5px 0px black, 0px 10px #00000038, 5px 5px #00000038, -5px 5px #00000038, inset 0px 5px #ffffff1f,
+    inset 0px -5px #00000030;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-body a {
+  font-size: 5vw;
+  color: silver;
+}
+
+.card-body.back {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-body.front {
+  position: absolute;
+}
+.card-title {
+  font-size: 3vw;
+  line-height: 1;
+}
+/* .carousel-arrow {
     position: absolute;
     display: flex;
     justify-content: space-between;
@@ -115,100 +115,127 @@
     left: 1.25rem;
     height: 6vh;
   } */
-  
-  .flip {
-    width: 100%;
-    height: 100%;
-    transform-style: preserve-3d;
-    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    cursor: pointer;
+
+.flip {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+}
+
+.flip > div {
+  backface-visibility: hidden;
+}
+
+.flip .back {
+  transform: rotateX(180deg);
+}
+.flip.flipped {
+  transform: rotateX(180deg);
+}
+
+.custom-overlay {
+  background: #2e2e2e;
+  padding: 11px;
+  color: #fff;
+
+  font-size: 20px;
+  box-shadow: 0px 5px black, 0px -5px black, 5px 0px black, -5px 0px black, 0px 10px #00000038, 5px 5px #00000038, -5px 5px #00000038, inset 0px 5px #ffffff1f,
+    inset 0px -5px #00000030;
+}
+
+.dropdown {
+  position: absolute;
+  z-index: 1;
+  top: 10px;
+  right: 10px;
+  border: none;
+}
+
+.dropdown > .btn {
+  background: #2e2e2e;
+  padding: 5px;
+  color: #fff;
+  box-shadow: 0px 5px black, 0px -5px black, 5px 0px black, -5px 0px black, 0px 10px #00000038, 5px 5px #00000038, -5px 5px #00000038, inset 0px 5px #ffffff1f,
+    inset 0px -5px #00000030;
+  border-radius: 0;
+  margin: 0.5rem;
+}
+.dropdown > .dropdown-content {
+  background: #2e2e2e;
+  padding: 11px;
+  color: #fff;
+  font-size: 18px;
+  box-shadow: 0px 5px black, 0px -5px black, 5px 0px black, -5px 0px black, 0px 10px #00000038, 5px 5px #00000038, -5px 5px #00000038, inset 0px 5px #ffffff1f,
+    inset 0px -5px #00000030;
+  border-radius: 0;
+  margin: 0.5rem;
+}
+
+#flipBtn {
+  position: absolute;
+  color: white;
+  background: #2e2e2e;
+  right: 10px;
+  padding: 5px;
+  bottom: 10px;
+  height: 3em;
+  width: 3em;
+  z-index: 100;
+  box-shadow: 0px 5px black, 0px -5px black, 5px 0px black, -5px 0px black, 0px 10px #00000038, 5px 5px #00000038, -5px 5px #00000038, inset 0px 5px #ffffff1f,
+    inset 0px -5px #00000030;
+}
+
+#dropdown ul {
+  height: 5em;
+}
+#dropdown, #dropdown * {
+  z-index: 5;
+}
+
+.glide_slide {
+  width: 100%;
+  filter: blur(3px);
+  -webkit-filter: blur(3px);
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.glide__slide--active {
+  width: 100%;
+  filter: blur(0);
+  -webkit-filter: blur(0);
+}
+
+.glide__arrow {
+  border: none;
+}
+
+/* back-pointer */
+.back_pointer {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  width: 80px;
+  height: 80px;
+  transition: all 300ms ease-in;
+}
+
+.back_pointer:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+  animation: backPointerAnimation 0.8s infinite;
+}
+
+@keyframes backPointerAnimation {
+  0% {
+    transform: translateX(0);
   }
-  
-  .flip > div {
-    backface-visibility: hidden;
+  50% {
+    transform: translateX(-10px);
   }
-  
-  .flip .back {
-    transform: rotateX(180deg);
+  100% {
+    transform: translateX(0);
   }
-  .flip.flipped {
-    transform: rotateX(180deg);
-  }
-  
-  .custom-overlay {
-    background: #2e2e2e;
-    padding: 11px;
-    color: #fff;
-  
-    font-size: 20px;
-    box-shadow: 0px 5px black, 0px -5px black, 5px 0px black, -5px 0px black, 0px 10px #00000038, 5px 5px #00000038, -5px 5px #00000038, inset 0px 5px #ffffff1f,
-      inset 0px -5px #00000030;
-  }
-  
-  .dropdown {
-    position: absolute;
-    z-index: 1;
-    top: 10px;
-    right: 10px;
-    border: none;
-  }
-  
-  .dropdown > .btn {
-    background: #2e2e2e;
-    padding: 5px;
-    color: #fff;
-    box-shadow: 0px 5px black, 0px -5px black, 5px 0px black, -5px 0px black, 0px 10px #00000038, 5px 5px #00000038, -5px 5px #00000038, inset 0px 5px #ffffff1f,
-      inset 0px -5px #00000030;
-    border-radius: 0;
-    margin: 0.5rem;
-  }
-  .dropdown > .dropdown-content {
-    background: #2e2e2e;
-    padding: 11px;
-    color: #fff;
-    font-size: 18px;
-    box-shadow: 0px 5px black, 0px -5px black, 5px 0px black, -5px 0px black, 0px 10px #00000038, 5px 5px #00000038, -5px 5px #00000038, inset 0px 5px #ffffff1f,
-      inset 0px -5px #00000030;
-    border-radius: 0;
-    margin: 0.5rem;
-  }
-  
-  #flipBtn {
-    position: absolute;
-    color: white;
-    background: #2e2e2e;
-    right: 10px;
-    padding: 5px;
-    bottom: 10px;
-    height: 3em;
-    width: 3em;
-    z-index: 100;
-    box-shadow: 0px 5px black, 0px -5px black, 5px 0px black, -5px 0px black, 0px 10px #00000038, 5px 5px #00000038, -5px 5px #00000038, inset 0px 5px #ffffff1f,
-      inset 0px -5px #00000030;
-  }
-  
-  #dropdown ul {
-    height: 5rem;
-  }
-  #dropdown, #dropdown * {
-    z-index: 5;
-  }
-  
-  .glide_slide {
-    width: 100%;
-    filter: blur(3px);
-    -webkit-filter: blur(3px);
-    margin-top: 20px;
-    margin-bottom: 20px;
-  }
-  
-  .glide__slide--active {
-    width: 100%;
-    filter: blur(0);
-    -webkit-filter: blur(0);
-  }
-  
-  .glide__arrow {
-    border: none;
-  }
-  
+}
