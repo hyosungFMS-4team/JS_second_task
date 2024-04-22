@@ -171,12 +171,12 @@ const memberDetails = {
       title: 'title10',
       content: 'content10',
     },
-  ]
-}
+  ],
+};
 /* ************************************************** */
 
 /* ***************로컬 스토리지****************** */
-const enname = localStorage.getItem('en_name').replaceAll("\"", "");
+const enname = localStorage.getItem('en_name').replaceAll('"', '');
 const taskDetails = memberDetails[enname];
 const tasks = JSON.parse(localStorage.getItem(`${enname}_answerSheet`));
 const length = tasks.length;
@@ -217,9 +217,8 @@ tasks.forEach((task, idx) => {
       content: taskDetails[idx].content,
       color: 'bg-red',
     },
-  })
+  });
 });
-
 
 /* ******************************************** */
 
@@ -306,7 +305,6 @@ function handleGlideDrag() {
       }
     });
 
-
     function handleMapClick(event) {
       event.stopPropagation();
       glide.disable();
@@ -329,7 +327,12 @@ function handleGlideDrag() {
         //   glide.enable();
         // });
       }
-    }
-    )
-  })
-};
+    });
+  });
+}
+
+// 홈으로 보내기
+
+function goHome() {
+  window.location.href = '../Main/index.html';
+}
