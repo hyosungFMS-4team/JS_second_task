@@ -184,10 +184,14 @@ const memberDetails = {
 const enname = new URLSearchParams(window.location.search).get('en_name');
 const koname = (() => {
   switch (enname) {
-    case 'kim': return '김기정';
-    case 'park': return '박민석';
-    case 'yoon': return '윤동훈';
-    case 'lee': return '이재아';
+    case 'kim':
+      return '김기정';
+    case 'park':
+      return '박민석';
+    case 'yoon':
+      return '윤동훈';
+    case 'lee':
+      return '이재아';
   }
 })();
 const score = localStorage.getItem(`${enname}_score`);
@@ -244,7 +248,7 @@ function openModal(modal) {
   modal_charactor.setAttribute('src', `../image/main/${enname}_char.png`);
 
   const showName = document.querySelector('.modal_bottom_text');
-  const fontColor = (score > 50)? 'font-blue' : 'font-red';
+  const fontColor = score > 50 ? 'font-blue' : 'font-red';
   showName.innerHTML = `당신의 점수는 <b class="${fontColor}">${score}점</b>`;
 
   document.querySelector('.modal_bottom_img_area').appendChild(modal_charactor);
@@ -298,20 +302,24 @@ function flipCards() {
 
   const flip = document.querySelectorAll('.flip');
 
-  glideSlides.addEventListener('mousedown', () => drag = false);
-  glideSlides.addEventListener('mousemove', () => drag = true);
+  glideSlides.addEventListener('mousedown', () => (drag = false));
+  glideSlides.addEventListener('mousemove', () => (drag = true));
 
   flip.forEach(card => {
-    card.addEventListener('mouseup', event => {
-      if (!card.parentElement.classList.contains('glide__slide--active') || drag) {
-        return;
-      }
-      if (card.classList.contains('flipped')) {
-        card.classList.remove('flipped');
-      } else {
-        card.classList.add('flipped');
-      }
-    }, false);
+    card.addEventListener(
+      'mouseup',
+      event => {
+        if (!card.parentElement.classList.contains('glide__slide--active') || drag) {
+          return;
+        }
+        if (card.classList.contains('flipped')) {
+          card.classList.remove('flipped');
+        } else {
+          card.classList.add('flipped');
+        }
+      },
+      false
+    );
   });
 }
 
