@@ -2,8 +2,7 @@ const mapHtml = `
   <div id="map"></div>
   <details class="dropdown dropdown-bottom dropdown-end" id="dropdown">
     <summary class="btn" id="mapSummary">I N F O</summary>
-    <ul class="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52" id="mapUl">
-    </ul>
+    <ul class="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52" id="mapUl"></ul>
   </details>
   <button id="flipBtn">F L I P</button>`;
 
@@ -328,7 +327,6 @@ function flipCards() {
 function handleGlideDrag() {
   const glideArrows = document.querySelectorAll('.glide__arrows button');
   const mapElements = ['map', 'mapSummary', 'mapUl', 'mapInfo', 'map-detail-info-div'];
-  const allElements = document.querySelectorAll('*');
 
   glideArrows.forEach(arrow => {
     arrow.addEventListener('click', function (event) {
@@ -338,7 +336,6 @@ function handleGlideDrag() {
 
   mapElements.forEach(elementId => {
     const glideArrows = document.querySelectorAll('.glide__arrows button');
-    const mapElements = ['map', 'mapSummary', 'mapUl', 'mapInfo'];
     const allElements = document.querySelectorAll('*');
 
     glideArrows.forEach(arrow => {
@@ -361,6 +358,7 @@ function handleGlideDrag() {
     }
 
     function handleMapMouseDown(event) {
+      event.stopPropagation();
       glide.disable();
     }
 
