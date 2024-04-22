@@ -9,8 +9,7 @@ let destCoord = {
 let characterImgSrc = '../image/map/rabbit.gif';
 let characterFootprintImgSrc = '../image/map/footprint.png';
 
-
-// TODO: distance에 따라 자동 설정
+// TODO: distance에 따라 자동 설정 -> 어려울듯? 그냥 각자 해보고 넣는게 좋아보임
 // 3. 캐릭터 이동속도 (ms)
 let moveSpeed = 50;
 
@@ -42,8 +41,8 @@ switch (player) {
 }
 
 /* ============= MAIN ====================*/
-const mapWrap = document.getElementById('map-wrap');
 const mapContainer = document.getElementById('map');
+const mapUl = document.getElementById('mapUl');
 (async () => {
     // 시작(현재), 종료 좌표
     const curCoord = await getCurCoord();
@@ -146,7 +145,7 @@ function setSpeedAndInterval(direction) {
     const duration = directionInfo.duration;
     const distance = directionInfo.distance;
 
-    moveSpeed = duration / 5;
+    moveSpeed = duration / 500;
     moveInterval = duration / 500000;
 
     console.log('speed: ', moveSpeed, ' interval: ', moveInterval);
@@ -176,6 +175,10 @@ function setMovingAnimation(map, pathPositions, carDirection) {
     const markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
     const footMarkers = [];
     const moveAnimation = setInterval(function () {
+        if (!mapContainer.parentElement.parentElement.classList.contains('flipped')) {
+            return;
+        }
+
         index += increment;
         footPrintIndex += 1;
         if (index >= pathPositions.length || index <= 0) {
@@ -188,7 +191,7 @@ function setMovingAnimation(map, pathPositions, carDirection) {
 
             if (firstEnd) {
                 clearInterval(moveAnimation);
-                showDirectionInfo(mapContainer.parentElement, carDirection);
+                showDirectionInfo(mapUl, carDirection);
                 firstEnd = false;
                 prevPosition = null;
             }
@@ -209,22 +212,14 @@ function setMovingAnimation(map, pathPositions, carDirection) {
 }
 
 function showDirectionInfo(container, direction) {
-    console.log(direction);
     const directionInfo = direction.routes[0].summary;
-    const infoDiv = document.createElement('div');
-    infoDiv.id = 'map-detail-info-div';
-    infoDiv.classList.add('map-detail');
-    infoDiv.innerHTML = `
-        <button class="btn" id="mapSummary">close</button>
-        <div>
-            <div>DIST: ${directionInfo.distance}</div>
-            <div>DURATION: ${directionInfo.duration}</div>
-            <div>FARE= TAXI: ${directionInfo.fare.taxi}, TOLL: ${directionInfo.fare.toll}</div>
-        </div>
-    `;
 
-    container.appendChild(infoDiv);
-    document.getElementById('mapSummary').onclick = onDetailCloseClicked;
+    container.innerHTML = `
+        <li>거리 - ${Math.round(directionInfo.distance/1000)}KM</li>
+        <li>시간 - ${Math.round(directionInfo.duration/60)}분</li>
+        <li>택시로오면 ${directionInfo.fare.taxi}원</li>`;
+
+    document.getElementById('dropdown').open = true;
 }
 
 function onDetailCloseClicked(event) {

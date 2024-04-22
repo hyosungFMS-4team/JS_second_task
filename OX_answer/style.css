@@ -187,9 +187,11 @@
       inset 0px -5px #00000030;
   }
   
-  #dropdown > ul {
-    height: 10em;
-    z-index: 100;
+  #dropdown ul {
+    height: 5rem;
+  }
+  #dropdown, #dropdown * {
+    z-index: 5;
   }
   
   .glide_slide {
