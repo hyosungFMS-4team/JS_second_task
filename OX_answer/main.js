@@ -182,6 +182,7 @@ const memberDetails = {
 
 /* ***************로컬 스토리지****************** */
 const enname = localStorage.getItem('en_name').replaceAll('"', '');
+const score = localStorage.getItem(`${enname}_score`);
 const taskDetails = memberDetails[enname];
 const tasks = JSON.parse(localStorage.getItem(`${enname}_answerSheet`));
 const length = tasks.length;
@@ -210,6 +211,17 @@ window.addEventListener('load', function () {
   const kakaoMapScript = document.createElement('script');
   kakaoMapScript.src = 'kakao-map.js';
   document.body.appendChild(kakaoMapScript);
+
+  const modal = document.getElementById('ox_answer_modal');
+  modal.querySelector('.modal-box').innerHTML = `
+    <h3 class="font-bold text-lg">당신의 ${enname} QUIZ 점수</h3>
+    <p class="py-4">${score}/100</p>
+  `;
+  modal.showModal();
+
+  this.setInterval(() => {
+    modal.close();
+  }, 2000);
 });
 
 tasks.forEach((task, idx) => {

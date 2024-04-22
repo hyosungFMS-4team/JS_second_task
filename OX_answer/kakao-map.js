@@ -170,7 +170,7 @@ async function setShowLocAnimation(map, startPos, destPos) {
         infowindow.open(map, marker);
     });
 
-    await new Promise(r => setTimeout(r, 3000));
+    await new Promise(r => setTimeout(r, 2500));
     geocoder.coord2Address(destPos.longtitude, destPos.latitude, (result, status) => {
         if (status != kakao.maps.services.Status.OK) return;
 

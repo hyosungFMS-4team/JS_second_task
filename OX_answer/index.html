@@ -1,54 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
 
-    <script defer src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.2.0/css/glide.theme.css" type="text/css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.2.0/css/glide.core.css" type="text/css" />
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.1/dist/full.min.css" rel="stylesheet" type="text/css" />
-    <script defer src="https://cdn.tailwindcss.com"></script>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
 
-    <!-- main -->
-    <script defer src="main.js"></script>
-    <link rel="stylesheet" href="style.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.2.0/css/glide.theme.css"
+    type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.2.0/css/glide.core.css"
+    type="text/css" />
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.1/dist/full.min.css" rel="stylesheet" type="text/css" />
+  <script defer src="https://cdn.tailwindcss.com"></script>
 
-    <!-- map -->
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8ac7e2077f27a4c6f9b51ee256d5dd18&libraries=services"></script>
-    <link rel="stylesheet" href="kakao-map.css" />
+  <!-- main -->
+  <script defer src="main.js"></script>
+  <link rel="stylesheet" href="style.css" />
 
-    <!-- audio -->
-    <script defer src="../Audio/rigth-top-audio.js"></script>
-    <link rel="stylesheet" href="../Audio/right-top-audio.css" />
-  </head>
+  <!-- map -->
+  <script type="text/javascript"
+    src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8ac7e2077f27a4c6f9b51ee256d5dd18&libraries=services"></script>
+  <link rel="stylesheet" href="kakao-map.css" />
 
-  <body>
-    <div class="bg-video">
-      <video class="bg-video__content" autoplay muted loop>
-        <source src="../image/pixel-snow-art.mp4" type="video/mp4" />
-      </video>
-    </div>
-    <div id="wrap">
-      <header>
-        <h1>
-          <span style="color: blue">O</span>
-          <span style="color: red">X</span>
-          <span id="header-name">QUIZ</span>
-        </h1>
-      </header>
+  <!-- audio -->
+  <script defer src="../Audio/rigth-top-audio.js"></script>
+  <link rel="stylesheet" href="../Audio/right-top-audio.css" />
+</head>
 
-      <!-- <div id="carousel" class="carousel carousel-center"></div> -->
-      <div class="glide">
-        <div class="glide__track" data-glide-el="track">
-          <ul class="glide__slides"></ul>
-        </div>
+<body>
+  <div class="bg-video">
+    <video class="bg-video__content" autoplay muted loop>
+      <source src="../image/pixel-snow-art.mp4" type="video/mp4" />
+    </video>
+  </div>
+  <div id="wrap">
+    <header>
+      <h1>
+        <span style="color: blue">O</span>
+        <span style="color: red">X</span>
+        <span id="header-name">QUIZ</span>
+      </h1>
+    </header>
+
+    <!-- <div id="carousel" class="carousel carousel-center"></div> -->
+    <div class="glide">
+      <div class="glide__track" data-glide-el="track">
+        <ul class="glide__slides"></ul>
       </div>
     </div>
+  </div>
 
-    <!-- 뒤로가기 -->
-    <img class="back_pointer" src="../image/ox_quiz/pointer.png" alt="" onclick="goHome()" />
-  </body>
+  <!-- Open the modal using ID.showModal() method -->
+  <dialog id="ox_answer_modal" class="modal">
+    <div class="modal-box">
+      <h3 class="font-bold text-lg">Hello!</h3>
+      <p class="py-4">Press ESC key or click outside to close</p>
+    </div>
+    <form method="dialog" class="modal-backdrop">
+      <button>close</button>
+    </form>
+  </dialog>
+
+  <!-- 뒤로가기 -->
+  <img class="back_pointer" src="../image/ox_quiz/pointer.png" alt="" onclick="goHome()" />
+</body>
+
 </html>
