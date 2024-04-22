@@ -267,9 +267,9 @@ function addModal() {
   };
 
   openModal(modal);
-  // setTimeout(() => {
-  //   closeModal(modal);
-  // }, 3000);
+  setTimeout(() => {
+    closeModal(modal);
+  }, 3000);
 }
 
 function loadMap() {
