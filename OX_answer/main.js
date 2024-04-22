@@ -1,10 +1,9 @@
 const mapHtml = `
   <div id="map"></div>
   <details class="dropdown dropdown-bottom dropdown-end" id="dropdown">
-    <summary class="btn" id="mapSummary">I N F O</summary>
+    <summary id="mapSummary">정보</summary>
     <ul class="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52" id="mapUl"></ul>
-  </details>
-  <button id="flipBtn" class="btn">F L I P</button>`;
+  </details>`;
 
 /* ***************후면 설명 데이터****************** */
 const memberDetails = {
@@ -282,19 +281,11 @@ function appendCarouselItem(idx, data) {
   item.setAttribute('class', 'glide_slide');
   item.innerHTML = `
         <div class="flip">
-          <div id="${idx}" class="card-body front ${data.front.color}">
-          ${data.front.color ? `<div class="card-title">${data.front.title}</div>` : data.front.title}
-            <div class="glide__arrows" data-glide-el="controls">
-              <button class="glide__arrow glide__arrow--left" data-glide-dir="<"><</button>
-              <button class="glide__arrow glide__arrow--right" data-glide-dir=">">></button>
-            </div>
+          <div id="${idx}" class="card-body front">
+          
           </div>
-          <div id="${idx}" class="card-body back ${data.back.color}">
-              ${data.back.content}
-            <div class="glide__arrows" data-glide-el="controls">
-              <button class="glide__arrow glide__arrow--left" data-glide-dir="<"><</button>
-              <button class="glide__arrow glide__arrow--right" data-glide-dir=">">></button>
-            </div>
+          <div id="${idx}" class="card-body back">
+
           </div> 
         </div>
       `;
