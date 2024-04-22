@@ -313,7 +313,6 @@ function flipCards() {
 
   flip.forEach(card => {
     card.addEventListener('mouseup', event => {
-      console.log(drag);
       if (!card.parentElement.classList.contains('glide__slide--active') || drag) {
         return;
       }

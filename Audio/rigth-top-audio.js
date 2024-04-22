@@ -11,7 +11,6 @@ const musicImgSrcs = [
 ]
 
 function loadMusic() {
-    console.log('load music ', musicIndex);
     audioSrc.src = musicsSrcs[musicIndex];
     audio.load();
 }
@@ -21,18 +20,15 @@ function onMusicLoaded() {
 
     audioTitle.innerText = title;
     audioImage.src = musicImgSrcs[musicIndex];
-    console.log('music loaded ', title);
     playMusic();
 }
 
 function playMusic() {
-    console.log('music played');
     isPlaying = true;
     audioImageContainer.classList.add('spin');
     audio.play();
 }
 function pauseMusic() {
-    console.log('music paused');
     isPlaying = false;
     audioImageContainer.classList.remove('spin');
     audio.pause();
@@ -100,6 +96,7 @@ function addAudioPlayerToBody() {
 
 //main
 addAudioPlayerToBody();
+
 let musicIndex = 0;
 
 const audio = document.querySelector('audio');
@@ -114,5 +111,9 @@ const audioImageContainer = document.querySelector('.audio_player_image');
 const audioImage = document.getElementById('audio_player_image');
 const audioTitle = document.querySelector('.audio_player_title');
 
-addEventListeners();
-loadMusic(musicIndex);
+try {
+    addEventListeners();
+    loadMusic(musicIndex);
+} catch (error) {
+    console.warn(error);
+}
