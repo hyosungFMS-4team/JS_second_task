@@ -246,12 +246,8 @@ function openModal(modal) {
   modal_charactor.setAttribute('src', `../image/main/${enname}_char.png`);
 
   const showName = document.querySelector('.modal_bottom_text');
-  showName.textContent = `당신의 점수는 ${score}/100`;
-
-  const yesBtn = document.querySelector('.modal_bottom_btn_yes');
-  yesBtn.addEventListener('click', () => {
-    closeModal(modal);
-  });
+  const fontColor = (score > 50)? 'font-blue' : 'font-red';
+  showName.innerHTML = `당신의 점수는 <b class="${fontColor}">${score}점</b>`;
 
   document.querySelector('.modal_bottom_img_area').appendChild(modal_charactor);
 }
@@ -272,8 +268,8 @@ function addModal() {
 
   openModal(modal);
   // setTimeout(() => {
-  //   closeModal();
-  // }, 2000);
+  //   closeModal(modal);
+  // }, 3000);
 }
 
 function loadMap() {

@@ -34,6 +34,13 @@ header > h1 {
   background: #3af39c70;
 }
 
+.font-red {
+  color: red;
+}
+.font-blue {
+  color: blue;
+}
+
 /* body */
 .bg-video {
   position: absolute;
@@ -282,14 +289,11 @@ header > h1 {
 .why_modal_bottom {
   font-size: x-large;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
-}
-
-.why_modal_body {
-  display: flex;
-  justify-content: space-between;
   align-items: center;
+  margin-top: 5%;
+  margin-left: 5%;
 }
 
 .modal_bottom_text {
@@ -328,39 +332,4 @@ header > h1 {
   align-items: baseline;
   margin-bottom: 2%;
   width: 30%;
-}
-
-.modal_bottom_btn_area {
-  display: flex;
-  justify-content: center;
-
-}
-
-.modal_bottom_btn_yes {
-  width: 30%;
-  background-color: #0077cc;
-  color: black;
-  box-shadow: 0px 5px black, 0px -5px black, 5px 0px black, -5px 0px black, 0px 10px #00000038, 5px 5px #00000038, -5px 5px #00000038, inset 0px 5px #ffffff36;
-  margin-right: 2%;
-  transition: all 200ms ease-in;
-  margin-bottom: 1%;
-}
-
-.modal_bottom_btn_no {
-  width: 30%;
-  background-color: #ff0000;
-  color: black;
-  box-shadow: 0px 5px black, 0px -5px black, 5px 0px black, -5px 0px black, 0px 10px #00000038, 5px 5px #00000038, -5px 5px #00000038, inset 0px 5px #ffffff36;
-  margin-left: 2%;
-  transition: all 200ms ease-in;
-}
-
-.modal_bottom_btn_yes:hover {
-  color: #fcfcfc;
-  cursor: pointer;
-}
-
-.modal_bottom_btn_no:hover {
-  color: #fcfcfc;
-  cursor: pointer;
 }
