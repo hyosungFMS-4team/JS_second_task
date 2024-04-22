@@ -19,30 +19,28 @@ let moveInterval = 0.03;
 
 /* ====== localstorage ======*/
 let player = window.localStorage.getItem('en_name').replaceAll('\"', '');
+characterImgSrc = `../image/main/${player}_char.png`
 switch (player) {
     case 'park':
         destCoord = {latitude: 37.2526, longtitude: 127.0723};
-        characterImgSrc = '../image/map/rabbit.gif';
         break;
     case 'kim':
         destCoord = {latitude: 37.2526, longtitude: 127.0723};
-        characterImgSrc = '../image/map/bear.gif';
         moveInterval = 0;
         moveSpeed = 1000;
         break;
     case 'yoon':
         destCoord = {latitude: 37.2526, longtitude: 127.0723};
-        characterImgSrc = '../image/map/santa.gif';
         break;
     case 'lee':
         destCoord = {latitude: 37.2526, longtitude: 127.0723};
-        characterImgSrc = '../image/map/rabbit.gif';
         break;    
 }
 
 /* ============= MAIN ====================*/
 const mapContainer = document.getElementById('map');
 const mapUl = document.getElementById('mapUl');
+let animationStarted = false;
 (async () => {
     // 시작(현재), 종료 좌표
     const curCoord = await getCurCoord();
@@ -54,16 +52,13 @@ const mapUl = document.getElementById('mapUl');
         level: 3
     });
 
-    // 시작, 종료 마커
-    setMarkersOnMap(map, coords);
-
-    // 시작 -> 종료 경로
-    const carDirection = await getCarDirection(curCoord, destCoord);
-    const pathPositions = directionToPath(carDirection);
-
-    // 이동 애니메이션 
-    setSpeedAndInterval(carDirection);
-    setMovingAnimation(map, pathPositions, carDirection);
+    setInterval(() => {
+        if (!mapContainer.parentElement.parentElement.classList.contains('flipped') || animationStarted) {
+            return;
+        }
+        startAnimations(map, curCoord, destCoord);
+        animationStarted = true;
+    }, 100);
 })();
 /* =======================================*/
 
@@ -140,6 +135,59 @@ function directionToPath(direction) {
     return linePath;
 }
 
+async function startAnimations(map, startPos, destPos) {
+    // 시작 -> 종료 경로
+    const carDirection = await getCarDirection(startPos, destPos);
+    const pathPositions = directionToPath(carDirection);
+
+    // 출발지 목표지 애니메이션
+    await setShowLocAnimation(map, startPos, destPos);
+
+    // 시작, 종료 마커
+    setMarkersOnMap(map, [startPos, destPos]);
+
+    // 이동 애니메이션 
+    setSpeedAndInterval(carDirection);
+    setMovingAnimation(map, pathPositions, carDirection);
+}
+
+async function setShowLocAnimation(map, startPos, destPos) {
+    const marker = new kakao.maps.Marker();
+    const infowindow = new kakao.maps.InfoWindow({zindex:1});
+
+    const geocoder = new kakao.maps.services.Geocoder();
+    geocoder.coord2Address(startPos.longtitude, startPos.latitude, (result, status) => {
+        if (status != kakao.maps.services.Status.OK) return;
+
+        console.log('res', result);
+
+        const pos = new kakao.maps.LatLng(startPos.latitude, startPos.longtitude);
+        map.panTo(pos);
+        marker.setPosition(pos);
+        marker.setMap(map);
+
+        infowindow.setContent(`<span>${result[0].address.address_name}</span>`);
+        infowindow.open(map, marker);
+    });
+
+    await new Promise(r => setTimeout(r, 3000));
+    geocoder.coord2Address(destPos.longtitude, destPos.latitude, (result, status) => {
+        if (status != kakao.maps.services.Status.OK) return;
+
+        const pos = new kakao.maps.LatLng(destPos.latitude, destPos.longtitude);
+        map.panTo(pos);
+        marker.setPosition(pos);
+        marker.setMap(map);
+
+        infowindow.setContent(`<span>${result[0].address.address_name}</span>`);
+        infowindow.open(map, marker);
+    });
+    await new Promise(r => setTimeout(r, 2000));
+
+    infowindow.close();
+    marker.setMap(null);
+}
+
 function setSpeedAndInterval(direction) {
     const directionInfo = direction.routes[0].summary;
     const duration = directionInfo.duration;
@@ -174,10 +222,7 @@ function setMovingAnimation(map, pathPositions, carDirection) {
     const imageOption = { offset: new kakao.maps.Point(0, 0) };
     const markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
     const footMarkers = [];
-    const moveAnimation = setInterval(function () {
-        if (!mapContainer.parentElement.parentElement.classList.contains('flipped')) {
-            return;
-        }
+    const moveAnimation = setInterval(() => {
 
         index += increment;
         footPrintIndex += 1;
