@@ -52,12 +52,24 @@
   </div>
 
   <!-- 점수창 모달 -->
-  <dialog id="ox_answer_modal" class="modal">
-    <div class="modal-box answer-modal"></div>
-    <form method="dialog" class="modal-backdrop">
-      <button>close</button>
-    </form>
-  </dialog>
+  <div id="myModal" class="why_modal">
+    <div class="why_modal-content">
+      <div class="why_modal_top">
+        <div class="why_modal_title">SCORE</div>
+      </div>
+      <div class="why_modal_bottom">
+        <div class="why_modal_body">
+          <div class="modal_bottom_img_area">
+            <img id="modal_charactor" class="charactor" src="" alt="" />
+          </div>
+          <div class="modal_bottom_text"></div>
+        </div>
+        <div class="modal_bottom_btn_area">
+          <button class="modal_bottom_btn_yes">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
     <!-- 뒤로가기 -->
     <img class="back_pointer" src="../image/ox_quiz/pointer.png" alt="" onclick="goHome()" />

@@ -18,8 +18,7 @@ let moveInterval = 0.03;
 /*========================================================== */
 
 /* ====== localstorage ======*/
-let mapUrlParams = new URLSearchParams(window.location.search);
-let player = urlParams.get('en_name');
+const player = new URLSearchParams(window.location.search).get('en_name');
 characterImgSrc = `../image/main/${player}_char.png`
 switch (player) {
     case 'park':

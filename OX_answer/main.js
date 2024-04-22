@@ -183,8 +183,15 @@ const memberDetails = {
 /* ***************로컬 스토리지****************** */
 // const enname = localStorage.getItem('en_name').replaceAll('"', '');
 
-let urlParams = new URLSearchParams(window.location.search);
-let enname = urlParams.get('en_name');
+const enname = new URLSearchParams(window.location.search).get('en_name');
+const koname = (() => {
+  switch (enname) {
+    case 'kim': return '김기정';
+    case 'park': return '박민석';
+    case 'yoon': return '윤동훈';
+    case 'lee': return '이재아';
+  }
+})();
 const score = localStorage.getItem(`${enname}_score`);
 const taskDetails = memberDetails[enname];
 const tasks = JSON.parse(localStorage.getItem(`${enname}_answerSheet`));
@@ -192,7 +199,7 @@ const length = tasks.length;
 /* ******************************************** */
 
 /* ***************메인****************** */
-document.querySelector('#header-name').innerHTML = `QUIZ ${enname}`;
+document.querySelector('#header-name').innerHTML = `QUIZ ${koname}`;
 let glideSlides = document.querySelector('.glide__slides');
 let glide;
 window.addEventListener('load', function () {
@@ -211,21 +218,8 @@ window.addEventListener('load', function () {
   flipCards();
   handleGlideDrag();
 
-  const kakaoMapScript = document.createElement('script');
-  kakaoMapScript.src = 'kakao-map.js';
-  document.body.appendChild(kakaoMapScript);
-
-  const modal = document.getElementById('ox_answer_modal');
-  modal.querySelector('.modal-box').innerHTML = `
-    <h3 class="font-bold text-lg">당신의 ${enname} QUIZ 점수</h3>
-    <p class="py-4">${score}/100</p>
-  `;
-  modal.showModal();
-
-  const modalClose = this.setInterval(() => {
-    modal.close();
-    this.clearInterval(modalClose);
-  }, 2000);
+  loadMap();
+  addModal();
 });
 
 tasks.forEach((task, idx) => {
@@ -243,6 +237,50 @@ tasks.forEach((task, idx) => {
 });
 
 /* ******************************************** */
+
+// 압장 확인 모달
+function openModal(modal) {
+  modal.style.display = 'block';
+
+  const modal_charactor = document.getElementById('modal_charactor');
+  modal_charactor.setAttribute('src', `../image/main/${enname}_char.png`);
+
+  const showName = document.querySelector('.modal_bottom_text');
+  showName.textContent = `당신의 점수는 ${score}/100`;
+
+  const yesBtn = document.querySelector('.modal_bottom_btn_yes');
+  yesBtn.addEventListener('click', () => {
+    closeModal(modal);
+  });
+
+  document.querySelector('.modal_bottom_img_area').appendChild(modal_charactor);
+}
+
+function closeModal(modal) {
+  modal.style.display = 'none';
+}
+
+function addModal() {
+  const modal = document.getElementById('myModal');
+
+  // 모달 외부를 클릭하면 닫는 코드
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = 'none';
+    }
+  };
+
+  openModal(modal);
+  // setTimeout(() => {
+  //   closeModal();
+  // }, 2000);
+}
+
+function loadMap() {
+  const kakaoMapScript = document.createElement('script');
+  kakaoMapScript.src = 'kakao-map.js';
+  document.body.appendChild(kakaoMapScript);
+}
 
 function appendCarouselItem(idx, data) {
   let item = document.createElement('li');
