@@ -268,32 +268,27 @@ function appendCarouselItem(idx, data) {
   glideSlides.appendChild(item);
 }
 
+let drag = false;
 function flipCards() {
+let glideSlides = document.querySelector('.glide__slides');
+
   const flip = document.querySelectorAll('.flip');
-  console.log(flip);
-  const delta = 6;
-  //드래그와 클릭 구분
-  let startX;
-  let startY;
 
-  //드래그와 클릭 구분
+  glideSlides.addEventListener('mousedown', () => drag=false);
+  glideSlides.addEventListener('mousemove', () => drag=true);
+
   flip.forEach(card => {
-    card.addEventListener('mousedown', function (event) {
-      startX = event.pageX;
-      startY = event.pageY;
-    });
-
-    card.addEventListener('click', event => {
-      const diffX = Math.abs(event.pageX - startX);
-      const diffY = Math.abs(event.pageY - startY);
-      if (diffX < delta && diffY < delta) {
-        if (card.classList.contains('flipped')) {
-          card.classList.remove('flipped');
-        } else {
-          card.classList.add('flipped');
-        }
+    card.addEventListener('mouseup', event => {
+      console.log(drag);
+      if (!card.parentElement.classList.contains('glide__slide--active') || drag) {
+        return;
       }
-    });
+      if (card.classList.contains('flipped')) {
+        card.classList.remove('flipped');
+      } else {
+        card.classList.add('flipped');
+      }
+    }, false);
   });
 }
 
