@@ -270,12 +270,12 @@ function appendCarouselItem(idx, data) {
 
 let drag = false;
 function flipCards() {
-let glideSlides = document.querySelector('.glide__slides');
+  let glideSlides = document.querySelector('.glide__slides');
 
   const flip = document.querySelectorAll('.flip');
 
-  glideSlides.addEventListener('mousedown', () => drag=false);
-  glideSlides.addEventListener('mousemove', () => drag=true);
+  glideSlides.addEventListener('mousedown', () => drag = false);
+  glideSlides.addEventListener('mousemove', () => drag = true);
 
   flip.forEach(card => {
     card.addEventListener('mouseup', event => {
