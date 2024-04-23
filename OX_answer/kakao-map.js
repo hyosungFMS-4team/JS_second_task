@@ -19,7 +19,7 @@ let moveInterval = 0.03;
 
 /* ====== localstorage ======*/
 const player = new URLSearchParams(window.location.search).get('en_name');
-characterImgSrc = `../image/main/${player}_char.png`
+characterImgSrc = `../image/main/${player}_jump.gif`;
 switch (player) {
     case 'park':
         destCoord = {latitude: 37.2526, longtitude: 127.0723};
