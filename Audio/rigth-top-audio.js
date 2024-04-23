@@ -7,26 +7,26 @@ console.log(audioPage);
 switch (audioPage) {
   case '/Main/index.html':
   case '/Main/':
-    musicsSrcs = ['../Audio/music/main1.mp3', '../Audio/music/main2.mp3'];
+    musicsSrcs = ['../Audio/music/ifvideo_music.mp3', '../Audio/music/2.mp3'];
     musicImgSrcs = ['../image/audio/musicimg1.jpeg', '../image/audio/musicimg2.jpeg'];
     break;
 
   case '/OX_answer/index.html':
-    musicsSrcs = ['../Audio/music/OXanswer1.mp3', '../Audio/music/OXanswer2.mp3'];
+    musicsSrcs = ['../Audio/music/4.mp3', '../Audio/music/5.mp3'];
     musicImgSrcs = ['../image/audio/musicimg3.jpeg', '../image/audio/musicimg4.jpeg'];
     break;
 
   case '/SignUp/signup.html':
-    musicsSrcs = ['../Audio/music/signup.mp3', '../Audio/music/main3.mp3'];
+    musicsSrcs = ['../Audio/music/signup_music.mp3', '../Audio/music/6.mp3'];
     musicImgSrcs = ['../image/audio/musicimg5.jpeg', '../image/audio/musicimg6.jpeg'];
     break;
 
   case '/OX_quiz/index.html':
-    musicsSrcs = ['../Audio/music/quiz1.mp3', '../Audio/music/quiz2.mp3'];
+    musicsSrcs = ['../Audio/music/6.mp3', '../Audio/music/2.mp3'];
     musicImgSrcs = ['../image/audio/musicimg7.jpeg', '../image/audio/musicimg8.jpeg'];
     break;
   case '/Board/board.html':
-    musicsSrcs = ['../Audio/music/ifvideo.mp3', '../Audio/music/quiz1.mp3'];
+    musicsSrcs = ['../Audio/music/board_2.mp3', '../Audio/music/board.mp3'];
     musicImgSrcs = ['../image/audio/musicimg1.jpeg', '../image/audio/musicimg2.jpeg'];
     break;
 }
