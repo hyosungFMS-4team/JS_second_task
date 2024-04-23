@@ -187,7 +187,6 @@ const audioPlayer = createAudioPlayer();
 
 // Append the audio player to the body
 body.appendChild(audioPlayer);
-// addAudioPlayerToBody();
 let musicIndex = 0;
 
 const audio = document.querySelector('audio');

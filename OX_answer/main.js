@@ -61,9 +61,9 @@ appendCarouselMapBackItem(tasks[0]);
 loadMap();
 
 // 두번째 태스크 후면 -> 이미지 기반
-appendCarouselImageBackItem(tasks[1]);
+// appendCarouselImageBackItem(tasks[1], `../image/ox_answer/${enname}_answer.png`);
 
-tasks.splice(0, 2);
+tasks.splice(0, 1);
 
 // 개인 데이터 바인딩
 tasks.forEach(task => {
