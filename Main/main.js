@@ -405,6 +405,8 @@ window.addEventListener('DOMContentLoaded', init);
 
 // enter 입력 시 메인이미지 안보이게
 document.addEventListener('DOMContentLoaded', () => {
+  makeStartGifInvisible();
+
   document.addEventListener('keyup', function (event) {
     if (event.key === 'Enter') {
       document.getElementById('start-gif__content').classList.add('disappear');
@@ -412,7 +414,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
-makeStartGifInvisible();
+// makeStartGifInvisible();
 function makeStartGifInvisible() {
   const startGif = document.querySelector('#start-gif__content');
   const point = localStorage.getItem('point');

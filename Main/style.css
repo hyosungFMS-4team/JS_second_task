@@ -24,7 +24,7 @@ body {
   align-items: center;
 }
 
-.start-gif {
+/* .start-gif {
   height: 100%;
   width: 100%;
 }
@@ -39,6 +39,36 @@ body {
   top: 0;
   transition: 0.3s ease-out;
   bottom: 0;
+} */
+
+.start-gif {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 100;
+}
+
+.start-gif__content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  z-index: 100;
+}
+
+.start-gif__text {
+  font-family: 'PIXEL';
+  font-weight: 900;
+  position: absolute;
+  top: 85%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: xx-large;
+  z-index: 100;
 }
 
 .remove {
