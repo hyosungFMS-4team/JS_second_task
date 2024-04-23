@@ -403,6 +403,17 @@ function init() {
 
 window.addEventListener('DOMContentLoaded', init);
 
+document.addEventListener('DOMContentLoaded', function () {
+  document.addEventListener('keyup', function (event) {
+    if (event.key === 'Enter') {
+      document.getElementById('start-gif__content').style.display = 'none';
+      document.querySelectorAll('.container > *').forEach(element => {
+        element.style.display = 'block';
+      });
+    }
+  });
+});
+
 // testBox 위치 미리 저장
 
 const testBoxList = document.querySelectorAll('.test');
