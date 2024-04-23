@@ -129,7 +129,7 @@ function appendCarouselMapBackItem(firstTask) {
 }
 function appendCarouselPersonalItem(task) {
   const front = makeFrontCardContent(task);
-  const back = 'BACK';
+  const back = task.answerDesc;
   appendCarouselItem(front, back);
 }
 
@@ -166,9 +166,12 @@ function makeFrontCardContent(data) {
           <div class="divider_line"></div>
         </div>
         <div class="card_box_main_right_dummy">
-          <div class="dummy_title"><b>${data.content}</b></div>
+          <div class="dummy_title"><b>Opinion: This album brings ‘Taylor math’ to a whole new level</b></div>
             <div class="dummy_text">
-              ${data.answerDesc}
+            Friday’s midnight release of “The Tortured Poets Department,” Taylor Swift’s 11th album, means that yet another era has begun and a
+            record-breaking one at that. Swifties, who are now more than familiar with football jargon (at least when it comes to Kansas City
+            Chiefs’ tight end Travis Kelce, Taylor’s beau) can finally put away the grill and the drinks, lock the car, and leave the parking lot
+            for the stadium. The tailgate is over: it’s game on for Taylor Nation.
             </div>
           </div>
         </div>
