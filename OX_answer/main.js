@@ -127,6 +127,7 @@ function loadMap() {
 
 /* SPLIDE */
 function appendCarouselMapBackItem(firstTask) {
+  firstTask.isCorrect === true ? '#1d4fd870' : '#ff000070';
   const front = makeFrontCardContent(firstTask);
   const back = `
   <div id="map" class="map"></div>
@@ -134,17 +135,17 @@ function appendCarouselMapBackItem(firstTask) {
     <summary id="mapSummary" class="map">정보</summary>
     <ul class="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52 map" id="mapUl"></ul>
   </details>`;
-  appendCarouselItem(front, back);
+  appendCarouselItem(front, back, firstTask.isCorrect === true ? '#1d4fd870' : '#ff000070');
 }
 function appendCarouselImageBackItem(secondTask, imgsrc) {
   const front = makeFrontCardContent(secondTask);
   const back = `
-  <div class="card card-side">
+  <div class="card card-side" style="background:${secondTask.isCorrect === true ? '#1d4fd870' : '#ff000070'};">
   <figure><img src="${imgsrc}" alt="개인 이미지" /></figure>
   <div class="card-body">
     <h2 class="card-title">
       ${secondTask.content}
-      <div class="badge ${secondTask.isCorrect? 'bg-blue' : 'bg-red'}">${secondTask.userSelectAnswer}</div>
+      <div class="badge ${secondTask.isCorrect ? 'bg-blue' : 'bg-red'}">${secondTask.userSelectAnswer}</div>
     </h2>
     <p>${secondTask.answerDesc}</p>
     <div class="card-actions justify-end">
@@ -169,8 +170,19 @@ function appendCarouselAudioBackItem(thirdTask) {
 }
 function appendCarouselPersonalItem(task) {
   const front = makeFrontCardContent(task);
-  const back = task.answerDesc;
+  const back = makeBackCardContent(task);
   appendCarouselItem(front, back);
+}
+
+function makeBackCardContent(data) {
+  console.log(data);
+  return `
+    <div style="width:100%; height:120%; display:flex; justify-content:center; align-items:center; margin-bottom:-8%; background:${
+      data.isCorrect === true ? '#1d4fd870' : '#ff000070'
+    };">
+      <div style="font-size:xx-large">${data.answerDesc}</div>
+    </div>
+  `;
 }
 
 function makeFrontCardContent(data) {
@@ -222,7 +234,7 @@ function makeFrontCardContent(data) {
     <img class="card_deco" src="../image/ox_answer/card_deco1.png" alt="" />
   </div>`;
 }
-function appendCarouselItem(front, back) {
+function appendCarouselItem(front, back, color = null) {
   const li = document.createElement('li');
   li.classList.add('splide__slide');
 
@@ -236,6 +248,7 @@ function appendCarouselItem(front, back) {
 
   const boxBack = document.createElement('div');
   boxBack.classList.add('card_box', 'back');
+  if (color) boxBack.style.backgroundColor = color;
   boxBack.innerHTML = back;
   flidDiv.appendChild(boxBack);
 

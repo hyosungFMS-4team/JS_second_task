@@ -301,6 +301,7 @@ function submitAnswer() {
       isCorrect: null,
       userSelectAnswer: null,
       answerDesc: item.desc,
+      realAnswer: item.answer,
     };
     if (item.status[0] === item.answer) {
       score += oneScore;
