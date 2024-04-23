@@ -6,8 +6,8 @@
 .audio_player {
   /* 페이지 별로 설정 */
   position: absolute;
-  top: 2%;
-  right: 2%;
+  top: 4%;
+  right: 10px;
 
   display: flex;
   flex-direction: column;

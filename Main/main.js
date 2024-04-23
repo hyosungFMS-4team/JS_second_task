@@ -414,6 +414,11 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 makeStartGifVisible();
 
+const gifFirst = document.querySelector('.first');
+setTimeout(() => {
+  gifFirst.classList.add('remove');
+}, 2000);
+
 function makeStartGifVisible() {
   const startGif = document.querySelector('#start-gif__content');
   const point = localStorage.getItem('point');
