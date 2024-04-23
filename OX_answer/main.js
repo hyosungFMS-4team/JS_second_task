@@ -145,7 +145,7 @@ function makeFrontCardContent(data) {
       <div class="card_box_main_left_area">
         <div class="card_box_main_left_img">
           <div class="black_wrapper"></div>
-          <div class="news_text_o">${data.isCorrect? '맞았습니다!' : '틀렸습니다!'}</div>
+          <div class="news_text_${data.isCorrect? 'o' : 'x'}">${data.isCorrect? '맞았습니다!' : '틀렸습니다!'}</div>
           <img class="news_img" src="../image/main/${enname}_${(data.isCorrect)? 'jump.gif' : 'char.png'}" alt="" />
         </div>
         <div class="card_box_main_left_divider"></div>
@@ -160,7 +160,7 @@ function makeFrontCardContent(data) {
         <div class="card_box_main_right_answer">
           <div class="answer_index">문제 )</div>
           <div class="answer_title">${data.content}</div>
-          <div class="user_select_answer">당신이 선택한 답 : <span style="color: #1d4ed8">${data.userSelectAnswer}</span></div>
+          <div class="user_select_answer">당신이 선택한 답 : <span class="${data.isCorrect? 'font-blue' : 'font-red'}">${data.userSelectAnswer}</span></div>
         </div>
         <div class="card_box_main_right_divider">
           <div class="divider_line"></div>
