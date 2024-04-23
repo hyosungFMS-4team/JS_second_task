@@ -1,14 +1,41 @@
-// TODO: localstorage 확인
-// 개인별 음악, 사진 목록 위치 지정
-const musicsSrcs = [
-    '../Audio/first.mp3',
-    '../Audio/second.mp3',
-    '../Audio/thirdlonglonglong.mp3'
-];
-const musicImgSrcs = [
-    '../image/audio/first.jpg',
-    '../image/audio/second.png'
-]
+const page = window.location.pathname;
+let musicsSrcs;
+let musicImgSrcs;
+
+// 페이지별 음악, 사진 목록 위치 지정
+switch (page) {
+    case '/Main/index.html': case '/Main/': 
+        musicsSrcs = [
+            '../Audio/first.mp3',
+            '../Audio/second.mp3',
+        ];
+        musicImgSrcs = [
+            '../image/audio/first.jpg',
+            '../image/audio/second.png'
+        ];
+        break;
+    case '/OX_answer/index.html': 
+        musicsSrcs = [
+            '../Audio/first.mp3',
+            '../Audio/second.mp3',
+        ];
+        musicImgSrcs = [
+            '../image/audio/first.jpg',
+            '../image/audio/second.png'
+        ];
+        break;
+    case '/SignUp/signup.html': 
+        musicsSrcs = [
+            '../audio/thirdlonglonglong.mp3'
+        ];
+        musicImgSrcs = [
+        ];
+        break;
+    case '/OX_quiz/index.html': break;
+    case '/Board/board.html': break;
+}
+
+// 
 
 function loadMusic() {
     console.log('load music ', musicIndex);
