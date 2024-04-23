@@ -1,10 +1,10 @@
-const page = window.location.pathname;
+const audioPage = window.location.pathname;
 let musicsSrcs;
 let musicImgSrcs;
 
-console.log(page);
+console.log(audioPage);
 // 페이지별 음악, 사진 목록 위치 지정
-switch (page) {
+switch (audioPage) {
   case '/Main/index.html':
   case '/Main/':
     musicsSrcs = ['../Audio/music/main1.mp3', '../Audio/music/main2.mp3'];

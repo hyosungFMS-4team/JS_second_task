@@ -417,6 +417,14 @@ makeStartGifVisible();
 const gifFirst = document.querySelector('.first');
 setTimeout(() => {
   gifFirst.classList.add('remove');
+  const audioScript = document.createElement('script');
+  audioScript.src = '../Audio/rigth-top-audio.js';
+  const audioStyle = document.createElement('link');
+  audioStyle.rel = 'stylesheet';
+  audioStyle.href = '../Audio/right-top-audio-small.css';
+
+  document.body.appendChild(audioScript);
+  document.body.appendChild(audioStyle);
 }, 2000);
 
 function makeStartGifVisible() {
