@@ -45,7 +45,8 @@ function onMusicLoaded() {
   audioTitle.innerText = title;
   audioImage.src = musicImgSrcs[musicIndex];
   console.log('music loaded ', title);
-  playMusic();
+  audio.muted = false;
+  //   playMusic();
 }
 
 function playMusic() {
@@ -85,6 +86,9 @@ function addEventListeners() {
   audioBtnPlay.addEventListener('click', () => onPlayButtonClicked());
   audioBtnPrev.addEventListener('click', () => onPrevButtonClicked());
   audioBtnNext.addEventListener('click', () => onNextButtonClicked());
+  window.onbeforeunload = function (event) {
+    pauseMusic();
+  };
 }
 
 function createAudioPlayer() {
@@ -92,6 +96,8 @@ function createAudioPlayer() {
   audioPlayer.classList.add('audio_player', 'pixel_border');
 
   const audio = document.createElement('audio');
+  audio.muted = true;
+  audio.autoplay = 'autoplay';
   const audioSource = document.createElement('source');
   audioSource.id = 'audio_src';
   audioSource.type = 'audio/mpeg'; // Adjust type based on your audio format
@@ -172,6 +178,7 @@ function createAudioPlayer() {
 }
 
 //main
+
 // Get the body element
 const body = document.body;
 
@@ -180,10 +187,6 @@ const audioPlayer = createAudioPlayer();
 
 // Append the audio player to the body
 body.appendChild(audioPlayer);
-const stopScript = document.createElement('script');
-const scriptBody = document.createTextNode('window.onbeforeunload = function(event) {pauseMusic();}');
-stopScript.appendChild(scriptBody);
-body.appendChild(stopScript);
 // addAudioPlayerToBody();
 let musicIndex = 0;
 
