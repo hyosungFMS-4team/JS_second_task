@@ -99,7 +99,7 @@ const AllOXItems = {
       text: '휴대폰 보험을 들었다.', 
       backgroundColor: '#009688', 
       answer: 'o', 
-      desc: '질문에 대한 답변입니다.' 
+      desc: '케이스 대신 보험료 한달 3300원' 
     },
     { id: '9', 
       text: '나는 장발을 해본 적이 있다.', 
