@@ -185,7 +185,7 @@ function hasParentWithClass(element, className) {
   // 부모 노드가 없을 때까지 && li가 아닐때까지 반복
   while (element.parentElement && element.tagName !== 'LI') {
     element = element.parentElement;
-    console.log(element.tagName);
+    // console.log(element.tagName);
     // 부모 요소의 클래스에 className이 포함되어 있는지 확인
     if (element.classList.contains(className)) {
       return true; // 클래스가 포함되어 있다면 true 반환

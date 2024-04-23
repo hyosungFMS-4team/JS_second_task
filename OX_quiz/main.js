@@ -7,52 +7,52 @@ let tasks = JSON.parse(localStorage.getItem(`${currentuser}_task`)) === null ? [
 
 const AllOXItems = {
   yoon: [
-    { id: '1', text: '제 이름은 윤동훈입니다.', answer: 'o' },
-    { id: '2', text: '저는 1996년생입니다', backgroundColor: '#d83434', answer: 'o' },
-    { id: '3', text: '저는 현재 강북구에 살고있습니다', backgroundColor: '#38667f', answer: 'o' },
-    { id: '4', text: '저는 현재 강북구에 살고있습니다', backgroundColor: '#38667f', answer: 'o' },
-    { id: '5', text: '저는 현재 강북구에 살고있습니다', backgroundColor: '#38667f', answer: 'o' },
-    { id: '6', text: 'Click at me', backgroundColor: '#9f7db1', answer: 'x' },
-    { id: '7', text: 'Click at me', backgroundColor: '#ff5722', answer: 'x' },
-    { id: '8', text: 'Click at me', backgroundColor: '#009688', answer: 'x' },
-    { id: '9', text: 'Click at me', backgroundColor: '#009688', answer: 'x' },
-    { id: '10', text: 'Click at me', backgroundColor: '#009688', answer: 'x' },
+    { id: '1', text: '제 이름은 윤동훈입니다.', answer: 'o', desc: '질문에 대한 답변입니다.' },
+    { id: '2', text: '저는 1996년생입니다', backgroundColor: '#d83434', answer: 'o', desc: '질문에 대한 답변입니다.' },
+    { id: '3', text: '저는 현재 강북구에 살고있습니다', backgroundColor: '#38667f', answer: 'o', desc: '질문에 대한 답변입니다.' },
+    { id: '4', text: '저는 현재 강북구에 살고있습니다', backgroundColor: '#38667f', answer: 'o', desc: '질문에 대한 답변입니다.' },
+    { id: '5', text: '저는 현재 강북구에 살고있습니다', backgroundColor: '#38667f', answer: 'o', desc: '질문에 대한 답변입니다.' },
+    { id: '6', text: 'Click at me', backgroundColor: '#9f7db1', answer: 'x', desc: '질문에 대한 답변입니다.' },
+    { id: '7', text: 'Click at me', backgroundColor: '#ff5722', answer: 'x', desc: '질문에 대한 답변입니다.' },
+    { id: '8', text: 'Click at me', backgroundColor: '#009688', answer: 'x', desc: '질문에 대한 답변입니다.' },
+    { id: '9', text: 'Click at me', backgroundColor: '#009688', answer: 'x', desc: '질문에 대한 답변입니다.' },
+    { id: '10', text: 'Click at me', backgroundColor: '#009688', answer: 'x', desc: '질문에 대한 답변입니다.' },
   ],
   kim: [
-    { id: '1', text: '제 이름은 김기정입니다.', answer: 'o' },
-    { id: '2', text: '저는 1998년생입니다', backgroundColor: '#d83434', answer: 'o' },
-    { id: '3', text: '저는 현재 강북구에 살고있습니다', backgroundColor: '#38667f', answer: 'o' },
-    { id: '4', text: '저는 현재 강북구에 살고있습니다', backgroundColor: '#38667f', answer: 'o' },
-    { id: '5', text: '저는 현재 강북구에 살고있습니다', backgroundColor: '#38667f', answer: 'o' },
-    { id: '6', text: 'Click at me', backgroundColor: '#9f7db1', answer: 'x' },
-    { id: '7', text: 'Click at me', backgroundColor: '#ff5722', answer: 'x' },
-    { id: '8', text: 'Click at me', backgroundColor: '#009688', answer: 'x' },
-    { id: '9', text: 'Click at me', backgroundColor: '#009688', answer: 'x' },
-    { id: '10', text: 'Click at me', backgroundColor: '#009688', answer: 'x' },
+    { id: '1', text: '제 이름은 김기정입니다.', answer: 'o', desc: '질문에 대한 답변입니다.' },
+    { id: '2', text: '저는 1998년생입니다', backgroundColor: '#d83434', answer: 'o', desc: '질문에 대한 답변입니다.' },
+    { id: '3', text: '저는 현재 강북구에 살고있습니다', backgroundColor: '#38667f', answer: 'o', desc: '질문에 대한 답변입니다.' },
+    { id: '4', text: '저는 현재 강북구에 살고있습니다', backgroundColor: '#38667f', answer: 'o', desc: '질문에 대한 답변입니다.' },
+    { id: '5', text: '저는 현재 강북구에 살고있습니다', backgroundColor: '#38667f', answer: 'o', desc: '질문에 대한 답변입니다.' },
+    { id: '6', text: 'Click at me', backgroundColor: '#9f7db1', answer: 'x', desc: '질문에 대한 답변입니다.' },
+    { id: '7', text: 'Click at me', backgroundColor: '#ff5722', answer: 'x', desc: '질문에 대한 답변입니다.' },
+    { id: '8', text: 'Click at me', backgroundColor: '#009688', answer: 'x', desc: '질문에 대한 답변입니다.' },
+    { id: '9', text: 'Click at me', backgroundColor: '#009688', answer: 'x', desc: '질문에 대한 답변입니다.' },
+    { id: '10', text: 'Click at me', backgroundColor: '#009688', answer: 'x', desc: '질문에 대한 답변입니다.' },
   ],
   park: [
-    { id: '1', text: '제 이름은 박민석입니다.', answer: 'o' },
-    { id: '2', text: '저는 1998년생입니다', backgroundColor: '#d83434', answer: 'o' },
-    { id: '3', text: '저는 현재 강북구에 살고있습니다', backgroundColor: '#38667f', answer: 'o' },
-    { id: '4', text: '저는 현재 강북구에 살고있습니다', backgroundColor: '#38667f', answer: 'o' },
-    { id: '5', text: '저는 현재 강북구에 살고있습니다', backgroundColor: '#38667f', answer: 'o' },
-    { id: '6', text: 'Click at me', backgroundColor: '#9f7db1', answer: 'x' },
-    { id: '7', text: 'Click at me', backgroundColor: '#ff5722', answer: 'x' },
-    { id: '8', text: 'Click at me', backgroundColor: '#009688', answer: 'x' },
-    { id: '9', text: 'Click at me', backgroundColor: '#009688', answer: 'x' },
-    { id: '10', text: 'Click at me', backgroundColor: '#009688', answer: 'x' },
+    { id: '1', text: '제 이름은 박민석입니다.', answer: 'o', desc: '질문에 대한 답변입니다.' },
+    { id: '2', text: '저는 1998년생입니다', backgroundColor: '#d83434', answer: 'o', desc: '질문에 대한 답변입니다.' },
+    { id: '3', text: '저는 현재 강북구에 살고있습니다', backgroundColor: '#38667f', answer: 'o', desc: '질문에 대한 답변입니다.' },
+    { id: '4', text: '저는 현재 강북구에 살고있습니다', backgroundColor: '#38667f', answer: 'o', desc: '질문에 대한 답변입니다.' },
+    { id: '5', text: '저는 현재 강북구에 살고있습니다', backgroundColor: '#38667f', answer: 'o', desc: '질문에 대한 답변입니다.' },
+    { id: '6', text: 'Click at me', backgroundColor: '#9f7db1', answer: 'x', desc: '질문에 대한 답변입니다.' },
+    { id: '7', text: 'Click at me', backgroundColor: '#ff5722', answer: 'x', desc: '질문에 대한 답변입니다.' },
+    { id: '8', text: 'Click at me', backgroundColor: '#009688', answer: 'x', desc: '질문에 대한 답변입니다.' },
+    { id: '9', text: 'Click at me', backgroundColor: '#009688', answer: 'x', desc: '질문에 대한 답변입니다.' },
+    { id: '10', text: 'Click at me', backgroundColor: '#009688', answer: 'x', desc: '질문에 대한 답변입니다.' },
   ],
   lee: [
-    { id: '1', text: '제 이름은 이재아입니다.', answer: 'o' },
-    { id: '2', text: '저는 1999년생입니다', backgroundColor: '#d83434', answer: 'o' },
-    { id: '3', text: '저는 현재 강북구에 살고있습니다', backgroundColor: '#38667f', answer: 'o' },
-    { id: '4', text: '저는 현재 강북구에 살고있습니다', backgroundColor: '#38667f', answer: 'o' },
-    { id: '5', text: '저는 현재 강북구에 살고있습니다', backgroundColor: '#38667f', answer: 'o' },
-    { id: '6', text: 'Click at me', backgroundColor: '#9f7db1', answer: 'x' },
-    { id: '7', text: 'Click at me', backgroundColor: '#ff5722', answer: 'x' },
-    { id: '8', text: 'Click at me', backgroundColor: '#009688', answer: 'x' },
-    { id: '9', text: 'Click at me', backgroundColor: '#009688', answer: 'x' },
-    { id: '10', text: 'Click at me', backgroundColor: '#009688', answer: 'x' },
+    { id: '1', text: '제 이름은 이재아입니다.', answer: 'o', desc: '질문에 대한 답변입니다.' },
+    { id: '2', text: '저는 1999년생입니다', backgroundColor: '#d83434', answer: 'o', desc: '질문에 대한 답변입니다.' },
+    { id: '3', text: '저는 현재 강북구에 살고있습니다', backgroundColor: '#38667f', answer: 'o', desc: '질문에 대한 답변입니다.' },
+    { id: '4', text: '저는 현재 강북구에 살고있습니다', backgroundColor: '#38667f', answer: 'o', desc: '질문에 대한 답변입니다.' },
+    { id: '5', text: '저는 현재 강북구에 살고있습니다', backgroundColor: '#38667f', answer: 'o', desc: '질문에 대한 답변입니다.' },
+    { id: '6', text: 'Click at me', backgroundColor: '#9f7db1', answer: 'x', desc: '질문에 대한 답변입니다.' },
+    { id: '7', text: 'Click at me', backgroundColor: '#ff5722', answer: 'x', desc: '질문에 대한 답변입니다.' },
+    { id: '8', text: 'Click at me', backgroundColor: '#009688', answer: 'x', desc: '질문에 대한 답변입니다.' },
+    { id: '9', text: 'Click at me', backgroundColor: '#009688', answer: 'x', desc: '질문에 대한 답변입니다.' },
+    { id: '10', text: 'Click at me', backgroundColor: '#009688', answer: 'x', desc: '질문에 대한 답변입니다.' },
   ],
 };
 
@@ -71,6 +71,7 @@ function renderTasks() {
         backgroundColor: item.backgroundColor,
         status: 'quiz_items',
         answer: item.answer,
+        desc: item.desc,
       };
       tasks.push(newTask);
     });
@@ -246,12 +247,20 @@ function submitAnswer() {
       id: item.id,
       content: item.content,
       isCorrect: null,
+      userSelectAnswer: null,
+      answerDesc: item.desc,
     };
     if (item.status[0] === item.answer) {
       score += oneScore;
       newAnswer.isCorrect = true;
     } else {
       newAnswer.isCorrect = false;
+    }
+
+    if (newAnswer.isCorrect) {
+      newAnswer.userSelectAnswer = item.answer;
+    } else {
+      item.answer === 'o' ? (newAnswer.userSelectAnswer = 'x') : (newAnswer.userSelectAnswer = 'o');
     }
 
     answerSheet.push(newAnswer);
