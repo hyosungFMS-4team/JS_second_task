@@ -147,12 +147,12 @@ function makeFrontCardContent(data) {
       <div class="card_box_main_left_area">
         <div class="card_box_main_left_img">
           <div class="black_wrapper"></div>
-          <div class="news_text_${data.isCorrect? 'o' : 'x'}">${data.isCorrect? '맞았습니다!' : '틀렸습니다!'}</div>
-          <img class="news_img" src="../image/${data.isCorrect? `main/${enname}_jump.gif` : `ox_answer/${enname}_x.png`}" alt="" />
+          <div class="news_text_${data.isCorrect ? 'o' : 'x'}">${data.isCorrect ? '맞았습니다!' : '틀렸습니다!'}</div>
+          <img class="news_img" src="../image/${data.isCorrect ? `main/${enname}_jump.gif` : `ox_answer/${enname}_x.png`}" alt="" />
         </div>
         <div class="card_box_main_left_divider"></div>
         <div class="card_box_main_left_text">
-          ▲ 자신에 대한 OX 문제를 ${data.isCorrect? ' 맞춘 것에 매우 기뻐 뛰고 있는 모습이다.' : ' 틀린 것에 매우 슬퍼 하고 있는 모습이다.'}
+          ▲ 자신에 대한 OX 문제를 ${data.isCorrect ? ' 맞춘 것에 매우 기뻐 뛰고 있는 모습이다.' : ' 틀린 것에 매우 슬퍼 하고 있는 모습이다.'}
         </div>
       </div>
     </div>
@@ -162,7 +162,9 @@ function makeFrontCardContent(data) {
         <div class="card_box_main_right_answer">
           <div class="answer_index">문제 )</div>
           <div class="answer_title">${data.content}</div>
-          <div class="user_select_answer">당신이 선택한 답 : <span class="${(data.userSelectAnswer == 'o')? 'font-blue' : 'font-red'}">${data.userSelectAnswer}</span></div>
+          <div class="user_select_answer">당신이 선택한 답 : <span class="${data.userSelectAnswer == 'o' ? 'font-blue' : 'font-red'}">${
+    data.userSelectAnswer
+  }</span></div>
         </div>
         <div class="card_box_main_right_divider">
           <div class="divider_line"></div>
@@ -277,6 +279,80 @@ rightBtn.addEventListener('click', () => {
   }, 500);
 });
 
+function handleSplideDrag() {
+  const mapElements = ['map', 'mapSummary', 'mapUl', 'mapInfo'];
+  const allElements = document.querySelectorAll('*');
+
+  mapElements.forEach(x => {
+    const element = document.getElementById(x);
+    if (element) {
+      console.log(element);
+      element.addEventListener('click', handleMapClick);
+      element.addEventListener('mousedown', handleMapMouseDown);
+      element.addEventListener('wheel', handleMapwheel);
+    }
+  });
+
+  document.getElementById('dropdown').addEventListener('click', function (event) {
+    event.stopPropagation();
+  });
+
+  function handleMapClick(event) {
+    console.log(event);
+
+    event.stopPropagation();
+    splide.options = {
+      drag: false,
+      wheel: false,
+      wheelMinThreshold: 0,
+    };
+  }
+
+  function handleMapMouseDown(event) {
+    console.log(event);
+    splide.options = {
+      drag: false,
+      wheel: false,
+    };
+  }
+  function handleMapwheel(event) {
+    event.stopPropagation();
+    console.log(event);
+    splide.options = {
+      drag: false,
+      wheel: false,
+    };
+  }
+
+  document.getElementById('dropdown').addEventListener('click', function (event) {
+    event.stopPropagation();
+  });
+
+  // map과 dropdown 요소 제외한 모든 요소에 대해 이벤트 리스너 추가
+  allElements.forEach(element => {
+    let id = element.id;
+    if (id !== 'map' && id !== 'dropdown' && id !== 'mapSummary' && id !== 'mapUl' && id !== 'mapInfo') {
+      // 마우스가 요소 위에 있을 때 glide.enable() 실행
+      element.addEventListener('mouseenter', function () {
+        splide.options = {
+          drag: true,
+          wheel: true,
+        };
+      });
+      // 요소를 클릭했을 때 glide.enable() 실행
+      element.addEventListener('click', function () {
+        splide.options = {
+          drag: true,
+          wheel: true,
+        };
+      });
+    }
+  });
+}
+
+splide.on('updated', e => {
+  console.log(e);
+});
 // 홈으로 보내기
 function goHome() {
   window.location.href = '../Main/index.html';
