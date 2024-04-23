@@ -16,10 +16,31 @@ const score = localStorage.getItem(`${enname}_score`);
 let tasks = JSON.parse(localStorage.getItem(`${enname}_answerSheet`));
 const length = tasks.length;
 
+const ox_title = document.querySelector('.title');
+
+const o_span = document.createElement('span');
+o_span.classList.add('title_o');
+o_span.style.color = '#1d4ed8';
+o_span.textContent = 'O ';
+
+const x_span = document.createElement('span');
+x_span.classList.add('title_x');
+x_span.style.color = '#ff0000';
+x_span.textContent = 'X ';
+
+const title_text = document.createElement('span');
+title_text.textContent = `Answer of ${koname}`;
+
+ox_title.appendChild(o_span);
+ox_title.appendChild(x_span);
+ox_title.appendChild(title_text);
+
+/* ******************************************** */
+
 /* ***************메인****************** */
 
 // 헤더 이름 설정
-document.querySelector('#header-name').innerHTML = `QUIZ ${koname}`;
+// document.querySelector('#header-name').innerHTML = `QUIZ ${koname}`;
 
 // SPLIDE
 const splideList = document.querySelector('.splide__list');
@@ -159,7 +180,7 @@ function makeFrontCardContent(data) {
 function appendCarouselItem(front, back) {
   const li = document.createElement('li');
   li.classList.add('splide__slide');
-  
+
   const flidDiv = document.createElement('div');
   flidDiv.classList.add('flip');
 
@@ -181,7 +202,7 @@ function hasParentWithClass(element, className) {
   // 부모 노드가 없을 때까지 && li가 아닐때까지 반복
   while (element.parentElement && element.tagName !== 'LI') {
     element = element.parentElement;
-    // console.log(element.tagName);
+
     // 부모 요소의 클래스에 className이 포함되어 있는지 확인
     if (element.classList.contains(className)) {
       return true; // 클래스가 포함되어 있다면 true 반환
@@ -217,6 +238,29 @@ function flipCards() {
     }
   });
 }
+
+const leftBtn = document.querySelector('.splide__arrow--prev');
+const rightBtn = document.querySelector('.splide__arrow--next');
+
+leftBtn.addEventListener('click', () => {
+  leftBtn.style.opacity = 0;
+  rightBtn.style.opacity = 0;
+
+  setTimeout(() => {
+    leftBtn.style.opacity = 1;
+    rightBtn.style.opacity = 1;
+  }, 500);
+});
+
+rightBtn.addEventListener('click', () => {
+  leftBtn.style.opacity = 0;
+  rightBtn.style.opacity = 0;
+
+  setTimeout(() => {
+    leftBtn.style.opacity = 1;
+    rightBtn.style.opacity = 1;
+  }, 500);
+});
 
 // 홈으로 보내기
 function goHome() {

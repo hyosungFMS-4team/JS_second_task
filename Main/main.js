@@ -114,7 +114,6 @@ function init() {
 
     if (bool === true) {
       const returnList = checkPos(x, y);
-      console.log(returnList);
 
       if (!returnList[0]) {
         return;
