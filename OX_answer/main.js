@@ -63,10 +63,7 @@ loadMap();
 // 두번째 태스크 후면 -> 이미지 기반
 appendCarouselImageBackItem(tasks[1]);
 
-// 세번째 태스크 후면 -> 오디오 기반
-appendCarouselAudioBackItem(tasks[2]);
-
-tasks.splice(0, 3);
+tasks.splice(0, 2);
 
 // 개인 데이터 바인딩
 tasks.forEach(task => {
@@ -152,18 +149,6 @@ function appendCarouselImageBackItem(secondTask, imgsrc) {
       <div class="badge badge-outline">#태그1</div> 
       <div class="badge badge-outline">#태그2</div>
     </div>
-  </div>
-</div>`;
-  appendCarouselItem(front, back);
-}
-function appendCarouselAudioBackItem(thirdTask) {
-  const front = makeFrontCardContent(thirdTask);
-  const back = `
-  <div class="card card-side">
-  <figure><img src="https://daisyui.com/images/stock/photo-1494232410401-ad00d5433cfa.jpg" alt="Album"/></figure>
-  <div class="card-body">
-    <h2 class="card-title">New album is released!</h2>
-    <p>Click the button to listen on Spotiwhy app.</p>
   </div>
 </div>`;
   appendCarouselItem(front, back);
