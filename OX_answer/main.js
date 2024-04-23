@@ -40,7 +40,7 @@ ox_title.appendChild(title_text);
 /* ***************메인****************** */
 
 // 헤더 이름 설정
-document.querySelector('#header-name').innerHTML = `QUIZ ${koname}`;
+// document.querySelector('#header-name').innerHTML = `QUIZ ${koname}`;
 
 // SPLIDE
 const splideList = document.querySelector('.splide__list');
@@ -242,6 +242,29 @@ function flipCards() {
     }
   });
 }
+
+const leftBtn = document.querySelector('.splide__arrow--prev');
+const rightBtn = document.querySelector('.splide__arrow--next');
+
+leftBtn.addEventListener('click', () => {
+  leftBtn.style.opacity = 0;
+  rightBtn.style.opacity = 0;
+
+  setTimeout(() => {
+    leftBtn.style.opacity = 1;
+    rightBtn.style.opacity = 1;
+  }, 500);
+});
+
+rightBtn.addEventListener('click', () => {
+  leftBtn.style.opacity = 0;
+  rightBtn.style.opacity = 0;
+
+  setTimeout(() => {
+    leftBtn.style.opacity = 1;
+    rightBtn.style.opacity = 1;
+  }, 500);
+});
 
 // 홈으로 보내기
 function goHome() {
