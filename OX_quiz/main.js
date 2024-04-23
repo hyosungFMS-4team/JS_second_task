@@ -80,8 +80,8 @@ const AllOXItems = {
     { id: '5', 
       text: '사랑니가 있다.', 
       backgroundColor: '#38667f', 
-      answer: 'o', 
-      desc: '빼고 아파하는 사진' 
+      answer: 'x', 
+      desc: '최근에 4개 다 뽑아버렸습니다.' 
     },
     { id: '6', 
       text: '빵집에서 알바를 해봤다.', 
