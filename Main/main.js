@@ -403,16 +403,23 @@ function init() {
 
 window.addEventListener('DOMContentLoaded', init);
 
-document.addEventListener('DOMContentLoaded', function () {
+// enter 입력 시 메인이미지 안보이게
+document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('keyup', function (event) {
     if (event.key === 'Enter') {
-      document.getElementById('start-gif__content').style.display = 'none';
-      document.querySelectorAll('.container > *').forEach(element => {
-        element.style.display = 'block';
-      });
+      document.getElementById('start-gif__content').classList.add('disappear');
+      document.getElementById('start-gif__content').setAttribute('class', 'remove');
     }
   });
 });
+makeStartGifInvisible();
+function makeStartGifInvisible() {
+  const startGif = document.querySelector('#start-gif__content');
+  const point = localStorage.getItem('point');
+  if (point) {
+    startGif.style.display = 'none';
+  }
+}
 
 // testBox 위치 미리 저장
 
