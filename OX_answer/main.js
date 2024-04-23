@@ -97,7 +97,7 @@ function loadMap() {
 
 /* SPLIDE */
 function appendCarouselMapBackItem(firstTask) {
-  const front = makeCardBoxHtml(firstTask);
+  const front = makeFrontCardContent(firstTask);
   const back = `
     <div id="map"></div>
     <details class="dropdown dropdown-bottom dropdown-end" id="dropdown">
@@ -107,12 +107,12 @@ function appendCarouselMapBackItem(firstTask) {
   appendCarouselItem(front, back);
 }
 function appendCarouselPersonalItem(task) {
-  const front = makeCardBoxHtml(task, true);
-  const back = makeCardBoxHtml(task, false);
+  const front = makeFrontCardContent(task);
+  const back = 'BACK';
   appendCarouselItem(front, back);
 }
 
-function makeCardBoxHtml(data, correct) {
+function makeFrontCardContent(data) {
   return `
   <div class="card_box_top">
     <div class="card_box_top_main">
@@ -124,12 +124,13 @@ function makeCardBoxHtml(data, correct) {
       <div class="card_box_main_left_area">
         <div class="card_box_main_left_img">
           <div class="black_wrapper"></div>
-          <!-- TODO 1 -->
-          <div class="news_text_o">${correct? '틀렸습니다' : '맞았습니다'}</div>
-          <img class="news_img" src="../image/main/lee_jump.gif" alt="" />
+          <div class="news_text_o">${data.isCorrect? '맞았습니다!' : '틀렸습니다!'}</div>
+          <img class="news_img" src="../image/main/${enname}_${(data.isCorrect)? 'jump.gif' : 'char.png'}" alt="" />
         </div>
         <div class="card_box_main_left_divider"></div>
-        <div class="card_box_main_left_text">▲ 자신에 대한 OX 문제를 맞춘 것에 매우 기뻐 뛰고 있는 모습이다.</div>
+        <div class="card_box_main_left_text">
+          ▲ 자신에 대한 OX 문제를 ${data.isCorrect? ' 맞춘 것에 매우 기뻐 뛰고 있는 모습이다.' : ' 틀린 것에 매우 슬퍼 하고 있는 모습이다.'}
+        </div>
       </div>
     </div>
     <div class="card_box_main_divider"></div>
@@ -137,21 +138,16 @@ function makeCardBoxHtml(data, correct) {
       <div class="card_box_main_right_area">
         <div class="card_box_main_right_answer">
           <div class="answer_index">문제 )</div>
-          <!-- TODO 2 -->
-          <div class="answer_title">"제 이름은 윤동훈입니다"</div>
-          <!-- TODO 3 -->
-          <div class="user_select_answer">당신이 선택한 답 : <span style="color: #1d4ed8">O</span></div>
+          <div class="answer_title">${data.content}</div>
+          <div class="user_select_answer">당신이 선택한 답 : <span style="color: #1d4ed8">${data.userSelectAnswer}</span></div>
         </div>
         <div class="card_box_main_right_divider">
           <div class="divider_line"></div>
         </div>
         <div class="card_box_main_right_dummy">
-          <div class="dummy_title"><b>Opinion: This album brings ‘Taylor math’ to a whole new level</b></div>
+          <div class="dummy_title"><b>${data.content}</b></div>
             <div class="dummy_text">
-              Friday’s midnight release of “The Tortured Poets Department,” Taylor Swift’s 11th album, means that yet another era has begun and a
-              record-breaking one at that. Swifties, who are now more than familiar with football jargon (at least when it comes to Kansas City
-              Chiefs’ tight end Travis Kelce, Taylor’s beau) can finally put away the grill and the drinks, lock the car, and leave the parking lot
-              for the stadium. The tailgate is over: it’s game on for Taylor Nation.
+              ${data.answerDesc}
             </div>
           </div>
         </div>
