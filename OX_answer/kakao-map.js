@@ -156,7 +156,23 @@ async function startAnimations(map, startPos, destPos) {
 
 async function setShowLocAnimation(map, startPos, destPos) {
     const marker = new kakao.maps.Marker();
+
+    const imageSrc = characterImgSrc;
+    const imageSize = new kakao.maps.Size(100, 100);
+    const imageOption = { offset: new kakao.maps.Point(0, 0) };
+    const markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
+    const charMarker = new kakao.maps.Marker({
+        image: markerImage
+    });
+
     const infowindow = new kakao.maps.InfoWindow({zindex:1});
+
+    const customOverlay = new kakao.maps.CustomOverlay({
+        map: map,
+        xAnchor: 1,
+        yAnchor: 1,
+        zindex: 10
+    });
 
     const geocoder = new kakao.maps.services.Geocoder();
     geocoder.coord2Address(startPos.longtitude, startPos.latitude, (result, status) => {
@@ -167,11 +183,15 @@ async function setShowLocAnimation(map, startPos, destPos) {
         marker.setPosition(pos);
         marker.setMap(map);
 
-        infowindow.setContent(`<span>${result[0].address.address_name}</span>`);
+        charMarker.setPosition(pos);
+        charMarker.setMap(map);
+
+        infowindow.setContent(`<div class="map-char-info-window">${result[0].address.address_name}</div>`);
         infowindow.open(map, marker);
-    });
+    }); 
 
     await new Promise(r => setTimeout(r, 2000));
+
     geocoder.coord2Address(destPos.longtitude, destPos.latitude, (result, status) => {
         if (status != kakao.maps.services.Status.OK) return;
 
@@ -180,13 +200,19 @@ async function setShowLocAnimation(map, startPos, destPos) {
         marker.setPosition(pos);
         marker.setMap(map);
 
-        infowindow.setContent(`<span>${result[0].address.address_name}</span>`);
+        charMarker.setPosition(pos);
+        charMarker.setMap(map);
+
+        infowindow.setContent(`<div class="map-char-info-window">${result[0].address.address_name}</div>`);
         infowindow.open(map, marker);
     });
+
     await new Promise(r => setTimeout(r, 2000));
 
     infowindow.close();
     marker.setMap(null);
+    charMarker.setMap(null);
+    customOverlay.setMap(null);
 }
 
 function setSpeedAndInterval(direction) {
@@ -203,7 +229,7 @@ function setSpeedAndInterval(direction) {
 function setMovingAnimation(map, pathPositions, carDirection) {
     const content = document.createElement('div');
     content.classList.add('map-animation-marker');
-    content.style.backgroundImage = `url("${characterImgSrc}")`
+    content.style.backgroundImage = `url("${characterImgSrc}")`;
 
     const customOverlay = new kakao.maps.CustomOverlay({
         position: pathPositions[0],
@@ -224,7 +250,6 @@ function setMovingAnimation(map, pathPositions, carDirection) {
     const markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
     const footMarkers = [];
     const moveAnimation = setInterval(() => {
-
         index += increment;
         footPrintIndex += 1;
         if (index >= pathPositions.length || index <= 0) {

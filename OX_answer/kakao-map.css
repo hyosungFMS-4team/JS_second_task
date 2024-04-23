@@ -48,3 +48,19 @@
 #dropdown * {
   z-index: 5;
 }
+
+.map-info-window {
+  width: 100%;
+  height: 100%;
+  padding: 10%;
+}
+
+.map-char-info-window {
+  background: #2e2e2e;
+  width: 15rem;
+  color: #fff;
+  font-size: 100%;
+  border: 0;
+  box-shadow: 0px 5px black, 0px -5px black, 5px 0px black, -5px 0px black, 0px 10px #00000038, 5px 5px #00000038, -5px 5px #00000038, inset 0px 5px #ffffff1f,
+    inset 0px -5px #00000030;
+}

@@ -162,7 +162,7 @@ function makeFrontCardContent(data) {
         <div class="card_box_main_right_answer">
           <div class="answer_index">문제 )</div>
           <div class="answer_title">${data.content}</div>
-          <div class="user_select_answer">당신이 선택한 답 : <span class="${data.isCorrect? 'font-blue' : 'font-red'}">${data.userSelectAnswer}</span></div>
+          <div class="user_select_answer">당신이 선택한 답 : <span class="${(data.userSelectAnswer == 'o')? 'font-blue' : 'font-red'}">${data.userSelectAnswer}</span></div>
         </div>
         <div class="card_box_main_right_divider">
           <div class="divider_line"></div>
