@@ -2,6 +2,8 @@ const page = window.location.pathname;
 let musicsSrcs;
 let musicImgSrcs;
 
+console.log(page);
+
 // 페이지별 음악, 사진 목록 위치 지정
 switch (page) {
     case '/Main/index.html': case '/Main/': 
@@ -49,7 +51,6 @@ function onMusicLoaded() {
     audioTitle.innerText = title;
     audioImage.src = musicImgSrcs[musicIndex];
     console.log('music loaded ', title);
-    playMusic();
 }
 
 function playMusic() {
@@ -89,6 +90,15 @@ function addEventListeners() {
     audioBtnPlay.addEventListener('click', () => onPlayButtonClicked());
     audioBtnPrev.addEventListener('click', () => onPrevButtonClicked());
     audioBtnNext.addEventListener('click', () => onNextButtonClicked());
+
+    window.onload = function() {
+        navigator.mediaDevices.getUserMedia({ audio: true }).then(() => {
+            const AudioContext = window.AudioContext || window.webkitAudioContext;
+            const audioContext = new AudioContext();
+        }).catch(e => {
+            console.error(`Audio permissions denied: ${e}`);
+        });
+    }
 }
 
 function createAudioPlayer() {
@@ -96,6 +106,8 @@ function createAudioPlayer() {
     audioPlayer.classList.add('audio_player', 'pixel_border');
 
     const audio = document.createElement('audio');
+    audio.muted = true;
+    audio.autoplay = true;
     const audioSource = document.createElement('source');
     audioSource.id = 'audio_src';
     audioSource.type = 'audio/mpeg';  // Adjust type based on your audio format
@@ -185,7 +197,6 @@ const audioPlayer = createAudioPlayer();
 
 // Append the audio player to the body
 body.appendChild(audioPlayer);
-// addAudioPlayerToBody();
 let musicIndex = 0;
 
 const audio = document.querySelector('audio');
