@@ -146,7 +146,7 @@ function makeFrontCardContent(data) {
         <div class="card_box_main_left_img">
           <div class="black_wrapper"></div>
           <div class="news_text_${data.isCorrect? 'o' : 'x'}">${data.isCorrect? '맞았습니다!' : '틀렸습니다!'}</div>
-          <img class="news_img" src="../image/main/${enname}_${(data.isCorrect)? 'jump.gif' : 'char.png'}" alt="" />
+          <img class="news_img" src="../image/${data.isCorrect? `main/${enname}_jump.gif` : `ox_answer/${enname}_x.png`}" alt="" />
         </div>
         <div class="card_box_main_left_divider"></div>
         <div class="card_box_main_left_text">
