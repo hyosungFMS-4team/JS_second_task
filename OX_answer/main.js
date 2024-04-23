@@ -103,6 +103,7 @@ function openModal(modal) {
   // TODO: 점수에 따른 모달 캐릭터 모양 변경 (눈물)
   const modal_charactor_src = `../image/main/${enname}_char.png`;
   modal_charactor.setAttribute('src', modal_charactor_src);
+  modal_charactor.style.width = '70%';
 
   const showName = document.querySelector('.modal_bottom_text');
   const fontColor = score > 50 ? 'font-blue' : 'font-red';
@@ -165,7 +166,7 @@ function makeBackCardContent(data) {
     <div style="width:100%; height:120%; display:flex; justify-content:center; align-items:center; margin-bottom:-8%; background:${
       data.isCorrect === true ? '#1d4fd870' : '#ff000070'
     };">
-      <div style="font-size:xx-large">${data.answerDesc}</div>
+      <div style="width:70%; font-size:xx-large">${data.answerDesc}</div>
     </div>
   `;
 }
