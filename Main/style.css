@@ -29,7 +29,7 @@ body {
   width: 100%;
 }
 
-.start-gif__content {
+#start-gif__content {
   z-index: 1000;
   height: 100%;
   width: 100%;
@@ -37,9 +37,14 @@ body {
   left: 0;
   right: 0;
   top: 0;
+  transition: 0.3s ease-out;
   bottom: 0;
 }
 
+.remove {
+  visibility: hidden;
+  opacity: 0;
+}
 .container {
   width: 100%;
   text-align: center;
