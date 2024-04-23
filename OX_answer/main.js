@@ -59,7 +59,14 @@ splide.mount();
 // 첫번째 태스크 후면 -> 카카오 맵
 appendCarouselMapBackItem(tasks[0]);
 loadMap();
-tasks.splice(0, 1);
+
+// 두번째 태스크 후면 -> 이미지 기반
+appendCarouselImageBackItem(tasks[1]);
+
+// 세번째 태스크 후면 -> 오디오 기반
+appendCarouselAudioBackItem(tasks[2]);
+
+tasks.splice(0, 3);
 
 // 개인 데이터 바인딩
 tasks.forEach(task => {
@@ -127,6 +134,37 @@ function appendCarouselMapBackItem(firstTask) {
     <summary id="mapSummary" class="map">정보</summary>
     <ul class="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52 map" id="mapUl"></ul>
   </details>`;
+  appendCarouselItem(front, back);
+}
+function appendCarouselImageBackItem(secondTask, imgsrc) {
+  const front = makeFrontCardContent(secondTask);
+  const back = `
+  <div class="card card-side">
+  <figure><img src="${imgsrc}" alt="개인 이미지" /></figure>
+  <div class="card-body">
+    <h2 class="card-title">
+      ${secondTask.content}
+      <div class="badge ${secondTask.isCorrect? 'bg-blue' : 'bg-red'}">${secondTask.userSelectAnswer}</div>
+    </h2>
+    <p>${secondTask.answerDesc}</p>
+    <div class="card-actions justify-end">
+      <div class="badge badge-outline">#태그1</div> 
+      <div class="badge badge-outline">#태그2</div>
+    </div>
+  </div>
+</div>`;
+  appendCarouselItem(front, back);
+}
+function appendCarouselAudioBackItem(thirdTask) {
+  const front = makeFrontCardContent(thirdTask);
+  const back = `
+  <div class="card card-side">
+  <figure><img src="https://daisyui.com/images/stock/photo-1494232410401-ad00d5433cfa.jpg" alt="Album"/></figure>
+  <div class="card-body">
+    <h2 class="card-title">New album is released!</h2>
+    <p>Click the button to listen on Spotiwhy app.</p>
+  </div>
+</div>`;
   appendCarouselItem(front, back);
 }
 function appendCarouselPersonalItem(task) {
