@@ -142,48 +142,6 @@ header > h1 {
   justify-content: space-between;
   align-items: center;
 }
-.custom-overlay {
-  background: #2e2e2e;
-  padding: 11px;
-  color: #fff;
-
-  font-size: 20px;
-  box-shadow: 0px 5px black, 0px -5px black, 5px 0px black, -5px 0px black, 0px 10px #00000038, 5px 5px #00000038, -5px 5px #00000038, inset 0px 5px #ffffff1f,
-    inset 0px -5px #00000030;
-}
-
-.dropdown {
-  position: absolute;
-  z-index: 1;
-  top: 7%;
-  right: 10%;
-  border: none;
-}
-
-#mapSummary {
-  background: #2e2e2e;
-  color: #fff;
-  padding: 1%;
-  border: 0;
-  box-shadow: 0px 5px black, 0px -5px black, 5px 0px black, -5px 0px black, 0px 10px #00000038, 5px 5px #00000038, -5px 5px #00000038, inset 0px 5px #ffffff1f,
-    inset 0px -5px #00000030;
-  border-radius: 0;
-  margin: 0.5rem;
-}
-.dropdown > .dropdown-content {
-  background: #2e2e2e;
-  padding: 11px;
-  color: #fff;
-  font-size: 18px;
-  box-shadow: 0px 5px black, 0px -5px black, 5px 0px black, -5px 0px black, 0px 10px #00000038, 5px 5px #00000038, -5px 5px #00000038, inset 0px 5px #ffffff1f,
-    inset 0px -5px #00000030;
-  border-radius: 0;
-  margin: 0.5rem;
-}
-#dropdown,
-#dropdown * {
-  z-index: 5;
-}
 
 .splide__slide {
   width: 100%;

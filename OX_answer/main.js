@@ -50,6 +50,8 @@ const splide = new Splide('.splide', {
   gap: '100px',
   start: 1,
   wheel: true,
+  waitForTransition: true,
+  wheelSleep: 1000,
   pagination: false,
 });
 splide.mount();
@@ -120,11 +122,11 @@ function loadMap() {
 function appendCarouselMapBackItem(firstTask) {
   const front = makeFrontCardContent(firstTask);
   const back = `
-    <div id="map"></div>
-    <details class="dropdown dropdown-bottom dropdown-end" id="dropdown">
-      <summary id="mapSummary">정보</summary>
-      <ul class="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52" id="mapUl"></ul>
-    </details>`;
+  <div id="map" class="map"></div>
+  <details class="dropdown dropdown-bottom dropdown-end map" id="dropdown">
+    <summary id="mapSummary" class="map">정보</summary>
+    <ul class="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52 map" id="mapUl"></ul>
+  </details>`;
   appendCarouselItem(front, back);
 }
 function appendCarouselPersonalItem(task) {
@@ -225,7 +227,17 @@ function flipCards() {
     isDragging = true;
   });
 
+  splideList.addEventListener('wheel', e => {
+    if (hasParentWithClass(e.target, 'map')) {
+      e.stopPropagation();
+    }
+  });
+
   splideList.addEventListener('mouseup', e => {
+    if (hasParentWithClass(e.target, 'map')) {
+      e.stopPropagation();
+      return;
+    }
     let isactive = hasParentWithClass(e.target, 'is-active');
     if (!isDragging) {
       for (const slide of e.currentTarget.children) {
