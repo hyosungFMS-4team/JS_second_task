@@ -9,6 +9,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="main.js"></script>
     <script defer src="pure-snow.js"></script>
+    <script src="randomWheel.js" defer></script>
     <!-- audio -->
   </head>
 
@@ -40,6 +41,7 @@
               <div class="nav_item" style="color: #fcfcfcca">MEMBERS</div>
               <div class="nav_item" style="color: #fcfcfcca" onclick="goToAnotherPage('Board','board')">BOARD</div>
               <div class="nav_item" style="color: #fcfcfcca" onclick="goToAnotherPage('SignUp','signup')">SIGNUP</div>
+              <div class="nav_item" style="color: #fcfcfcca" onclick="openRandomModal()">ROULETTE</div>
             </div>
           </div>
         </h1>
@@ -98,6 +100,19 @@
         <span style="color: #ff0000">Charactor</span></span
       >
     </div>
+
+        <!-- 랜덤 룰렛 모달 -->
+        <div id="myRandomModal" class="why_modal">
+          <div class="why_modal-content">
+            <div class="why_modal_top">
+              <div class="why_modal_title">RANDOM</div>
+            </div>
+            <div class="why_modal_bottom">
+              <input type="button" value="spin" style="float:left;" id='spin' />
+              <canvas id="canvas" width="500" height="500"></canvas>
+            </div>
+          </div>
+        </div>
 
     <!-- 멤버 입장 모달 -->
     <div id="myModal" class="why_modal">

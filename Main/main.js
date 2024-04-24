@@ -660,3 +660,7 @@ function statusCheck(taskObj) {
 
   return Object.keys(taskObj).length - cnt;
 }
+
+function openRandomModal() {
+  
+}
