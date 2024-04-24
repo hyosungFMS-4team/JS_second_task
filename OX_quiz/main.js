@@ -46,7 +46,13 @@ const AllOXItems = {
       answer: 'o',
       desc: '스프링을 통한 백엔드를 배워보고싶어서 교육을 들어왔고 자바는 처음이다. ',
     },
-    { id: '5', text: '정보처리기사 자격증이 있다.', backgroundColor: '#38667f', answer: 'o', desc: '질문에 대한 답변입니다.' },
+    {
+      id: '5',
+      text: '정보처리기사 자격증이 있다.',
+      backgroundColor: '#38667f',
+      answer: 'o',
+      desc: '2021년 3월에 필기를 따놓고 귀찮아서 미루다가 2022년 11월에 실기를 합격했습니다.',
+    },
     { id: '6', text: '최애 음식은 피자이다.', backgroundColor: '#9f7db1', answer: 'x', desc: '10일 연속으로 치킨을 먹을만큼 치킨을 좋아한다.' },
     {
       id: '7',
@@ -73,7 +79,7 @@ const AllOXItems = {
     { id: '5', text: '사랑니가 있다.', backgroundColor: '#38667f', answer: 'o', desc: '빼고 아파하는 사진' },
     { id: '6', text: '빵집에서 알바를 해봤다.', backgroundColor: '#9f7db1', answer: 'o', desc: '집 앞 빵집에서 일했습니다. 남는 빵 맛있게 먹었습니다.' },
     { id: '7', text: '마라탕을 좋아한다.', backgroundColor: '#ff5722', answer: 'x', desc: '동생이 배달 시키면 강제로 먹을 수는 있습니다.' },
-    { id: '8', text: '휴대폰 보험을 들었다.', backgroundColor: '#009688', answer: 'o', desc: '질문에 대한 답변입니다.' },
+    { id: '8', text: '휴대폰 보험을 들었다.', backgroundColor: '#009688', answer: 'o', desc: '케이스 대신 보험료 한달 3300원 지불 중' },
     {
       id: '9',
       text: '나는 장발을 해본 적이 있다.',
@@ -113,7 +119,13 @@ const AllOXItems = {
     },
     { id: '5', text: 'SQLD 자격증이 있다.', backgroundColor: '#38667f', answer: 'x', desc: '시험 통과는 했지만 아직 자격증이 정식적으로(?) 나오진 않았다.' },
     { id: '6', text: '1999년생이다.', backgroundColor: '#9f7db1', answer: 'o', desc: '1999년에 태어난 MZ 세대~~' },
-    { id: '7', text: '5살 차이나는 언니가 있다.', backgroundColor: '#ff5722', answer: 'x', desc: '질문에 대한 답변입니다.' },
+    {
+      id: '7',
+      text: '5살 차이나는 언니가 있다.',
+      backgroundColor: '#ff5722',
+      answer: 'x',
+      desc: '4살 차이 나는 언니가 외쿸에서 살고 있어서 자주 만나지 못한다!',
+    },
     {
       id: '8',
       text: '웹을 배포해 본 경험이 있다.',
@@ -122,7 +134,13 @@ const AllOXItems = {
       desc: '작년 부트캠프 프로젝트에서 git action과 AWS를 활용한 자동 배포, 무중단 서비스를 제공한 경험이 있다.',
     },
     { id: '9', text: '조에서 괴롭힘을 당하고 있다!🥕🥕🥕 ', backgroundColor: '#009688', answer: 'o', desc: '도와주세요!!!!!' },
-    { id: '10', text: '해외여행을 좋아한다.', backgroundColor: '#009688', answer: 'o', desc: '질문에 대한 답변입니다.' },
+    {
+      id: '10',
+      text: '해외여행을 좋아한다.',
+      backgroundColor: '#009688',
+      answer: 'o',
+      desc: '시간과 돈이 있다면 늘 여행을 다녔고 앞으로도 자주자주 다니고 싶다!',
+    },
   ],
 };
 
